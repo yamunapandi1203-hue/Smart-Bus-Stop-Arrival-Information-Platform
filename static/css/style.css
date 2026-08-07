@@ -1,0 +1,111 @@
+/* Google Font */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f5f7fa;
+    color:#333;
+    line-height:1.6;
+}
+
+/* ========================= */
+/* Navigation Bar */
+/* ========================= */
+
+.navbar{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:18px 8%;
+
+    background:#0d6efd;
+    color:white;
+
+}
+
+.logo{
+
+    font-size:28px;
+    font-weight:bold;
+
+}
+
+.logo i{
+
+    color:#ffd43b;
+    margin-right:8px;
+
+}
+
+.nav-links{
+
+    display:flex;
+    list-style:none;
+    gap:25px;
+
+}
+
+.nav-links a{
+
+    text-decoration:none;
+    color:white;
+    font-size:17px;
+    transition:.3s;
+
+}
+
+.nav-links a:hover{
+
+    color:#ffd43b;
+
+}
+
+.nav-buttons a{
+
+    text-decoration:none;
+
+    padding:10px 20px;
+
+    border-radius:8px;
+
+    margin-left:10px;
+
+    font-weight:600;
+
+}
+
+.login-btn{
+
+    background:white;
+    color:#0d6efd;
+
+}
+
+.register-btn{
+
+    background:#ffd43b;
+    color:black;
+
+}
+
+.login-btn:hover,
+.register-btn:hover{
+
+    opacity:.85;
+
+}
+
+/* ========================= */
+
+img{
+
+    max-width:100%;
+
+}
