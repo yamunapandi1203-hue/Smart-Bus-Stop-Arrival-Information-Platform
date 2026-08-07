@@ -483,3 +483,548 @@
 
 }
 
+/* ================================= */
+/* Smart Notifications */
+/* ================================= */
+
+.notification-section{
+
+    padding:80px 8%;
+
+    background:#f8f9fa;
+
+}
+
+.notification-container{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:60px;
+
+    flex-wrap:wrap;
+
+}
+
+.notification-content{
+
+    flex:1;
+
+}
+
+.notification-content h2{
+
+    font-size:40px;
+
+    color:#0d6efd;
+
+    margin-bottom:20px;
+
+}
+
+.notification-content p{
+
+    color:#555;
+
+    line-height:1.8;
+
+    margin-bottom:25px;
+
+}
+
+.notification-list{
+
+    list-style:none;
+
+    margin-bottom:30px;
+
+}
+
+.notification-list li{
+
+    font-size:18px;
+
+    margin-bottom:15px;
+
+}
+
+.notification-list i{
+
+    color:#f39c12;
+
+    margin-right:10px;
+
+}
+
+.notification-image{
+
+    flex:1;
+
+    text-align:center;
+
+}
+
+.notification-image i{
+
+    font-size:180px;
+
+    color:#0d6efd;
+
+}
+
+/* ================================= */
+/* QR Code Section */
+/* ================================= */
+
+.qr-section{
+
+    padding:80px 8%;
+
+    background:#ffffff;
+
+}
+
+.qr-container{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:60px;
+
+    flex-wrap:wrap;
+
+}
+
+.qr-image{
+
+    flex:1;
+
+    text-align:center;
+
+}
+
+.qr-image img{
+
+    width:100%;
+
+    max-width:350px;
+
+}
+
+.qr-content{
+
+    flex:1;
+
+}
+
+.qr-content h2{
+
+    font-size:40px;
+
+    color:#0d6efd;
+
+    margin-bottom:20px;
+
+}
+
+.qr-content p{
+
+    color:#555;
+
+    line-height:1.8;
+
+    margin-bottom:25px;
+
+}
+
+.qr-list{
+
+    list-style:none;
+
+    margin-bottom:30px;
+
+}
+
+.qr-list li{
+
+    margin-bottom:15px;
+
+    font-size:18px;
+
+}
+
+.qr-list i{
+
+    color:green;
+
+    margin-right:10px;
+
+}
+
+/* ================================= */
+/* Emergency Contact */
+/* ================================= */
+
+.emergency-section{
+
+    padding:80px 8%;
+
+    background:#f8f9fa;
+
+}
+
+.emergency-container{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:60px;
+
+    flex-wrap:wrap;
+
+}
+
+.emergency-content{
+
+    flex:1;
+
+}
+
+.emergency-content h2{
+
+    font-size:40px;
+
+    color:#dc3545;
+
+    margin-bottom:20px;
+
+}
+
+.emergency-content p{
+
+    color:#555;
+
+    line-height:1.8;
+
+    margin-bottom:25px;
+
+}
+
+.emergency-list{
+
+    list-style:none;
+
+    margin-bottom:30px;
+
+}
+
+.emergency-list li{
+
+    margin-bottom:15px;
+
+    font-size:18px;
+
+}
+
+.emergency-list i{
+
+    color:#dc3545;
+
+    margin-right:10px;
+
+}
+
+.emergency-image{
+
+    flex:1;
+
+    text-align:center;
+
+}
+
+.emergency-image i{
+
+    font-size:180px;
+
+    color:#dc3545;
+
+}
+
+/* ================================= */
+/* Favorite Routes */
+/* ================================= */
+
+.favorite-section{
+
+    padding:80px 8%;
+
+    background:#ffffff;
+
+}
+
+.favorite-container{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:60px;
+
+    flex-wrap:wrap;
+
+}
+
+.favorite-image{
+
+    flex:1;
+
+    text-align:center;
+
+}
+
+.favorite-image i{
+
+    font-size:180px;
+
+    color:#e91e63;
+
+}
+
+.favorite-content{
+
+    flex:1;
+
+}
+
+.favorite-content h2{
+
+    font-size:40px;
+
+    color:#0d6efd;
+
+    margin-bottom:20px;
+
+}
+
+.favorite-content p{
+
+    color:#555;
+
+    line-height:1.8;
+
+    margin-bottom:25px;
+
+}
+
+.favorite-list{
+
+    list-style:none;
+
+    margin-bottom:30px;
+
+}
+
+.favorite-list li{
+
+    font-size:18px;
+
+    margin-bottom:15px;
+
+}
+
+.favorite-list i{
+
+    color:#e91e63;
+
+    margin-right:10px;
+
+}
+
+/* ================================= */
+/* Feedback Section */
+/* ================================= */
+
+.feedback-section{
+
+    padding:80px 8%;
+
+    background:#f8f9fa;
+
+}
+
+.feedback-container{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:60px;
+
+    flex-wrap:wrap;
+
+}
+
+.feedback-content{
+
+    flex:1;
+
+}
+
+.feedback-content h2{
+
+    font-size:40px;
+
+    color:#0d6efd;
+
+    margin-bottom:20px;
+
+}
+
+.feedback-content p{
+
+    color:#555;
+
+    line-height:1.8;
+
+    margin-bottom:25px;
+
+}
+
+.feedback-form{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:15px;
+
+}
+
+.feedback-form input,
+.feedback-form textarea{
+
+    padding:15px;
+
+    border:1px solid #ccc;
+
+    border-radius:10px;
+
+    font-size:16px;
+
+    width:100%;
+
+}
+
+.feedback-image{
+
+    flex:1;
+
+    text-align:center;
+
+}
+
+.feedback-image i{
+
+    font-size:180px;
+
+    color:#0d6efd;
+
+}
+
+/* ================================= */
+/* Footer */
+/* ================================= */
+
+.footer{
+
+    background:#0d6efd;
+
+    color:white;
+
+    padding:60px 8% 20px;
+
+}
+
+.footer-container{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    gap:40px;
+
+}
+
+.footer-box h3{
+
+    margin-bottom:20px;
+
+}
+
+.footer-box p{
+
+    line-height:1.8;
+
+}
+
+.footer-box ul{
+
+    list-style:none;
+
+}
+
+.footer-box ul li{
+
+    margin-bottom:12px;
+
+}
+
+.footer-box a{
+
+    color:white;
+
+    text-decoration:none;
+
+}
+
+.footer-box i{
+
+    margin-right:10px;
+
+}
+
+.footer-box a i{
+
+    font-size:22px;
+
+    margin-right:15px;
+
+}
+
+.footer hr{
+
+    margin:30px 0;
+
+    border:1px solid rgba(255,255,255,0.3);
+
+}
+
+.footer-bottom{
+
+    text-align:center;
+
+}
+
