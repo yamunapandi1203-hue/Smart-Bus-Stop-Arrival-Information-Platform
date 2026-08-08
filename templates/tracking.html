@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Live Bus Tracking | SmartBus</title>
+
+
+    <!-- Google Font -->
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+
+    <!-- Font Awesome -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+    <!-- Common CSS -->
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}">
+
+
+    <!-- Tracking CSS -->
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/tracking.css') }}">
+
+</head>
+
+
+<body>
+
+
+    <!-- ================================= -->
+    <!-- Navigation Bar -->
+    <!-- ================================= -->
+
+    <header>
+
+        <nav class="navbar">
+
+
+            <!-- Logo -->
+
+            <div class="logo">
+
+                <i class="fa-solid fa-bus"></i>
+
+                <span>SmartBus</span>
+
+            </div>
+
+
+            <!-- Navigation -->
+
+            <ul class="nav-links">
+
+                <li>
+
+                    <a href="{{ url_for('home') }}">
+
+                        Home
+
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a href="{{ url_for('routes') }}">
+
+                        Routes
+
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a href="{{ url_for('bus_stops') }}">
+
+                        Bus Stops
+
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a href="{{ url_for('tracking') }}"
+                       class="active">
+
+                        Live Tracking
+
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a href="{{ url_for('ai_prediction') }}">
+
+                        AI Prediction
+
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a href="{{ url_for('weather') }}">
+
+                        Weather
+
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a href="{{ url_for('contact') }}">
+
+                        Contact
+
+                    </a>
+
+                </li>
+
+            </ul>
+
+
+            <!-- Login / Register -->
+
+            <div class="nav-buttons">
+
+                <a href="{{ url_for('login') }}"
+                   class="login-btn">
+
+                    Login
+
+                </a>
+
+
+                <a href="{{ url_for('register') }}"
+                   class="register-btn">
+
+                    Register
+
+                </a>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- ================================= -->
+    <!-- Tracking Hero -->
+    <!-- ================================= -->
+
+    <section class="tracking-hero">
+
+        <div class="tracking-hero-content">
+
+            <i class="fa-solid fa-location-crosshairs"></i>
+
+            <h1>
+                Live Bus Tracking
+            </h1>
+
+            <p>
+                Track your bus location and check
+                its estimated arrival time in real time.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================================= -->
+    <!-- Bus Selection -->
+    <!-- ================================= -->
+
+    <section class="tracking-selection">
+
+        <div class="section-title">
+
+            <h2>
+                Select Your Bus
+            </h2>
+
+            <p>
+                Choose a bus to view its current location.
+            </p>
+
+        </div>
+
+
+        <div class="selection-container">
+
+
+            <div class="select-group">
+
+                <label for="busSelect">
+                    Bus Number
+                </label>
+
+                <select id="busSelect"
+                        onchange="changeBus()">
+
+                    <option value="101">
+                        101
+                    </option>
+
+                    <option value="21G">
+                        21G
+                    </option>
+
+                    <option value="5C">
+                        5C
+                    </option>
+
+                    <option value="27B">
+                        27B
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="select-group">
+
+                <label for="routeSelect">
+                    Route
+                </label>
+
+                <select id="routeSelect">
+
+                    <option>
+                        Chennai Central → Tambaram
+                    </option>
+
+                    <option>
+                        Broadway → Guindy
+                    </option>
+
+                    <option>
+                        Adyar → Thiruvanmiyur
+                    </option>
+
+                    <option>
+                        Velachery → T Nagar
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <button class="track-now-btn"
+                    onclick="refreshTracking()">
+
+                <i class="fa-solid fa-location-crosshairs"></i>
+
+                Track Bus
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================================= -->
+    <!-- Live Status -->
+    <!-- ================================= -->
+
+    <section class="live-section">
+
+        <div class="live-header">
+
+            <div>
+
+                <span class="small-label">
+                    CURRENTLY TRACKING
+                </span>
+
+                <h2 id="currentBus">
+                    Bus 101
+                </h2>
+
+            </div>
+
+
+            <div class="live-badge">
+
+                <span class="live-dot"></span>
+
+                LIVE
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================================= -->
+        <!-- Tracking Content -->
+        <!-- ================================= -->
+
+        <div class="tracking-layout">
+
+
+            <!-- Map -->
+
+            <div class="map-container">
+
+                <div class="map-header">
+
+                    <h3>
+
+                        <i class="fa-solid fa-map"></i>
+
+                        Bus Location
+
+                    </h3>
+
+                    <span id="updateTime">
+                        Updated just now
+                    </span>
+
+                </div>
+
+
+                <div class="map-area">
+
+
+                    <!-- Roads -->
+
+                    <div class="road road-one"></div>
+
+                    <div class="road road-two"></div>
+
+                    <div class="road road-three"></div>
+
+
+                    <!-- Route -->
+
+                    <div class="route-line"></div>
+
+
+                    <!-- Bus -->
+
+                    <div class="bus-marker"
+                         id="busMarker">
+
+                        <i class="fa-solid fa-bus"></i>
+
+                    </div>
+
+
+                    <!-- Stop 1 -->
+
+                    <div class="map-stop stop-one">
+
+                        <span></span>
+
+                        <p>
+                            Central
+                        </p>
+
+                    </div>
+
+
+                    <!-- Stop 2 -->
+
+                    <div class="map-stop stop-two">
+
+                        <span></span>
+
+                        <p>
+                            Guindy
+                        </p>
+
+                    </div>
+
+
+                    <!-- Stop 3 -->
+
+                    <div class="map-stop stop-three">
+
+                        <span></span>
+
+                        <p>
+                            Tambaram
+                        </p>
+
+                    </div>
+
+
+                    <!-- Current Location -->
+
+                    <div class="current-location">
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        <span>
+                            Bus Location
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Information Panel -->
+
+            <div class="tracking-info">
+
+
+                <!-- Arrival -->
+
+                <div class="info-card arrival-card">
+
+                    <div class="info-icon">
+
+                        <i class="fa-solid fa-clock"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Estimated Arrival
+                        </span>
+
+                        <strong id="arrivalTime">
+                            5 min
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Next Stop -->
+
+                <div class="info-card">
+
+                    <div class="info-icon">
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Next Stop
+                        </span>
+
+                        <strong id="nextStop">
+                            Guindy
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Speed -->
+
+                <div class="info-card">
+
+                    <div class="info-icon">
+
+                        <i class="fa-solid fa-gauge-high"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Current Speed
+                        </span>
+
+                        <strong id="speed">
+                            32 km/h
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Status -->
+
+                <div class="info-card">
+
+                    <div class="info-icon">
+
+                        <i class="fa-solid fa-circle-check"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Bus Status
+                        </span>
+
+                        <strong class="on-time">
+                            On Time
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================================= -->
+    <!-- Journey Information -->
+    <!-- ================================= -->
+
+    <section class="journey-section">
+
+        <div class="section-title">
+
+            <h2>
+                Journey Information
+            </h2>
+
+            <p>
+                Current bus journey and upcoming stops.
+            </p>
+
+        </div>
+
+
+        <div class="journey-card">
+
+
+            <!-- Starting Point -->
+
+            <div class="journey-stop completed">
+
+                <div class="journey-icon">
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        Chennai Central
+                    </strong>
+
+                    <span>
+                        Departed
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Current -->
+
+            <div class="journey-stop current">
+
+                <div class="journey-icon">
+
+                    <i class="fa-solid fa-bus"></i>
+
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        Guindy
+                    </strong>
+
+                    <span>
+                        Next Stop • 5 min
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Destination -->
+
+            <div class="journey-stop">
+
+                <div class="journey-icon">
+
+                    <i class="fa-solid fa-location-dot"></i>
+
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        Tambaram
+                    </strong>
+
+                    <span>
+                        Final Destination
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================================= -->
+    <!-- Tracking Features -->
+    <!-- ================================= -->
+
+    <section class="tracking-features">
+
+        <div class="section-title">
+
+            <h2>
+                Smart Tracking Features
+            </h2>
+
+            <p>
+                Travel with better information and confidence.
+            </p>
+
+        </div>
+
+
+        <div class="feature-grid">
+
+
+            <div class="feature-card">
+
+                <i class="fa-solid fa-location-crosshairs"></i>
+
+                <h3>
+                    Live Location
+                </h3>
+
+                <p>
+                    View the current location
+                    of your selected bus.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <i class="fa-solid fa-clock"></i>
+
+                <h3>
+                    Arrival Prediction
+                </h3>
+
+                <p>
+                    Check the estimated time
+                    for your bus to arrive.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <i class="fa-solid fa-route"></i>
+
+                <h3>
+                    Route Tracking
+                </h3>
+
+                <p>
+                    Follow the bus route and
+                    see upcoming stops.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <i class="fa-solid fa-bell"></i>
+
+                <h3>
+                    Smart Alerts
+                </h3>
+
+                <p>
+                    Receive notifications about
+                    bus arrival and delays.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================================= -->
+    <!-- Footer -->
+    <!-- ================================= -->
+
+    <footer class="footer">
+
+        <h3>
+            SmartBus
+        </h3>
+
+        <p>
+            Smart Bus Stop Arrival Information Platform
+        </p>
+
+        <p>
+            © 2026 SmartBus. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+
+    <!-- ================================= -->
+    <!-- JavaScript -->
+    <!-- ================================= -->
+
+    <script>
+
+        const busData = {
+
+            "101": {
+
+                route:
+                    "Chennai Central → Tambaram",
+
+                arrival:
+                    "5 min",
+
+                nextStop:
+                    "Guindy",
+
+                speed:
+                    "32 km/h"
+
+            },
+
+
+            "21G": {
+
+                route:
+                    "Broadway → Guindy",
+
+                arrival:
+                    "8 min",
+
+                nextStop:
+                    "Egmore",
+
+                speed:
+                    "28 km/h"
+
+            },
+
+
+            "5C": {
+
+                route:
+                    "Adyar → Thiruvanmiyur",
+
+                arrival:
+                    "12 min",
+
+                nextStop:
+                    "Adyar",
+
+                speed:
+                    "24 km/h"
+
+            },
+
+
+            "27B": {
+
+                route:
+                    "Velachery → T Nagar",
+
+                arrival:
+                    "7 min",
+
+                nextStop:
+                    "Guindy",
+
+                speed:
+                    "35 km/h"
+
+            }
+
+        };
+
+
+        function changeBus() {
+
+            const bus =
+                document.getElementById(
+                    "busSelect"
+                ).value;
+
+
+            const data =
+                busData[bus];
+
+
+            document.getElementById(
+                "currentBus"
+            ).textContent =
+                "Bus " + bus;
+
+
+            document.getElementById(
+                "routeSelect"
+            ).value =
+                data.route;
+
+
+            document.getElementById(
+                "arrivalTime"
+            ).textContent =
+                data.arrival;
+
+
+            document.getElementById(
+                "nextStop"
+            ).textContent =
+                data.nextStop;
+
+
+            document.getElementById(
+                "speed"
+            ).textContent =
+                data.speed;
+
+        }
+
+
+        function refreshTracking() {
+
+            const bus =
+                document.getElementById(
+                    "busSelect"
+                ).value;
+
+
+            const data =
+                busData[bus];
+
+
+            document.getElementById(
+                "currentBus"
+            ).textContent =
+                "Bus " + bus;
+
+
+            document.getElementById(
+                "routeSelect"
+            ).value =
+                data.route;
+
+
+            document.getElementById(
+                "arrivalTime"
+            ).textContent =
+                data.arrival;
+
+
+            document.getElementById(
+                "nextStop"
+            ).textContent =
+                data.nextStop;
+
+
+            document.getElementById(
+                "speed"
+            ).textContent =
+                data.speed;
+
+
+            document.getElementById(
+                "updateTime"
+            ).textContent =
+                "Updated just now";
+
+
+            const marker =
+                document.getElementById(
+                    "busMarker"
+                );
+
+
+            marker.classList.add(
+                "marker-update"
+            );
+
+
+            setTimeout(function() {
+
+                marker.classList.remove(
+                    "marker-update"
+                );
+
+            }, 700);
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>AI Prediction | SmartBus</title>
+
+    <!-- Google Font -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Common CSS -->
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}">
+
+    <!-- AI Prediction CSS -->
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/ai_prediction.css') }}">
+
+</head>
+
+
+<body>
+
+
+    <!-- ================================= -->
+    <!-- Navigation Bar -->
+    <!-- ================================= -->
+
+    <header>
+
+        <nav class="navbar">
+
+            <div class="logo">
+
+                <i class="fa-solid fa-bus"></i>
+
+                <span>SmartBus</span>
+
+            </div>
+
+
+            <ul class="nav-links">
+
+                <li>
+                    <a href="{{ url_for('home') }}">
+                        Home
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ url_for('routes') }}">
+                        Routes
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ url_for('bus_stops') }}">
+                        Bus Stops
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ url_for('tracking') }}">
+                        Live Tracking
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ url_for('ai_prediction') }}"
+                       class="active">
+                        AI Prediction
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ url_for('weather') }}">
+                        Weather
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ url_for('contact') }}">
+                        Contact
+                    </a>
+                </li>
+
+            </ul>
+
+
+            <div class="nav-buttons">
+
+                <a href="{{ url_for('login') }}"
+                   class="login-btn">
+                    Login
+                </a>
+
+                <a href="{{ url_for('register') }}"
+                   class="register-btn">
+                    Register
+                </a>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- ================================= -->
+    <!-- AI Hero Section -->
+    <!-- ================================= -->
+
+    <section class="ai-hero">
+
+        <div class="ai-hero-content">
+
+            <div class="robot-icon">
+
+                <i class="fa-solid fa-robot"></i>
+
+            </div>
+
+            <h1>
+                AI Bus Arrival Prediction
+            </h1>
+
+            <p>
+                Get intelligent bus arrival predictions
+                using traffic, weather and route information.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================================= -->
+    <!-- Prediction Section -->
+    <!-- ================================= -->
+
+    <section class="prediction-section">
+
+        <div class="section-title">
+
+            <h2>
+                Predict Your Bus Arrival
+            </h2>
+
+            <p>
+                Enter your travel information to get
+                an estimated arrival time.
+            </p>
+
+        </div>
+
+
+        <div class="prediction-container">
+
+
+            <!-- Input Card -->
+
+            <div class="prediction-card">
+
+                <div class="card-heading">
+
+                    <i class="fa-solid fa-sliders"></i>
+
+                    <h3>
+                        Travel Information
+                    </h3>
+
+                </div>
+
+
+                <!-- Bus -->
+
+                <div class="input-group">
+
+                    <label for="bus">
+
+                        <i class="fa-solid fa-bus"></i>
+
+                        Select Bus
+
+                    </label>
+
+                    <select id="bus">
+
+                        <option value="101">
+                            Bus 101
+                        </option>
+
+                        <option value="21G">
+                            Bus 21G
+                        </option>
+
+                        <option value="5C">
+                            Bus 5C
+                        </option>
+
+                        <option value="27B">
+                            Bus 27B
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Bus Stop -->
+
+                <div class="input-group">
+
+                    <label for="stop">
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        Select Bus Stop
+
+                    </label>
+
+                    <select id="stop">
+
+                        <option value="Guindy">
+                            Guindy
+                        </option>
+
+                        <option value="Chennai Central">
+                            Chennai Central
+                        </option>
+
+                        <option value="Tambaram">
+                            Tambaram
+                        </option>
+
+                        <option value="Adyar">
+                            Adyar
+                        </option>
+
+                        <option value="Velachery">
+                            Velachery
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Traffic -->
+
+                <div class="input-group">
+
+                    <label for="traffic">
+
+                        <i class="fa-solid fa-car"></i>
+
+                        Traffic Condition
+
+                    </label>
+
+                    <select id="traffic">
+
+                        <option value="low">
+                            Low Traffic
+                        </option>
+
+                        <option value="moderate"
+                                selected>
+                            Moderate Traffic
+                        </option>
+
+                        <option value="high">
+                            Heavy Traffic
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Weather -->
+
+                <div class="input-group">
+
+                    <label for="weather">
+
+                        <i class="fa-solid fa-cloud-sun"></i>
+
+                        Weather Condition
+
+                    </label>
+
+                    <select id="weather">
+
+                        <option value="clear">
+                            Clear
+                        </option>
+
+                        <option value="cloudy"
+                                selected>
+                            Cloudy
+                        </option>
+
+                        <option value="rain">
+                            Rain
+                        </option>
+
+                        <option value="heavy-rain">
+                            Heavy Rain
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Predict Button -->
+
+                <button class="predict-btn"
+                        onclick="predictArrival()">
+
+                    <i class="fa-solid fa-robot"></i>
+
+                    Predict Arrival
+
+                </button>
+
+            </div>
+
+
+
+            <!-- Result Card -->
+
+            <div class="result-card"
+                 id="resultCard">
+
+
+                <div class="result-header">
+
+                    <div class="result-icon">
+
+                        <i class="fa-solid fa-robot"></i>
+
+                    </div>
+
+                    <div>
+
+                        <span>
+                            AI PREDICTION
+                        </span>
+
+                        <h3>
+                            Estimated Arrival
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Initial Message -->
+
+                <div class="initial-result"
+                     id="initialResult">
+
+                    <i class="fa-solid fa-chart-line"></i>
+
+                    <h3>
+                        Ready to Predict
+                    </h3>
+
+                    <p>
+                        Select your bus and travel conditions,
+                        then click "Predict Arrival".
+                    </p>
+
+                </div>
+
+
+                <!-- Prediction Result -->
+
+                <div class="prediction-result"
+                     id="predictionResult">
+
+
+                    <div class="bus-result">
+
+                        <span>
+                            Selected Bus
+                        </span>
+
+                        <strong id="resultBus">
+                            Bus 21G
+                        </strong>
+
+                    </div>
+
+
+                    <div class="stop-result">
+
+                        <span>
+                            Bus Stop
+                        </span>
+
+                        <strong id="resultStop">
+                            Guindy
+                        </strong>
+
+                    </div>
+
+
+                    <div class="arrival-result">
+
+                        <span>
+                            Estimated Arrival
+                        </span>
+
+                        <strong id="resultTime">
+                            8 Minutes
+                        </strong>
+
+                    </div>
+
+
+                    <div class="confidence">
+
+                        <div class="confidence-top">
+
+                            <span>
+                                AI Confidence
+                            </span>
+
+                            <strong id="confidenceValue">
+                                92%
+                            </strong>
+
+                        </div>
+
+
+                        <div class="confidence-bar">
+
+                            <div class="confidence-progress"
+                                 id="confidenceProgress">
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="condition-list">
+
+
+                        <div class="condition-item">
+
+                            <i class="fa-solid fa-car"></i>
+
+                            <div>
+
+                                <span>
+                                    Traffic
+                                </span>
+
+                                <strong id="resultTraffic">
+                                    Moderate
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="condition-item">
+
+                            <i class="fa-solid fa-cloud-sun"></i>
+
+                            <div>
+
+                                <span>
+                                    Weather
+                                </span>
+
+                                <strong id="resultWeather">
+                                    Cloudy
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="condition-item">
+
+                            <i class="fa-solid fa-route"></i>
+
+                            <div>
+
+                                <span>
+                                    Route
+                                </span>
+
+                                <strong>
+                                    Normal
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="ai-message">
+
+                        <i class="fa-solid fa-lightbulb"></i>
+
+                        <p id="aiMessage">
+                            Your bus is expected to arrive
+                            on time. Traffic conditions are
+                            currently moderate.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================================= -->
+    <!-- How AI Works -->
+    <!-- ================================= -->
+
+    <section class="how-ai-section">
+
+        <div class="section-title">
+
+            <h2>
+                How AI Prediction Works
+            </h2>
+
+            <p>
+                Our smart system considers multiple
+                travel conditions.
+            </p>
+
+        </div>
+
+
+        <div class="ai-steps">
+
+
+            <div class="ai-step">
+
+                <div class="step-number">
+                    1
+                </div>
+
+                <i class="fa-solid fa-bus"></i>
+
+                <h3>
+                    Bus Data
+                </h3>
+
+                <p>
+                    Bus route and current location
+                    information are considered.
+                </p>
+
+            </div>
+
+
+            <div class="ai-step">
+
+                <div class="step-number">
+                    2
+                </div>
+
+                <i class="fa-solid fa-car"></i>
+
+                <h3>
+                    Traffic
+                </h3>
+
+                <p>
+                    Traffic conditions are used
+                    to improve arrival prediction.
+                </p>
+
+            </div>
+
+
+            <div class="ai-step">
+
+                <div class="step-number">
+                    3
+                </div>
+
+                <i class="fa-solid fa-cloud-sun"></i>
+
+                <h3>
+                    Weather
+                </h3>
+
+                <p>
+                    Weather conditions are considered
+                    for better prediction.
+                </p>
+
+            </div>
+
+
+            <div class="ai-step">
+
+                <div class="step-number">
+                    4
+                </div>
+
+                <i class="fa-solid fa-brain"></i>
+
+                <h3>
+                    AI Analysis
+                </h3>
+
+                <p>
+                    The system combines the information
+                    to estimate arrival time.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================================= -->
+    <!-- AI Benefits -->
+    <!-- ================================= -->
+
+    <section class="benefits-section">
+
+        <div class="section-title">
+
+            <h2>
+                Benefits of AI Prediction
+            </h2>
+
+        </div>
+
+
+        <div class="benefits-grid">
+
+
+            <div class="benefit-card">
+
+                <i class="fa-solid fa-clock"></i>
+
+                <h3>
+                    Save Time
+                </h3>
+
+                <p>
+                    Know approximately when your bus
+                    will arrive before reaching the stop.
+                </p>
+
+            </div>
+
+
+            <div class="benefit-card">
+
+                <i class="fa-solid fa-route"></i>
+
+                <h3>
+                    Smart Travel
+                </h3>
+
+                <p>
+                    Plan your journey based on
+                    predicted arrival information.
+                </p>
+
+            </div>
+
+
+            <div class="benefit-card">
+
+                <i class="fa-solid fa-cloud-rain"></i>
+
+                <h3>
+                    Weather Aware
+                </h3>
+
+                <p>
+                    Weather conditions can be considered
+                    while estimating travel time.
+                </p>
+
+            </div>
+
+
+            <div class="benefit-card">
+
+                <i class="fa-solid fa-bell"></i>
+
+                <h3>
+                    Smart Notifications
+                </h3>
+
+                <p>
+                    Get useful information about
+                    arrival and possible delays.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================================= -->
+    <!-- Footer -->
+    <!-- ================================= -->
+
+    <footer class="footer">
+
+        <h3>
+            SmartBus
+        </h3>
+
+        <p>
+            Smart Bus Stop Arrival Information Platform
+        </p>
+
+        <p>
+            © 2026 SmartBus. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+
+    <!-- ================================= -->
+    <!-- JavaScript -->
+    <!-- ================================= -->
+
+    <script>
+
+        function predictArrival() {
+
+            const bus =
+                document.getElementById("bus").value;
+
+            const stop =
+                document.getElementById("stop").value;
+
+            const traffic =
+                document.getElementById("traffic").value;
+
+            const weather =
+                document.getElementById("weather").value;
+
+
+            let arrival = 5;
+
+            let confidence = 95;
+
+
+            /* Traffic effect */
+
+            if (traffic === "low") {
+
+                arrival += 0;
+
+                confidence -= 1;
+
+            }
+
+            else if (traffic === "moderate") {
+
+                arrival += 3;
+
+                confidence -= 4;
+
+            }
+
+            else if (traffic === "high") {
+
+                arrival += 7;
+
+                confidence -= 10;
+
+            }
+
+
+            /* Weather effect */
+
+            if (weather === "clear") {
+
+                arrival += 0;
+
+            }
+
+            else if (weather === "cloudy") {
+
+                arrival += 1;
+
+                confidence -= 1;
+
+            }
+
+            else if (weather === "rain") {
+
+                arrival += 4;
+
+                confidence -= 5;
+
+            }
+
+            else if (weather === "heavy-rain") {
+
+                arrival += 8;
+
+                confidence -= 12;
+
+            }
+
+
+            if (confidence < 70) {
+
+                confidence = 70;
+
+            }
+
+
+            let trafficText = "";
+
+            if (traffic === "low") {
+
+                trafficText = "Low";
+
+            }
+
+            else if (traffic === "moderate") {
+
+                trafficText = "Moderate";
+
+            }
+
+            else {
+
+                trafficText = "Heavy";
+
+            }
+
+
+            let weatherText = "";
+
+            if (weather === "clear") {
+
+                weatherText = "Clear";
+
+            }
+
+            else if (weather === "cloudy") {
+
+                weatherText = "Cloudy";
+
+            }
+
+            else if (weather === "rain") {
+
+                weatherText = "Rain";
+
+            }
+
+            else {
+
+                weatherText = "Heavy Rain";
+
+            }
+
+
+            /* Update result */
+
+            document.getElementById(
+                "resultBus"
+            ).textContent =
+                "Bus " + bus;
+
+
+            document.getElementById(
+                "resultStop"
+            ).textContent =
+                stop;
+
+
+            document.getElementById(
+                "resultTime"
+            ).textContent =
+                arrival + " Minutes";
+
+
+            document.getElementById(
+                "confidenceValue"
+            ).textContent =
+                confidence + "%";
+
+
+            document.getElementById(
+                "confidenceProgress"
+            ).style.width =
+                confidence + "%";
+
+
+            document.getElementById(
+                "resultTraffic"
+            ).textContent =
+                trafficText;
+
+
+            document.getElementById(
+                "resultWeather"
+            ).textContent =
+                weatherText;
+
+
+            /* AI message */
+
+            let message = "";
+
+            if (traffic === "high" ||
+                weather === "heavy-rain") {
+
+                message =
+                    "The AI predicts a possible delay " +
+                    "because of current travel conditions. " +
+                    "Please allow some extra travel time.";
+
+            }
+
+            else if (traffic === "moderate" ||
+                     weather === "rain") {
+
+                message =
+                    "Your bus may experience a small delay " +
+                    "because of traffic or weather conditions.";
+
+            }
+
+            else {
+
+                message =
+                    "Your bus is expected to arrive on time " +
+                    "under the current travel conditions.";
+
+            }
+
+
+            document.getElementById(
+                "aiMessage"
+            ).textContent =
+                message;
+
+
+            /* Show result */
+
+            document.getElementById(
+                "initialResult"
+            ).style.display =
+                "none";
+
+
+            document.getElementById(
+                "predictionResult"
+            ).style.display =
+                "block";
+
+
+            document.getElementById(
+                "resultCard"
+            ).scrollIntoView({
+
+                behavior: "smooth",
+
+                block: "center"
+
+            });
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,939 @@
+/* ================================= */
+/* Tracking Hero */
+/* ================================= */
+
+.tracking-hero {
+
+    padding: 70px 8%;
+
+    background: #0d6efd;
+
+    color: white;
+
+    text-align: center;
+
+}
+
+.tracking-hero i {
+
+    font-size: 50px;
+
+    margin-bottom: 15px;
+
+}
+
+.tracking-hero h1 {
+
+    font-size: 42px;
+
+    margin-bottom: 15px;
+
+}
+
+.tracking-hero p {
+
+    font-size: 17px;
+
+    line-height: 1.7;
+
+}
+
+
+/* ================================= */
+/* Section Title */
+/* ================================= */
+
+.section-title {
+
+    text-align: center;
+
+    margin-bottom: 35px;
+
+}
+
+.section-title h2 {
+
+    font-size: 32px;
+
+    color: #222;
+
+    margin-bottom: 10px;
+
+}
+
+.section-title p {
+
+    color: #666;
+
+}
+
+
+/* ================================= */
+/* Bus Selection */
+/* ================================= */
+
+.tracking-selection {
+
+    padding: 70px 8%;
+
+    background: #f5f8fc;
+
+}
+
+.selection-container {
+
+    max-width: 1000px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr auto;
+
+    gap: 20px;
+
+    align-items: end;
+
+}
+
+.select-group {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+}
+
+.select-group label {
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    color: #333;
+
+}
+
+.select-group select {
+
+    padding: 14px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 8px;
+
+    background: white;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+}
+
+.track-now-btn {
+
+    padding: 14px 22px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #0d6efd;
+
+    color: white;
+
+    font-family: 'Poppins', sans-serif;
+
+    cursor: pointer;
+
+    white-space: nowrap;
+
+}
+
+.track-now-btn:hover {
+
+    background: #0b5ed7;
+
+}
+
+
+/* ================================= */
+/* Live Section */
+/* ================================= */
+
+.live-section {
+
+    padding: 80px 8%;
+
+    background: white;
+
+}
+
+.live-header {
+
+    max-width: 1200px;
+
+    margin: 0 auto 25px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+}
+
+.small-label {
+
+    color: #888;
+
+    font-size: 12px;
+
+    font-weight: 500;
+
+}
+
+.live-header h2 {
+
+    margin-top: 5px;
+
+    font-size: 30px;
+
+}
+
+.live-badge {
+
+    padding: 9px 17px;
+
+    border-radius: 20px;
+
+    background: #e8f7ee;
+
+    color: #198754;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+}
+
+.live-dot {
+
+    display: inline-block;
+
+    width: 9px;
+
+    height: 9px;
+
+    border-radius: 50%;
+
+    background: #198754;
+
+    margin-right: 6px;
+
+}
+
+
+/* ================================= */
+/* Tracking Layout */
+/* ================================= */
+
+.tracking-layout {
+
+    max-width: 1200px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        2fr 1fr;
+
+    gap: 30px;
+
+}
+
+
+/* ================================= */
+/* Map */
+/* ================================= */
+
+.map-container {
+
+    background: white;
+
+    border-radius: 15px;
+
+    border: 1px solid #e5e5e5;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 6px 20px rgba(0, 0, 0, 0.07);
+
+}
+
+.map-header {
+
+    padding: 18px 22px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    border-bottom: 1px solid #eee;
+
+}
+
+.map-header h3 {
+
+    margin: 0;
+
+}
+
+.map-header i {
+
+    color: #0d6efd;
+
+    margin-right: 7px;
+
+}
+
+.map-header span {
+
+    color: #888;
+
+    font-size: 12px;
+
+}
+
+
+/* ================================= */
+/* Fake Map */
+/* ================================= */
+
+.map-area {
+
+    height: 450px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            45deg,
+            #eef2f5 25%,
+            transparent 25%
+        ),
+        linear-gradient(
+            -45deg,
+            #eef2f5 25%,
+            transparent 25%
+        ),
+        #f8fafc;
+
+    background-size: 80px 80px;
+
+}
+
+
+/* ================================= */
+/* Roads */
+/* ================================= */
+
+.road {
+
+    position: absolute;
+
+    background: white;
+
+    box-shadow:
+        0 0 3px rgba(0, 0, 0, 0.15);
+
+}
+
+.road-one {
+
+    width: 120%;
+
+    height: 35px;
+
+    top: 30%;
+
+    left: -10%;
+
+    transform: rotate(-15deg);
+
+}
+
+.road-two {
+
+    width: 120%;
+
+    height: 30px;
+
+    top: 65%;
+
+    left: -10%;
+
+    transform: rotate(12deg);
+
+}
+
+.road-three {
+
+    width: 30px;
+
+    height: 120%;
+
+    left: 55%;
+
+    top: -10%;
+
+    transform: rotate(18deg);
+
+}
+
+
+/* ================================= */
+/* Route Line */
+/* ================================= */
+
+.route-line {
+
+    position: absolute;
+
+    width: 65%;
+
+    height: 5px;
+
+    background: #0d6efd;
+
+    top: 52%;
+
+    left: 18%;
+
+    transform: rotate(-8deg);
+
+    border-radius: 10px;
+
+}
+
+
+/* ================================= */
+/* Bus Marker */
+/* ================================= */
+
+.bus-marker {
+
+    position: absolute;
+
+    top: 43%;
+
+    left: 48%;
+
+    width: 52px;
+
+    height: 52px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    background: #0d6efd;
+
+    color: white;
+
+    border-radius: 50%;
+
+    border: 5px solid white;
+
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.2);
+
+    z-index: 5;
+
+}
+
+.bus-marker i {
+
+    font-size: 21px;
+
+}
+
+.marker-update {
+
+    animation:
+        markerPulse 0.7s ease;
+
+}
+
+@keyframes markerPulse {
+
+    50% {
+
+        transform:
+            scale(1.25);
+
+    }
+
+}
+
+
+/* ================================= */
+/* Map Stops */
+/* ================================= */
+
+.map-stop {
+
+    position: absolute;
+
+    z-index: 3;
+
+    text-align: center;
+
+}
+
+.map-stop span {
+
+    display: block;
+
+    width: 16px;
+
+    height: 16px;
+
+    background: white;
+
+    border: 4px solid #0d6efd;
+
+    border-radius: 50%;
+
+    margin: auto;
+
+}
+
+.map-stop p {
+
+    background: white;
+
+    padding: 4px 8px;
+
+    border-radius: 5px;
+
+    font-size: 11px;
+
+    margin-top: 5px;
+
+    box-shadow:
+        0 2px 6px rgba(0, 0, 0, 0.1);
+
+}
+
+.stop-one {
+
+    left: 13%;
+
+    top: 45%;
+
+}
+
+.stop-two {
+
+    left: 48%;
+
+    top: 25%;
+
+}
+
+.stop-three {
+
+    right: 12%;
+
+    top: 55%;
+
+}
+
+
+/* ================================= */
+/* Current Location */
+/* ================================= */
+
+.current-location {
+
+    position: absolute;
+
+    right: 20px;
+
+    top: 20px;
+
+    padding: 9px 13px;
+
+    background: white;
+
+    border-radius: 7px;
+
+    box-shadow:
+        0 3px 10px rgba(0, 0, 0, 0.1);
+
+    font-size: 12px;
+
+}
+
+.current-location i {
+
+    color: #dc3545;
+
+    margin-right: 5px;
+
+}
+
+
+/* ================================= */
+/* Tracking Information */
+/* ================================= */
+
+.tracking-info {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+
+}
+
+.info-card {
+
+    padding: 23px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 17px;
+
+    border-radius: 12px;
+
+    border: 1px solid #e5e5e5;
+
+    background: white;
+
+    box-shadow:
+        0 4px 14px rgba(0, 0, 0, 0.05);
+
+}
+
+.info-icon {
+
+    width: 50px;
+
+    height: 50px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    background: #eaf3ff;
+
+    color: #0d6efd;
+
+    border-radius: 50%;
+
+}
+
+.info-card span {
+
+    display: block;
+
+    color: #888;
+
+    font-size: 13px;
+
+    margin-bottom: 5px;
+
+}
+
+.info-card strong {
+
+    display: block;
+
+    color: #222;
+
+    font-size: 20px;
+
+}
+
+.info-card .on-time {
+
+    color: #198754;
+
+    font-size: 17px;
+
+}
+
+
+/* ================================= */
+/* Journey */
+/* ================================= */
+
+.journey-section {
+
+    padding: 80px 8%;
+
+    background: #f5f8fc;
+
+}
+
+.journey-card {
+
+    max-width: 800px;
+
+    margin: auto;
+
+    padding: 30px;
+
+    background: white;
+
+    border-radius: 15px;
+
+    box-shadow:
+        0 6px 20px rgba(0, 0, 0, 0.07);
+
+}
+
+.journey-stop {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    padding: 20px 0;
+
+    border-bottom: 1px solid #eee;
+
+}
+
+.journey-stop:last-child {
+
+    border-bottom: none;
+
+}
+
+.journey-icon {
+
+    width: 48px;
+
+    height: 48px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #eee;
+
+    color: #777;
+
+    border-radius: 50%;
+
+}
+
+.journey-stop.completed
+.journey-icon {
+
+    background: #e8f7ee;
+
+    color: #198754;
+
+}
+
+.journey-stop.current
+.journey-icon {
+
+    background: #eaf3ff;
+
+    color: #0d6efd;
+
+}
+
+.journey-stop strong {
+
+    display: block;
+
+    margin-bottom: 5px;
+
+}
+
+.journey-stop span {
+
+    color: #888;
+
+    font-size: 13px;
+
+}
+
+
+/* ================================= */
+/* Features */
+/* ================================= */
+
+.tracking-features {
+
+    padding: 80px 8%;
+
+    background: white;
+
+}
+
+.feature-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(230px, 1fr));
+
+    gap: 25px;
+
+}
+
+.feature-card {
+
+    padding: 30px;
+
+    text-align: center;
+
+    background: #f8faff;
+
+    border: 1px solid #e6ebf2;
+
+    border-radius: 15px;
+
+}
+
+.feature-card i {
+
+    font-size: 40px;
+
+    color: #0d6efd;
+
+    margin-bottom: 18px;
+
+}
+
+.feature-card h3 {
+
+    margin-bottom: 10px;
+
+}
+
+.feature-card p {
+
+    color: #666;
+
+    line-height: 1.7;
+
+}
+
+
+/* ================================= */
+/* Footer */
+/* ================================= */
+
+.footer {
+
+    padding: 40px 20px;
+
+    text-align: center;
+
+    background: #0d6efd;
+
+    color: white;
+
+}
+
+.footer h3 {
+
+    margin-bottom: 10px;
+
+}
+
+.footer p {
+
+    margin: 7px 0;
+
+}
+
+
+/* ================================= */
+/* Responsive */
+/* ================================= */
+
+@media (max-width: 900px) {
+
+    .selection-container {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .tracking-layout {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .map-area {
+
+        height: 380px;
+
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .tracking-hero h1 {
+
+        font-size: 32px;
+
+    }
+
+    .live-header {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 15px;
+
+    }
+
+    .map-area {
+
+        height: 320px;
+
+    }
+
+    .bus-arrival-row {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}

@@ -8,36 +8,52 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
 
-    <title>Bus Stops - SmartBus</title>
+    <title>Bus Stops | SmartBus</title>
+
 
     <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-          rel="stylesheet">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
 
     <!-- Font Awesome -->
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
 
     <!-- Common CSS -->
-    <link rel="stylesheet"
-          href="../static/css/style.css">
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}">
+
 
     <!-- Bus Stops CSS -->
-    <link rel="stylesheet"
-          href="../static/css/bus_stops.css">
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/bus_stops.css') }}">
 
 </head>
+
 
 <body>
 
 
     <!-- ================================= -->
-    <!-- Navigation Bar Start -->
+    <!-- Navigation Bar -->
     <!-- ================================= -->
 
     <header>
 
         <nav class="navbar">
+
+
+            <!-- Logo -->
 
             <div class="logo">
 
@@ -48,63 +64,85 @@
             </div>
 
 
+            <!-- Navigation Links -->
+
             <ul class="nav-links">
 
                 <li>
-                    <a href="index.html">
+                    <a href="{{ url_for('home') }}">
                         Home
                     </a>
                 </li>
 
+
                 <li>
-                    <a href="routes.html">
+                    <a href="{{ url_for('routes') }}">
                         Routes
                     </a>
                 </li>
 
+
                 <li>
-                    <a href="bus_stops.html" class="active">
+                    <a href="{{ url_for('bus_stops') }}"
+                       class="active">
+
                         Bus Stops
+
                     </a>
                 </li>
 
+
                 <li>
-                    <a href="tracking.html">
+                    <a href="{{ url_for('tracking') }}">
+
                         Live Tracking
+
                     </a>
                 </li>
 
+
                 <li>
-                    <a href="ai_prediction.html">
+                    <a href="{{ url_for('ai_prediction') }}">
+
                         AI Prediction
+
                     </a>
                 </li>
 
+
                 <li>
-                    <a href="weather.html">
+                    <a href="{{ url_for('weather') }}">
+
                         Weather
+
                     </a>
                 </li>
 
+
                 <li>
-                    <a href="contact.html">
+                    <a href="{{ url_for('contact') }}">
+
                         Contact
+
                     </a>
                 </li>
 
             </ul>
 
 
+            <!-- Login / Register -->
+
             <div class="nav-buttons">
 
-                <a href="login.html"
+                <a href="{{ url_for('login') }}"
                    class="login-btn">
 
                     Login
 
                 </a>
 
-                <a href="register.html"
+
+                <a href="{{ url_for('register') }}"
                    class="register-btn">
 
                     Register
@@ -117,18 +155,14 @@
 
     </header>
 
-    <!-- ================================= -->
-    <!-- Navigation Bar End -->
-    <!-- ================================= -->
-
 
     <!-- ================================= -->
-    <!-- Bus Stops Hero Start -->
+    <!-- Hero Section -->
     <!-- ================================= -->
 
     <section class="stops-hero">
 
-        <div class="stops-hero-content">
+        <div class="hero-content">
 
             <i class="fa-solid fa-location-dot"></i>
 
@@ -145,16 +179,12 @@
 
     </section>
 
-    <!-- ================================= -->
-    <!-- Bus Stops Hero End -->
-    <!-- ================================= -->
-
 
     <!-- ================================= -->
-    <!-- Search Section Start -->
+    <!-- Search Section -->
     <!-- ================================= -->
 
-    <section class="stop-search-section">
+    <section class="search-section">
 
         <div class="section-title">
 
@@ -163,14 +193,13 @@
             </h2>
 
             <p>
-                Enter a bus stop name to find buses
-                available at that location.
+                Enter a bus stop name to find available buses.
             </p>
 
         </div>
 
 
-        <div class="stop-search-box">
+        <div class="search-box">
 
             <input
                 type="text"
@@ -178,9 +207,7 @@
                 placeholder="Enter bus stop name...">
 
 
-            <button
-                type="button"
-                onclick="searchStops()">
+            <button onclick="searchStops()">
 
                 <i class="fa-solid fa-magnifying-glass"></i>
 
@@ -192,13 +219,9 @@
 
     </section>
 
-    <!-- ================================= -->
-    <!-- Search Section End -->
-    <!-- ================================= -->
-
 
     <!-- ================================= -->
-    <!-- Popular Stops Start -->
+    <!-- Popular Bus Stops -->
     <!-- ================================= -->
 
     <section class="stops-section">
@@ -210,15 +233,13 @@
             </h2>
 
             <p>
-                Select a bus stop to view available
-                bus information.
+                Select a bus stop to view bus information.
             </p>
 
         </div>
 
 
-        <div class="stops-grid"
-             id="stopsGrid">
+        <div class="stops-grid">
 
 
             <!-- Chennai Central -->
@@ -245,13 +266,20 @@
                 <div class="stop-info">
 
                     <span>
+
                         <i class="fa-solid fa-bus"></i>
+
                         12 Buses
+
                     </span>
 
+
                     <span>
+
                         <i class="fa-solid fa-clock"></i>
+
                         5-15 min
+
                     </span>
 
                 </div>
@@ -292,13 +320,20 @@
                 <div class="stop-info">
 
                     <span>
+
                         <i class="fa-solid fa-bus"></i>
+
                         9 Buses
+
                     </span>
 
+
                     <span>
+
                         <i class="fa-solid fa-clock"></i>
+
                         8-18 min
+
                     </span>
 
                 </div>
@@ -339,13 +374,20 @@
                 <div class="stop-info">
 
                     <span>
+
                         <i class="fa-solid fa-bus"></i>
+
                         15 Buses
+
                     </span>
 
+
                     <span>
+
                         <i class="fa-solid fa-clock"></i>
+
                         5-12 min
+
                     </span>
 
                 </div>
@@ -386,13 +428,20 @@
                 <div class="stop-info">
 
                     <span>
+
                         <i class="fa-solid fa-bus"></i>
+
                         10 Buses
+
                     </span>
 
+
                     <span>
+
                         <i class="fa-solid fa-clock"></i>
+
                         7-15 min
+
                     </span>
 
                 </div>
@@ -433,13 +482,20 @@
                 <div class="stop-info">
 
                     <span>
+
                         <i class="fa-solid fa-bus"></i>
+
                         8 Buses
+
                     </span>
 
+
                     <span>
+
                         <i class="fa-solid fa-clock"></i>
+
                         10-20 min
+
                     </span>
 
                 </div>
@@ -480,13 +536,20 @@
                 <div class="stop-info">
 
                     <span>
+
                         <i class="fa-solid fa-bus"></i>
+
                         14 Buses
+
                     </span>
 
+
                     <span>
+
                         <i class="fa-solid fa-clock"></i>
+
                         5-10 min
+
                     </span>
 
                 </div>
@@ -506,17 +569,14 @@
 
     </section>
 
-    <!-- ================================= -->
-    <!-- Popular Stops End -->
-    <!-- ================================= -->
-
 
     <!-- ================================= -->
-    <!-- Selected Stop Information -->
+    <!-- Selected Stop -->
     <!-- ================================= -->
 
-    <section class="selected-stop-section"
+    <section class="selected-section"
              id="selectedStopSection">
+
 
         <div class="section-title">
 
@@ -524,8 +584,11 @@
                 Selected Bus Stop
             </h2>
 
+
             <p id="selectedStopName">
-                Select a bus stop above to view information.
+
+                Select a bus stop to view information.
+
             </p>
 
         </div>
@@ -541,6 +604,7 @@
                     <span class="info-label">
                         Bus Stop
                     </span>
+
 
                     <h2 id="infoStopName">
                         Select a Stop
@@ -577,9 +641,7 @@
 
                 <div class="bus-route">
 
-                    <span>
-                        Chennai Central → Tambaram
-                    </span>
+                    Chennai Central → Tambaram
 
                 </div>
 
@@ -597,7 +659,7 @@
                 </div>
 
 
-                <a href="tracking.html"
+                <a href="{{ url_for('tracking') }}"
                    class="track-btn">
 
                     Track
@@ -624,9 +686,7 @@
 
                 <div class="bus-route">
 
-                    <span>
-                        Broadway → Guindy
-                    </span>
+                    Broadway → Guindy
 
                 </div>
 
@@ -644,7 +704,7 @@
                 </div>
 
 
-                <a href="tracking.html"
+                <a href="{{ url_for('tracking') }}"
                    class="track-btn">
 
                     Track
@@ -671,9 +731,7 @@
 
                 <div class="bus-route">
 
-                    <span>
-                        Thiruvanmiyur → Adyar
-                    </span>
+                    Thiruvanmiyur → Adyar
 
                 </div>
 
@@ -691,7 +749,7 @@
                 </div>
 
 
-                <a href="tracking.html"
+                <a href="{{ url_for('tracking') }}"
                    class="track-btn">
 
                     Track
@@ -701,9 +759,11 @@
             </div>
 
 
-            <div class="route-link-container">
+            <!-- Routes Button -->
 
-                <a href="routes.html"
+            <div class="route-button-container">
+
+                <a href="{{ url_for('routes') }}"
                    class="view-routes-btn">
 
                     <i class="fa-solid fa-route"></i>
@@ -718,21 +778,30 @@
 
     </section>
 
-    <!-- ================================= -->
-    <!-- Selected Stop Information End -->
-    <!-- ================================= -->
-
 
     <!-- ================================= -->
-    <!-- Features Start -->
+    <!-- Features -->
     <!-- ================================= -->
 
     <section class="stop-features">
 
-        <div class="feature-container">
+        <div class="section-title">
+
+            <h2>
+                Smart Bus Stop Features
+            </h2>
+
+            <p>
+                Get important information before your journey.
+            </p>
+
+        </div>
 
 
-            <div class="stop-feature-card">
+        <div class="feature-grid">
+
+
+            <div class="feature-card">
 
                 <i class="fa-solid fa-clock"></i>
 
@@ -748,7 +817,7 @@
             </div>
 
 
-            <div class="stop-feature-card">
+            <div class="feature-card">
 
                 <i class="fa-solid fa-route"></i>
 
@@ -757,14 +826,14 @@
                 </h3>
 
                 <p>
-                    View the route and destination
-                    of available buses.
+                    View bus routes and destinations
+                    from your selected stop.
                 </p>
 
             </div>
 
 
-            <div class="stop-feature-card">
+            <div class="feature-card">
 
                 <i class="fa-solid fa-location-crosshairs"></i>
 
@@ -783,106 +852,30 @@
 
     </section>
 
-    <!-- ================================= -->
-    <!-- Features End -->
-    <!-- ================================= -->
-
 
     <!-- ================================= -->
-    <!-- Footer Start -->
+    <!-- Footer -->
     <!-- ================================= -->
 
-    <footer class="stops-footer">
+    <footer class="footer">
 
-        <div class="footer-container">
+        <div class="footer-content">
 
-
-            <div class="footer-box">
-
-                <h3>
-                    SmartBus
-                </h3>
-
-                <p>
-                    Smart Bus Stop Arrival Information
-                    Platform for smarter public transportation.
-                </p>
-
-            </div>
-
-
-            <div class="footer-box">
-
-                <h3>
-                    Quick Links
-                </h3>
-
-                <ul>
-
-                    <li>
-                        <a href="index.html">
-                            Home
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="routes.html">
-                            Routes
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="bus_stops.html">
-                            Bus Stops
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="tracking.html">
-                            Live Tracking
-                        </a>
-                    </li>
-
-                </ul>
-
-            </div>
-
-
-            <div class="footer-box">
-
-                <h3>
-                    Contact
-                </h3>
-
-                <p>
-                    <i class="fa-solid fa-phone"></i>
-                    +91 98765 43210
-                </p>
-
-                <p>
-                    <i class="fa-solid fa-envelope"></i>
-                    smartbus@gmail.com
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="footer-bottom">
+            <h3>
+                SmartBus
+            </h3>
 
             <p>
-                © 2026 SmartBus.
-                All Rights Reserved.
+                Smart Bus Stop Arrival Information Platform
+            </p>
+
+            <p>
+                © 2026 SmartBus. All Rights Reserved.
             </p>
 
         </div>
 
     </footer>
-
-    <!-- ================================= -->
-    <!-- Footer End -->
-    <!-- ================================= -->
 
 
     <!-- ================================= -->
@@ -893,23 +886,26 @@
 
         function searchStops() {
 
-            const searchInput =
+            const input =
                 document.getElementById("stopSearch");
 
             const searchValue =
-                searchInput.value.toLowerCase().trim();
+                input.value.toLowerCase().trim();
 
-            const stopCards =
+            const cards =
                 document.querySelectorAll(".stop-card");
 
 
-            stopCards.forEach(function(card) {
+            cards.forEach(function(card) {
 
-                const stopText =
+                const cardText =
                     card.textContent.toLowerCase();
 
 
-                if (stopText.includes(searchValue)) {
+                if (
+                    searchValue === "" ||
+                    cardText.includes(searchValue)
+                ) {
 
                     card.style.display = "block";
 
@@ -926,14 +922,22 @@
 
         function showStopInfo(stopName) {
 
-            document.getElementById("selectedStopName").textContent =
-                "Bus information available for " + stopName;
+            document.getElementById(
+                "selectedStopName"
+            ).textContent =
+                "Bus information available for "
+                + stopName;
 
-            document.getElementById("infoStopName").textContent =
+
+            document.getElementById(
+                "infoStopName"
+            ).textContent =
                 stopName;
 
 
-            document.getElementById("selectedStopSection").scrollIntoView({
+            document.getElementById(
+                "selectedStopSection"
+            ).scrollIntoView({
 
                 behavior: "smooth"
 
@@ -942,6 +946,7 @@
         }
 
     </script>
+
 
 </body>
 
