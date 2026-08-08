@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Bus Routes - SmartBus</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Common CSS -->
+    <link rel="stylesheet"
+          href="../static/css/style.css">
+
+    <!-- Routes CSS -->
+    <link rel="stylesheet"
+          href="../static/css/routes.css">
+
+</head>
+
+<body>
+
+    <!-- ========================= -->
+    <!-- Navigation Bar Start -->
+    <!-- ========================= -->
+
+    <header>
+
+        <nav class="navbar">
+
+            <div class="logo">
+
+                <i class="fa-solid fa-bus"></i>
+
+                <span>SmartBus</span>
+
+            </div>
+
+
+            <ul class="nav-links">
+
+                <li>
+                    <a href="index.html">
+                        Home
+                    </a>
+                </li>
+
+                <li>
+                    <a href="routes.html" class="active">
+                        Routes
+                    </a>
+                </li>
+
+                <li>
+                    <a href="bus_stops.html">
+                        Bus Stops
+                    </a>
+                </li>
+
+                <li>
+                    <a href="tracking.html">
+                        Live Tracking
+                    </a>
+                </li>
+
+                <li>
+                    <a href="ai_prediction.html">
+                        AI Prediction
+                    </a>
+                </li>
+
+                <li>
+                    <a href="weather.html">
+                        Weather
+                    </a>
+                </li>
+
+                <li>
+                    <a href="contact.html">
+                        Contact
+                    </a>
+                </li>
+
+            </ul>
+
+
+            <div class="nav-buttons">
+
+                <a href="login.html"
+                   class="login-btn">
+
+                    Login
+
+                </a>
+
+                <a href="register.html"
+                   class="register-btn">
+
+                    Register
+
+                </a>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+    <!-- ========================= -->
+    <!-- Navigation Bar End -->
+    <!-- ========================= -->
+
+
+    <!-- ========================= -->
+    <!-- Routes Hero Start -->
+    <!-- ========================= -->
+
+    <section class="routes-hero">
+
+        <div class="routes-hero-content">
+
+            <i class="fa-solid fa-route"></i>
+
+            <h1>
+                Bus Routes
+            </h1>
+
+            <p>
+                Find bus routes, destinations, stops and
+                schedules quickly with SmartBus.
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- ========================= -->
+    <!-- Routes Hero End -->
+    <!-- ========================= -->
+
+
+    <!-- ========================= -->
+    <!-- Search Route Start -->
+    <!-- ========================= -->
+
+    <section class="route-search-section">
+
+        <div class="section-title">
+
+            <h2>
+                Find Your Route
+            </h2>
+
+            <p>
+                Search for a bus route by route number,
+                starting point or destination.
+            </p>
+
+        </div>
+
+
+        <div class="route-search-box">
+
+            <input
+                type="text"
+                id="routeSearch"
+                placeholder="Search route, starting point or destination...">
+
+            <button
+                type="button"
+                onclick="searchRoutes()">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                Search
+
+            </button>
+
+        </div>
+
+    </section>
+
+    <!-- ========================= -->
+    <!-- Search Route End -->
+    <!-- ========================= -->
+
+
+    <!-- ========================= -->
+    <!-- Route Cards Start -->
+    <!-- ========================= -->
+
+    <section class="routes-section">
+
+        <div class="section-title">
+
+            <h2>
+                Available Bus Routes
+            </h2>
+
+            <p>
+                Explore popular routes available on the SmartBus platform.
+            </p>
+
+        </div>
+
+
+        <div class="route-grid" id="routeGrid">
+
+
+            <!-- Route 101 -->
+
+            <div class="route-card">
+
+                <div class="route-card-header">
+
+                    <span class="route-number">
+                        101
+                    </span>
+
+                    <span class="route-status">
+                        Active
+                    </span>
+
+                </div>
+
+
+                <div class="route-path">
+
+                    <div class="route-point">
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        <div>
+
+                            <small>Starting Point</small>
+
+                            <strong>Chennai Central</strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="route-line"></div>
+
+
+                    <div class="route-point">
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        <div>
+
+                            <small>Destination</small>
+
+                            <strong>Tambaram</strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="route-details">
+
+                    <p>
+                        <i class="fa-solid fa-clock"></i>
+                        05:30 AM - 10:30 PM
+                    </p>
+
+                    <p>
+                        <i class="fa-solid fa-repeat"></i>
+                        Every 15 minutes
+                    </p>
+
+                </div>
+
+
+                <a href="tracking.html"
+                   class="route-button">
+
+                    View Route
+
+                </a>
+
+            </div>
+
+
+            <!-- Route 21G -->
+
+            <div class="route-card">
+
+                <div class="route-card-header">
+
+                    <span class="route-number">
+                        21G
+                    </span>
+
+                    <span class="route-status">
+                        Active
+                    </span>
+
+                </div>
+
+
+                <div class="route-path">
+
+                    <div class="route-point">
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        <div>
+
+                            <small>Starting Point</small>
+
+                            <strong>Broadway</strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="route-line"></div>
+
+
+                    <div class="route-point">
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        <div>
+
+                            <small>Destination</small>
+
+                            <strong>Guindy</strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="route-details">
+
+                    <p>
+                        <i class="fa-solid fa-clock"></i>
+                        06:00 AM - 10:00 PM
+                    </p>
+
+                    <p>
+                        <i class="fa-solid fa-repeat"></i>
+                        Every 20 minutes
+                    </p>
+
+                </div>
+
+
+                <a href="tracking.html"
+                   class="route-button">
+
+                    View Route
+
+                </a>
+
+            </div>
+
+
+            <!-- Route 5C -->
+
+            <div class="route-card">
+
+                <div class="route-card-header">
+
+                    <span class="route-number">
+                        5C
+                    </span>
+
+                    <span class="route-status">
+                        Active
+                    </span>
+
+                </div>
+
+
+                <div class="route-path">
+
+                    <div class="route-point">
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        <div>
+
+                            <small>Starting Point</small>
+
+                            <strong>Thiruvanmiyur</strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="route-line"></div>
+
+
+                    <div class="route-point">
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        <div>
+
+                            <small>Destination</small>
+
+                            <strong>Adyar</strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="route-details">
+
+                    <p>
+                        <i class="fa-solid fa-clock"></i>
+                        05:45 AM - 09:45 PM
+                    </p>
+
+                    <p>
+                        <i class="fa-solid fa-repeat"></i>
+                        Every 15 minutes
+                    </p>
+
+                </div>
+
+
+                <a href="tracking.html"
+                   class="route-button">
+
+                    View Route
+
+                </a>
+
+            </div>
+
+
+            <!-- Route 570 -->
+
+            <div class="route-card">
+
+                <div class="route-card-header">
+
+                    <span class="route-number">
+                        570
+                    </span>
+
+                    <span class="route-status">
+                        Active
+                    </span>
+
+                </div>
+
+
+                <div class="route-path">
+
+                    <div class="route-point">
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        <div>
+
+                            <small>Starting Point</small>
+
+                            <strong>Chennai Central</strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="route-line"></div>
+
+
+                    <div class="route-point">
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        <div>
+
+                            <small>Destination</small>
+
+                            <strong>Kelambakkam</strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="route-details">
+
+                    <p>
+                        <i class="fa-solid fa-clock"></i>
+                        05:00 AM - 10:00 PM
+                    </p>
+
+                    <p>
+                        <i class="fa-solid fa-repeat"></i>
+                        Every 30 minutes
+                    </p>
+
+                </div>
+
+
+                <a href="tracking.html"
+                   class="route-button">
+
+                    View Route
+
+                </a>
+
+            </div>
+
+
+            <!-- Route 70 -->
+
+            <div class="route-card">
+
+                <div class="route-card-header">
+
+                    <span class="route-number">
+                        70
+                    </span>
+
+                    <span class="route-status">
+                        Active
+                    </span>
+
+                </div>
+
+
+                <div class="route-path">
+
+                    <div class="route-point">
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        <div>
+
+                            <small>Starting Point</small>
+
+                            <strong>Avadi</strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="route-line"></div>
+
+
+                    <div class="route-point">
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        <div>
+
+                            <small>Destination</small>
+
+                            <strong>Broadway</strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="route-details">
+
+                    <p>
+                        <i class="fa-solid fa-clock"></i>
+                        05:15 AM - 09:30 PM
+                    </p>
+
+                    <p>
+                        <i class="fa-solid fa-repeat"></i>
+                        Every 20 minutes
+                    </p>
+
+                </div>
+
+
+                <a href="tracking.html"
+                   class="route-button">
+
+                    View Route
+
+                </a>
+
+            </div>
+
+
+            <!-- Route 18D -->
+
+            <div class="route-card">
+
+                <div class="route-card-header">
+
+                    <span class="route-number">
+                        18D
+                    </span>
+
+                    <span class="route-status">
+                        Active
+                    </span>
+
+                </div>
+
+
+                <div class="route-path">
+
+                    <div class="route-point">
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        <div>
+
+                            <small>Starting Point</small>
+
+                            <strong>Velachery</strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="route-line"></div>
+
+
+                    <div class="route-point">
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        <div>
+
+                            <small>Destination</small>
+
+                            <strong>Guindy</strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="route-details">
+
+                    <p>
+                        <i class="fa-solid fa-clock"></i>
+                        06:00 AM - 10:00 PM
+                    </p>
+
+                    <p>
+                        <i class="fa-solid fa-repeat"></i>
+                        Every 20 minutes
+                    </p>
+
+                </div>
+
+
+                <a href="tracking.html"
+                   class="route-button">
+
+                    View Route
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ========================= -->
+    <!-- Route Cards End -->
+    <!-- ========================= -->
+
+
+    <!-- ========================= -->
+    <!-- Route Information Start -->
+    <!-- ========================= -->
+
+    <section class="route-info-section">
+
+        <div class="route-info-container">
+
+            <div class="route-info-card">
+
+                <i class="fa-solid fa-map-location-dot"></i>
+
+                <h3>
+                    Easy Route Search
+                </h3>
+
+                <p>
+                    Quickly find routes using bus numbers,
+                    starting points or destinations.
+                </p>
+
+            </div>
+
+
+            <div class="route-info-card">
+
+                <i class="fa-solid fa-clock"></i>
+
+                <h3>
+                    Bus Schedule
+                </h3>
+
+                <p>
+                    Check first bus, last bus and
+                    estimated service frequency.
+                </p>
+
+            </div>
+
+
+            <div class="route-info-card">
+
+                <i class="fa-solid fa-location-crosshairs"></i>
+
+                <h3>
+                    Live Tracking
+                </h3>
+
+                <p>
+                    Track your selected bus route
+                    using the live tracking feature.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ========================= -->
+    <!-- Route Information End -->
+    <!-- ========================= -->
+
+
+    <!-- ========================= -->
+    <!-- Footer Start -->
+    <!-- ========================= -->
+
+    <footer class="routes-footer">
+
+        <div class="footer-container">
+
+            <div class="footer-box">
+
+                <h3>SmartBus</h3>
+
+                <p>
+                    Smart Bus Stop Arrival Information Platform
+                    for smarter and easier public transportation.
+                </p>
+
+            </div>
+
+
+            <div class="footer-box">
+
+                <h3>Quick Links</h3>
+
+                <ul>
+
+                    <li>
+                        <a href="index.html">
+                            Home
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="routes.html">
+                            Routes
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="bus_stops.html">
+                            Bus Stops
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="tracking.html">
+                            Live Tracking
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="footer-box">
+
+                <h3>Contact</h3>
+
+                <p>
+                    <i class="fa-solid fa-phone"></i>
+                    +91 98765 43210
+                </p>
+
+                <p>
+                    <i class="fa-solid fa-envelope"></i>
+                    smartbus@gmail.com
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 Smart Bus Stop Arrival Information Platform.
+                All Rights Reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+    <!-- ========================= -->
+    <!-- Footer End -->
+    <!-- ========================= -->
+
+
+    <!-- Route Search JavaScript -->
+
+    <script>
+
+        function searchRoutes() {
+
+            const searchInput =
+                document.getElementById("routeSearch");
+
+            const searchValue =
+                searchInput.value.toLowerCase().trim();
+
+            const routeCards =
+                document.querySelectorAll(".route-card");
+
+            routeCards.forEach(function(card) {
+
+                const routeText =
+                    card.textContent.toLowerCase();
+
+                if (routeText.includes(searchValue)) {
+
+                    card.style.display = "block";
+
+                } else {
+
+                    card.style.display = "none";
+
+                }
+
+            });
+
+        }
+
+    </script>
+
+</body>
+
+</html>

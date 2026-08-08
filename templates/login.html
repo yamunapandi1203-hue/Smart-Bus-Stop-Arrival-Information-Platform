@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Login - SmartBus</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Common CSS -->
+    <link rel="stylesheet"
+          href="../static/css/style.css">
+
+    <!-- Login CSS -->
+    <link rel="stylesheet"
+          href="../static/css/login.css">
+
+</head>
+
+<body>
+
+    <!-- ========================= -->
+    <!-- Navigation Bar Start -->
+    <!-- ========================= -->
+
+    <header>
+
+        <nav class="navbar">
+
+            <!-- Logo -->
+
+            <div class="logo">
+
+                <i class="fa-solid fa-bus"></i>
+
+                <span>SmartBus</span>
+
+            </div>
+
+
+            <!-- Navigation Links -->
+
+            <ul class="nav-links">
+
+                <li>
+                    <a href="index.html">
+                        Home
+                    </a>
+                </li>
+
+                <li>
+                    <a href="routes.html">
+                        Routes
+                    </a>
+                </li>
+
+                <li>
+                    <a href="bus_stops.html">
+                        Bus Stops
+                    </a>
+                </li>
+
+                <li>
+                    <a href="tracking.html">
+                        Live Tracking
+                    </a>
+                </li>
+
+                <li>
+                    <a href="ai_prediction.html">
+                        AI Prediction
+                    </a>
+                </li>
+
+                <li>
+                    <a href="weather.html">
+                        Weather
+                    </a>
+                </li>
+
+                <li>
+                    <a href="contact.html">
+                        Contact
+                    </a>
+                </li>
+
+            </ul>
+
+
+            <!-- Login / Register -->
+
+            <div class="nav-buttons">
+
+                <a href="login.html"
+                   class="login-btn active">
+                    Login
+                </a>
+
+                <a href="register.html"
+                   class="register-btn">
+                    Register
+                </a>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+    <!-- ========================= -->
+    <!-- Navigation Bar End -->
+    <!-- ========================= -->
+
+
+    <!-- ========================= -->
+    <!-- Login Section Start -->
+    <!-- ========================= -->
+
+    <main class="login-page">
+
+        <div class="login-container">
+
+
+            <!-- Login Image / Icon -->
+
+            <div class="login-image">
+
+                <div class="login-icon">
+
+                    <i class="fa-solid fa-bus"></i>
+
+                </div>
+
+                <h2>
+                    Welcome Back!
+                </h2>
+
+                <p>
+
+                    Login to access your SmartBus account
+                    and enjoy personalized travel services.
+
+                </p>
+
+            </div>
+
+
+            <!-- Login Form -->
+
+            <div class="login-form-container">
+
+                <h1>
+                    Login
+                </h1>
+
+                <p class="login-subtitle">
+
+                    Sign in to continue to SmartBus
+
+                </p>
+
+
+                <form id="loginForm"
+                      action="#"
+                      method="POST">
+
+
+                    <!-- Email -->
+
+                    <div class="form-group">
+
+                        <label for="email">
+
+                            <i class="fa-solid fa-envelope"></i>
+
+                            Email Address
+
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Enter your email"
+                            required>
+
+                    </div>
+
+
+                    <!-- Password -->
+
+                    <div class="form-group">
+
+                        <label for="password">
+
+                            <i class="fa-solid fa-lock"></i>
+
+                            Password
+
+                        </label>
+
+                        <div class="password-container">
+
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                placeholder="Enter your password"
+                                required>
+
+                            <button
+                                type="button"
+                                id="togglePassword"
+                                class="password-toggle">
+
+                                <i class="fa-solid fa-eye"></i>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Remember Me / Forgot Password -->
+
+                    <div class="login-options">
+
+                        <label class="remember-me">
+
+                            <input
+                                type="checkbox"
+                                id="rememberMe"
+                                name="remember">
+
+                            <span>
+                                Remember Me
+                            </span>
+
+                        </label>
+
+
+                        <a href="#"
+                           class="forgot-password">
+
+                            Forgot Password?
+
+                        </a>
+
+                    </div>
+
+
+                    <!-- Login Button -->
+
+                    <button
+                        type="submit"
+                        class="login-submit">
+
+                        <i class="fa-solid fa-right-to-bracket"></i>
+
+                        Login
+
+                    </button>
+
+
+                </form>
+
+
+                <!-- Register Link -->
+
+                <div class="register-link">
+
+                    <p>
+
+                        Don't have an account?
+
+                        <a href="register.html">
+
+                            Create an Account
+
+                        </a>
+
+                    </p>
+
+                </div>
+
+
+                <!-- Home Link -->
+
+                <div class="back-home">
+
+                    <a href="index.html">
+
+                        <i class="fa-solid fa-arrow-left"></i>
+
+                        Back to Home
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- ========================= -->
+    <!-- Login Section End -->
+    <!-- ========================= -->
+
+
+    <!-- ========================= -->
+    <!-- Footer Start -->
+    <!-- ========================= -->
+
+    <footer class="login-footer">
+
+        <p>
+
+            © 2026 Smart Bus Stop Arrival Information Platform.
+            All Rights Reserved.
+
+        </p>
+
+    </footer>
+
+    <!-- ========================= -->
+    <!-- Footer End -->
+    <!-- ========================= -->
+
+
+    <!-- Login JavaScript -->
+
+    <script src="../static/js/login.js"></script>
+
+</body>
+
+</html>

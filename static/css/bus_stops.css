@@ -1,0 +1,838 @@
+/* ================================= */
+/* Bus Stops Hero */
+/* ================================= */
+
+.stops-hero {
+
+    padding: 70px 8%;
+
+    background: #0d6efd;
+
+    color: white;
+
+    text-align: center;
+
+}
+
+
+.stops-hero-content i {
+
+    font-size: 55px;
+
+    margin-bottom: 15px;
+
+}
+
+
+.stops-hero-content h1 {
+
+    font-size: 42px;
+
+    margin-bottom: 15px;
+
+}
+
+
+.stops-hero-content p {
+
+    font-size: 17px;
+
+    line-height: 1.7;
+
+}
+
+
+/* ================================= */
+/* Section Title */
+/* ================================= */
+
+.section-title {
+
+    text-align: center;
+
+    margin-bottom: 40px;
+
+}
+
+
+.section-title h2 {
+
+    font-size: 34px;
+
+    color: #222;
+
+    margin-bottom: 10px;
+
+}
+
+
+.section-title p {
+
+    color: #666;
+
+    line-height: 1.7;
+
+}
+
+
+/* ================================= */
+/* Search Section */
+/* ================================= */
+
+.stop-search-section {
+
+    padding: 70px 8%;
+
+    background: #f5f8fc;
+
+}
+
+
+.stop-search-box {
+
+    max-width: 800px;
+
+    margin: auto;
+
+    display: flex;
+
+    gap: 12px;
+
+}
+
+
+.stop-search-box input {
+
+    flex: 1;
+
+    padding: 16px 18px;
+
+    border: 1px solid #d5dbe3;
+
+    border-radius: 8px;
+
+    font-size: 15px;
+
+    font-family: 'Poppins', sans-serif;
+
+    outline: none;
+
+}
+
+
+.stop-search-box input:focus {
+
+    border-color: #0d6efd;
+
+}
+
+
+.stop-search-box button {
+
+    padding: 15px 25px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #0d6efd;
+
+    color: white;
+
+    font-size: 15px;
+
+    font-family: 'Poppins', sans-serif;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+}
+
+
+.stop-search-box button:hover {
+
+    background: #0b5ed7;
+
+}
+
+
+/* ================================= */
+/* Bus Stops */
+/* ================================= */
+
+.stops-section {
+
+    padding: 80px 8%;
+
+    background: white;
+
+}
+
+
+.stops-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(280px, 1fr));
+
+    gap: 25px;
+
+}
+
+
+/* ================================= */
+/* Stop Card */
+/* ================================= */
+
+.stop-card {
+
+    padding: 28px;
+
+    background: white;
+
+    border: 1px solid #e3e7ed;
+
+    border-radius: 15px;
+
+    box-shadow:
+        0 6px 20px rgba(0, 0, 0, 0.07);
+
+    transition: 0.3s;
+
+}
+
+
+.stop-card:hover {
+
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 12px 28px rgba(0, 0, 0, 0.10);
+
+}
+
+
+.stop-icon {
+
+    width: 60px;
+
+    height: 60px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #eaf3ff;
+
+    color: #0d6efd;
+
+    border-radius: 50%;
+
+    margin-bottom: 20px;
+
+}
+
+
+.stop-icon i {
+
+    font-size: 25px;
+
+}
+
+
+.stop-card h3 {
+
+    color: #333;
+
+    margin-bottom: 8px;
+
+    font-size: 21px;
+
+}
+
+
+.stop-card > p {
+
+    color: #777;
+
+    margin-bottom: 20px;
+
+}
+
+
+/* ================================= */
+/* Stop Information */
+/* ================================= */
+
+.stop-info {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 10px;
+
+    border-top: 1px solid #eee;
+
+    border-bottom: 1px solid #eee;
+
+    padding: 15px 0;
+
+    margin-bottom: 20px;
+
+}
+
+
+.stop-info span {
+
+    color: #666;
+
+    font-size: 13px;
+
+}
+
+
+.stop-info i {
+
+    color: #0d6efd;
+
+    margin-right: 5px;
+
+}
+
+
+/* ================================= */
+/* View Stop Button */
+/* ================================= */
+
+.view-stop-btn {
+
+    width: 100%;
+
+    padding: 12px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background: #0d6efd;
+
+    color: white;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+}
+
+
+.view-stop-btn:hover {
+
+    background: #0b5ed7;
+
+}
+
+
+/* ================================= */
+/* Selected Stop */
+/* ================================= */
+
+.selected-stop-section {
+
+    padding: 80px 8%;
+
+    background: #f5f8fc;
+
+}
+
+
+.bus-information-card {
+
+    max-width: 950px;
+
+    margin: auto;
+
+    background: white;
+
+    border-radius: 15px;
+
+    padding: 30px;
+
+    box-shadow:
+        0 6px 20px rgba(0, 0, 0, 0.07);
+
+}
+
+
+/* ================================= */
+/* Information Header */
+/* ================================= */
+
+.bus-info-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding-bottom: 25px;
+
+    border-bottom: 1px solid #eee;
+
+}
+
+
+.info-label {
+
+    color: #888;
+
+    font-size: 13px;
+
+}
+
+
+.bus-info-header h2 {
+
+    margin-top: 5px;
+
+    color: #222;
+
+}
+
+
+.live-status {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 8px 14px;
+
+    background: #e8f7ee;
+
+    color: #198754;
+
+    border-radius: 20px;
+
+    font-size: 13px;
+
+}
+
+
+.status-dot {
+
+    width: 8px;
+
+    height: 8px;
+
+    background: #198754;
+
+    border-radius: 50%;
+
+}
+
+
+/* ================================= */
+/* Bus Arrival */
+/* ================================= */
+
+.bus-arrival-row {
+
+    display: grid;
+
+    grid-template-columns:
+        100px 1fr 100px 90px;
+
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 20px 0;
+
+    border-bottom: 1px solid #eee;
+
+}
+
+
+.bus-number {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    color: #0d6efd;
+
+}
+
+
+.bus-number i {
+
+    font-size: 20px;
+
+}
+
+
+.bus-number strong {
+
+    font-size: 18px;
+
+}
+
+
+.bus-route span {
+
+    color: #555;
+
+    font-size: 14px;
+
+}
+
+
+.arrival-time {
+
+    text-align: center;
+
+}
+
+
+.arrival-time strong {
+
+    display: block;
+
+    color: #0d6efd;
+
+    font-size: 18px;
+
+}
+
+
+.arrival-time small {
+
+    color: #888;
+
+}
+
+
+/* ================================= */
+/* Track Button */
+/* ================================= */
+
+.track-btn {
+
+    padding: 9px 15px;
+
+    background: #0d6efd;
+
+    color: white;
+
+    text-decoration: none;
+
+    text-align: center;
+
+    border-radius: 6px;
+
+    font-size: 13px;
+
+    transition: 0.3s;
+
+}
+
+
+.track-btn:hover {
+
+    background: #0b5ed7;
+
+}
+
+
+/* ================================= */
+/* View Routes */
+/* ================================= */
+
+.route-link-container {
+
+    text-align: center;
+
+    padding-top: 25px;
+
+}
+
+
+.view-routes-btn {
+
+    display: inline-block;
+
+    padding: 12px 22px;
+
+    background: #ffc107;
+
+    color: #111;
+
+    text-decoration: none;
+
+    border-radius: 7px;
+
+    font-weight: 500;
+
+}
+
+
+.view-routes-btn i {
+
+    margin-right: 6px;
+
+}
+
+
+/* ================================= */
+/* Stop Features */
+/* ================================= */
+
+.stop-features {
+
+    padding: 70px 8%;
+
+    background: white;
+
+}
+
+
+.feature-container {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(250px, 1fr));
+
+    gap: 25px;
+
+}
+
+
+.stop-feature-card {
+
+    padding: 35px 25px;
+
+    text-align: center;
+
+    background: #f8faff;
+
+    border-radius: 15px;
+
+    border: 1px solid #e6ebf2;
+
+}
+
+
+.stop-feature-card i {
+
+    font-size: 42px;
+
+    color: #0d6efd;
+
+    margin-bottom: 20px;
+
+}
+
+
+.stop-feature-card h3 {
+
+    color: #333;
+
+    margin-bottom: 12px;
+
+}
+
+
+.stop-feature-card p {
+
+    color: #666;
+
+    line-height: 1.7;
+
+}
+
+
+/* ================================= */
+/* Footer */
+/* ================================= */
+
+.stops-footer {
+
+    background: #0d6efd;
+
+    color: white;
+
+    padding: 55px 8% 20px;
+
+}
+
+
+.stops-footer .footer-container {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(220px, 1fr));
+
+    gap: 40px;
+
+}
+
+
+.stops-footer .footer-box h3 {
+
+    margin-bottom: 18px;
+
+}
+
+
+.stops-footer .footer-box p {
+
+    line-height: 1.8;
+
+}
+
+
+.stops-footer .footer-box ul {
+
+    list-style: none;
+
+    padding: 0;
+
+}
+
+
+.stops-footer .footer-box ul li {
+
+    margin-bottom: 10px;
+
+}
+
+
+.stops-footer .footer-box a {
+
+    color: white;
+
+    text-decoration: none;
+
+}
+
+
+.stops-footer .footer-box a:hover {
+
+    text-decoration: underline;
+
+}
+
+
+.stops-footer .footer-box i {
+
+    margin-right: 8px;
+
+}
+
+
+.footer-bottom {
+
+    text-align: center;
+
+    border-top: 1px solid rgba(255,255,255,0.3);
+
+    margin-top: 35px;
+
+    padding-top: 20px;
+
+}
+
+
+/* ================================= */
+/* Responsive Design */
+/* ================================= */
+
+@media (max-width: 800px) {
+
+    .stop-search-box {
+
+        flex-direction: column;
+
+    }
+
+
+    .stop-search-box button {
+
+        width: 100%;
+
+    }
+
+
+    .bus-arrival-row {
+
+        grid-template-columns: 1fr;
+
+        text-align: left;
+
+    }
+
+
+    .arrival-time {
+
+        text-align: left;
+
+    }
+
+
+    .bus-info-header {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 15px;
+
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .stops-section,
+    .stop-search-section,
+    .selected-stop-section,
+    .stop-features {
+
+        padding-left: 5%;
+
+        padding-right: 5%;
+
+    }
+
+
+    .stops-hero-content h1 {
+
+        font-size: 32px;
+
+    }
+
+
+    .stop-card {
+
+        padding: 20px;
+
+    }
+
+}

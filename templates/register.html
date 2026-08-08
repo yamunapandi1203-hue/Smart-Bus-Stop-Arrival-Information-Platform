@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Register - SmartBus</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Common CSS -->
+    <link rel="stylesheet"
+          href="../static/css/style.css">
+
+    <!-- Register CSS -->
+    <link rel="stylesheet"
+          href="../static/css/register.css">
+
+</head>
+
+<body>
+
+    <!-- ========================= -->
+    <!-- Navigation Bar Start -->
+    <!-- ========================= -->
+
+    <header>
+
+        <nav class="navbar">
+
+            <!-- Logo -->
+
+            <div class="logo">
+
+                <i class="fa-solid fa-bus"></i>
+
+                <span>SmartBus</span>
+
+            </div>
+
+
+            <!-- Navigation Links -->
+
+            <ul class="nav-links">
+
+                <li>
+                    <a href="index.html">
+                        Home
+                    </a>
+                </li>
+
+                <li>
+                    <a href="routes.html">
+                        Routes
+                    </a>
+                </li>
+
+                <li>
+                    <a href="bus_stops.html">
+                        Bus Stops
+                    </a>
+                </li>
+
+                <li>
+                    <a href="tracking.html">
+                        Live Tracking
+                    </a>
+                </li>
+
+                <li>
+                    <a href="ai_prediction.html">
+                        AI Prediction
+                    </a>
+                </li>
+
+                <li>
+                    <a href="weather.html">
+                        Weather
+                    </a>
+                </li>
+
+                <li>
+                    <a href="contact.html">
+                        Contact
+                    </a>
+                </li>
+
+            </ul>
+
+
+            <!-- Login / Register -->
+
+            <div class="nav-buttons">
+
+                <a href="login.html"
+                   class="login-btn">
+
+                    Login
+
+                </a>
+
+                <a href="register.html"
+                   class="register-btn active">
+
+                    Register
+
+                </a>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+    <!-- ========================= -->
+    <!-- Navigation Bar End -->
+    <!-- ========================= -->
+
+
+    <!-- ========================= -->
+    <!-- Register Section Start -->
+    <!-- ========================= -->
+
+    <main class="register-page">
+
+        <div class="register-container">
+
+
+            <!-- Left Side -->
+
+            <div class="register-image">
+
+                <div class="register-icon">
+
+                    <i class="fa-solid fa-user-plus"></i>
+
+                </div>
+
+                <h2>
+                    Join SmartBus
+                </h2>
+
+                <p>
+
+                    Create your SmartBus account and enjoy
+                    smarter, faster and personalized travel services.
+
+                </p>
+
+                <div class="register-features">
+
+                    <p>
+                        <i class="fa-solid fa-check"></i>
+                        AI-powered travel assistance
+                    </p>
+
+                    <p>
+                        <i class="fa-solid fa-check"></i>
+                        Live bus arrival information
+                    </p>
+
+                    <p>
+                        <i class="fa-solid fa-check"></i>
+                        Smart travel notifications
+                    </p>
+
+                    <p>
+                        <i class="fa-solid fa-check"></i>
+                        Save your favorite routes
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Register Form -->
+
+            <div class="register-form-container">
+
+                <h1>
+                    Create Account
+                </h1>
+
+                <p class="register-subtitle">
+
+                    Register to start using SmartBus
+
+                </p>
+
+
+                <form id="registerForm"
+                      action="#"
+                      method="POST">
+
+
+                    <!-- Full Name -->
+
+                    <div class="form-group">
+
+                        <label for="fullName">
+
+                            <i class="fa-solid fa-user"></i>
+
+                            Full Name
+
+                        </label>
+
+                        <input
+                            type="text"
+                            id="fullName"
+                            name="fullName"
+                            placeholder="Enter your full name"
+                            required>
+
+                    </div>
+
+
+                    <!-- Email -->
+
+                    <div class="form-group">
+
+                        <label for="email">
+
+                            <i class="fa-solid fa-envelope"></i>
+
+                            Email Address
+
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Enter your email"
+                            required>
+
+                    </div>
+
+
+                    <!-- Phone Number -->
+
+                    <div class="form-group">
+
+                        <label for="phone">
+
+                            <i class="fa-solid fa-phone"></i>
+
+                            Phone Number
+
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            placeholder="Enter your phone number"
+                            maxlength="10"
+                            required>
+
+                    </div>
+
+
+                    <!-- Password -->
+
+                    <div class="form-group">
+
+                        <label for="password">
+
+                            <i class="fa-solid fa-lock"></i>
+
+                            Password
+
+                        </label>
+
+                        <div class="password-container">
+
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                placeholder="Create a password"
+                                required>
+
+                            <button
+                                type="button"
+                                id="togglePassword"
+                                class="password-toggle">
+
+                                <i class="fa-solid fa-eye"></i>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Confirm Password -->
+
+                    <div class="form-group">
+
+                        <label for="confirmPassword">
+
+                            <i class="fa-solid fa-lock"></i>
+
+                            Confirm Password
+
+                        </label>
+
+                        <div class="password-container">
+
+                            <input
+                                type="password"
+                                id="confirmPassword"
+                                name="confirmPassword"
+                                placeholder="Confirm your password"
+                                required>
+
+                            <button
+                                type="button"
+                                id="toggleConfirmPassword"
+                                class="password-toggle">
+
+                                <i class="fa-solid fa-eye"></i>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Terms -->
+
+                    <div class="terms-container">
+
+                        <label>
+
+                            <input
+                                type="checkbox"
+                                id="terms"
+                                name="terms"
+                                required>
+
+                            <span>
+
+                                I agree to the
+                                <a href="#">
+                                    Terms & Conditions
+                                </a>
+
+                            </span>
+
+                        </label>
+
+                    </div>
+
+
+                    <!-- Register Button -->
+
+                    <button
+                        type="submit"
+                        class="register-submit">
+
+                        <i class="fa-solid fa-user-plus"></i>
+
+                        Create Account
+
+                    </button>
+
+
+                </form>
+
+
+                <!-- Login Link -->
+
+                <div class="login-link">
+
+                    <p>
+
+                        Already have an account?
+
+                        <a href="login.html">
+
+                            Login
+
+                        </a>
+
+                    </p>
+
+                </div>
+
+
+                <!-- Back Home -->
+
+                <div class="back-home">
+
+                    <a href="index.html">
+
+                        <i class="fa-solid fa-arrow-left"></i>
+
+                        Back to Home
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- ========================= -->
+    <!-- Register Section End -->
+    <!-- ========================= -->
+
+
+    <!-- ========================= -->
+    <!-- Footer Start -->
+    <!-- ========================= -->
+
+    <footer class="register-footer">
+
+        <p>
+
+            © 2026 Smart Bus Stop Arrival Information Platform.
+            All Rights Reserved.
+
+        </p>
+
+    </footer>
+
+    <!-- ========================= -->
+    <!-- Footer End -->
+    <!-- ========================= -->
+
+
+    <!-- Register JavaScript -->
+
+    <script src="../static/js/register.js"></script>
+
+</body>
+
+</html>
