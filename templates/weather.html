@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Weather Information | SmartBus</title>
+
+    <!-- Google Font -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Main CSS -->
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}">
+
+    <!-- Weather CSS -->
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/weather.css') }}">
+
+</head>
+
+
+<body>
+
+
+    <!-- ============================= -->
+    <!-- NAVIGATION -->
+    <!-- ============================= -->
+
+    <header>
+
+        <nav class="navbar">
+
+            <div class="logo">
+
+                <i class="fa-solid fa-bus"></i>
+
+                <span>SmartBus</span>
+
+            </div>
+
+
+            <ul class="nav-links">
+
+                <li>
+                    <a href="{{ url_for('home') }}">
+                        Home
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ url_for('routes') }}">
+                        Routes
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ url_for('bus_stops') }}">
+                        Bus Stops
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ url_for('tracking') }}">
+                        Live Tracking
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ url_for('ai_prediction') }}">
+                        AI Prediction
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ url_for('weather') }}"
+                       class="active">
+                        Weather
+                    </a>
+                </li>
+
+            </ul>
+
+
+            <div class="nav-buttons">
+
+                <a href="{{ url_for('login') }}"
+                   class="login-btn">
+                    Login
+                </a>
+
+                <a href="{{ url_for('register') }}"
+                   class="register-btn">
+                    Register
+                </a>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- ============================= -->
+    <!-- WEATHER HERO -->
+    <!-- ============================= -->
+
+    <section class="weather-hero">
+
+        <div class="weather-hero-content">
+
+            <div class="weather-icon-large">
+
+                <i class="fa-solid fa-cloud-sun"></i>
+
+            </div>
+
+            <h1>
+                Weather Information
+            </h1>
+
+            <p>
+                Check weather conditions before planning
+                your bus journey.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ============================= -->
+    <!-- WEATHER SECTION -->
+    <!-- ============================= -->
+
+    <section class="weather-section">
+
+        <div class="section-title">
+
+            <h2>
+                Current Weather
+            </h2>
+
+            <p>
+                Select your city to view weather information.
+            </p>
+
+        </div>
+
+
+        <!-- CITY SELECTOR -->
+
+        <div class="city-selector">
+
+            <label for="city">
+
+                <i class="fa-solid fa-location-dot"></i>
+
+                Select City
+
+            </label>
+
+
+            <select id="city"
+                    onchange="changeWeather()">
+
+                <option value="chennai">
+                    Chennai
+                </option>
+
+                <option value="coimbatore">
+                    Coimbatore
+                </option>
+
+            </select>
+
+        </div>
+
+
+
+        <!-- MAIN WEATHER CARD -->
+
+        <div class="weather-container">
+
+
+            <!-- Current Weather -->
+
+            <div class="current-weather-card">
+
+
+                <div class="location">
+
+                    <i class="fa-solid fa-location-dot"></i>
+
+                    <span id="cityName">
+                        Chennai
+                    </span>
+
+                </div>
+
+
+                <div class="main-weather">
+
+                    <div class="main-weather-icon">
+
+                        <i id="weatherIcon"
+                           class="fa-solid fa-cloud-sun">
+                        </i>
+
+                    </div>
+
+
+                    <div class="temperature">
+
+                        <strong id="temperature">
+                            31°C
+                        </strong>
+
+                        <span id="condition">
+                            Partly Cloudy
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <p class="weather-description"
+                   id="description">
+
+                    Comfortable weather conditions
+                    for travelling.
+
+                </p>
+
+            </div>
+
+
+
+            <!-- Weather Details -->
+
+            <div class="weather-details">
+
+
+                <div class="detail-card">
+
+                    <i class="fa-solid fa-droplet"></i>
+
+                    <span>
+                        Humidity
+                    </span>
+
+                    <strong id="humidity">
+                        72%
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-card">
+
+                    <i class="fa-solid fa-wind"></i>
+
+                    <span>
+                        Wind Speed
+                    </span>
+
+                    <strong id="wind">
+                        14 km/h
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-card">
+
+                    <i class="fa-solid fa-umbrella"></i>
+
+                    <span>
+                        Rain Probability
+                    </span>
+
+                    <strong id="rain">
+                        35%
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-card">
+
+                    <i class="fa-solid fa-eye"></i>
+
+                    <span>
+                        Visibility
+                    </span>
+
+                    <strong id="visibility">
+                        8 km
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ============================= -->
+    <!-- TRAVEL ADVICE -->
+    <!-- ============================= -->
+
+    <section class="travel-advice-section">
+
+        <div class="section-title">
+
+            <h2>
+                🚌 Smart Travel Advice
+            </h2>
+
+            <p>
+                Weather-based travel information
+                for bus passengers.
+            </p>
+
+        </div>
+
+
+        <div class="advice-card">
+
+            <div class="advice-icon">
+
+                <i class="fa-solid fa-lightbulb"></i>
+
+            </div>
+
+
+            <div class="advice-content">
+
+                <h3 id="adviceTitle">
+                    Good Travel Conditions
+                </h3>
+
+                <p id="adviceText">
+
+                    Weather conditions are suitable
+                    for travelling. Bus services are
+                    expected to operate normally.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ============================= -->
+    <!-- FORECAST -->
+    <!-- ============================= -->
+
+    <section class="forecast-section">
+
+        <div class="section-title">
+
+            <h2>
+                Weather Forecast
+            </h2>
+
+            <p>
+                Upcoming weather conditions.
+            </p>
+
+        </div>
+
+
+        <div class="forecast-grid">
+
+
+            <div class="forecast-card">
+
+                <span>
+                    Today
+                </span>
+
+                <i class="fa-solid fa-cloud-sun"></i>
+
+                <strong id="todayTemp">
+                    31°C
+                </strong>
+
+                <small id="todayCondition">
+                    Partly Cloudy
+                </small>
+
+            </div>
+
+
+            <div class="forecast-card">
+
+                <span>
+                    Tomorrow
+                </span>
+
+                <i class="fa-solid fa-cloud"></i>
+
+                <strong id="tomorrowTemp">
+                    30°C
+                </strong>
+
+                <small>
+                    Cloudy
+                </small>
+
+            </div>
+
+
+            <div class="forecast-card">
+
+                <span>
+                    Day 3
+                </span>
+
+                <i class="fa-solid fa-cloud-rain"></i>
+
+                <strong id="day3Temp">
+                    29°C
+                </strong>
+
+                <small>
+                    Rain Possible
+                </small>
+
+            </div>
+
+
+            <div class="forecast-card">
+
+                <span>
+                    Day 4
+                </span>
+
+                <i class="fa-solid fa-sun"></i>
+
+                <strong id="day4Temp">
+                    32°C
+                </strong>
+
+                <small>
+                    Sunny
+                </small>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ============================= -->
+    <!-- WEATHER + BUS CONNECTION -->
+    <!-- ============================= -->
+
+    <section class="bus-weather-section">
+
+        <div class="section-title">
+
+            <h2>
+                Weather & Bus Travel
+            </h2>
+
+            <p>
+                Weather information can help passengers
+                plan their journey.
+            </p>
+
+        </div>
+
+
+        <div class="weather-benefits">
+
+
+            <div class="benefit-card">
+
+                <i class="fa-solid fa-cloud-rain"></i>
+
+                <h3>
+                    Rain Alerts
+                </h3>
+
+                <p>
+                    Passengers can check rain conditions
+                    before travelling to the bus stop.
+                </p>
+
+            </div>
+
+
+            <div class="benefit-card">
+
+                <i class="fa-solid fa-clock"></i>
+
+                <h3>
+                    Plan Travel Time
+                </h3>
+
+                <p>
+                    Bad weather may affect travel time,
+                    so passengers can plan ahead.
+                </p>
+
+            </div>
+
+
+            <div class="benefit-card">
+
+                <i class="fa-solid fa-bus"></i>
+
+                <h3>
+                    Better Bus Planning
+                </h3>
+
+                <p>
+                    Weather information can be combined
+                    with bus arrival predictions.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ============================= -->
+    <!-- FOOTER -->
+    <!-- ============================= -->
+
+    <footer class="footer">
+
+        <h3>
+            SmartBus
+        </h3>
+
+        <p>
+            Smart Bus Stop Arrival Information Platform
+        </p>
+
+        <p>
+            © 2026 SmartBus. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+
+    <!-- ============================= -->
+    <!-- JAVASCRIPT -->
+    <!-- ============================= -->
+
+    <script>
+
+        const weatherData = {
+
+            chennai: {
+
+                city: "Chennai",
+
+                temperature: "31°C",
+
+                condition: "Partly Cloudy",
+
+                description:
+                    "Comfortable weather conditions for travelling.",
+
+                humidity: "72%",
+
+                wind: "14 km/h",
+
+                rain: "35%",
+
+                visibility: "8 km",
+
+                icon: "fa-cloud-sun",
+
+                adviceTitle:
+                    "Good Travel Conditions",
+
+                adviceText:
+                    "Weather conditions are suitable for travelling. Bus services are expected to operate normally.",
+
+                today: "31°C",
+
+                tomorrow: "30°C",
+
+                day3: "29°C",
+
+                day4: "32°C"
+
+            },
+
+
+            coimbatore: {
+
+                city: "Coimbatore",
+
+                temperature: "28°C",
+
+                condition: "Cloudy",
+
+                description:
+                    "Cool and cloudy weather conditions are expected.",
+
+                humidity: "68%",
+
+                wind: "11 km/h",
+
+                rain: "45%",
+
+                visibility: "7 km",
+
+                icon: "fa-cloud",
+
+                adviceTitle:
+                    "Travel With Care",
+
+                adviceText:
+                    "Cloudy conditions are expected with a chance of rain. Passengers should carry an umbrella when travelling.",
+
+                today: "28°C",
+
+                tomorrow: "27°C",
+
+                day3: "26°C",
+
+                day4: "29°C"
+
+            }
+
+        };
+
+
+        function changeWeather() {
+
+            const city =
+                document.getElementById("city").value;
+
+            const data =
+                weatherData[city];
+
+
+            document.getElementById(
+                "cityName"
+            ).textContent =
+                data.city;
+
+
+            document.getElementById(
+                "temperature"
+            ).textContent =
+                data.temperature;
+
+
+            document.getElementById(
+                "condition"
+            ).textContent =
+                data.condition;
+
+
+            document.getElementById(
+                "description"
+            ).textContent =
+                data.description;
+
+
+            document.getElementById(
+                "humidity"
+            ).textContent =
+                data.humidity;
+
+
+            document.getElementById(
+                "wind"
+            ).textContent =
+                data.wind;
+
+
+            document.getElementById(
+                "rain"
+            ).textContent =
+                data.rain;
+
+
+            document.getElementById(
+                "visibility"
+            ).textContent =
+                data.visibility;
+
+
+            document.getElementById(
+                "weatherIcon"
+            ).className =
+                "fa-solid " + data.icon;
+
+
+            document.getElementById(
+                "adviceTitle"
+            ).textContent =
+                data.adviceTitle;
+
+
+            document.getElementById(
+                "adviceText"
+            ).textContent =
+                data.adviceText;
+
+
+            document.getElementById(
+                "todayTemp"
+            ).textContent =
+                data.today;
+
+
+            document.getElementById(
+                "tomorrowTemp"
+            ).textContent =
+                data.tomorrow;
+
+
+            document.getElementById(
+                "day3Temp"
+            ).textContent =
+                data.day3;
+
+
+            document.getElementById(
+                "day4Temp"
+            ).textContent =
+                data.day4;
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

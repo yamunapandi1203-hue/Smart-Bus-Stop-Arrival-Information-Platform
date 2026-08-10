@@ -1,210 +1,234 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, url_for
+from database import get_connection
 
 app = Flask(__name__)
 
 
-# ==========================================
-# HOME PAGE
-# ==========================================
+# =========================================================
+# HOME
+# =========================================================
 
 @app.route("/")
 def home():
     return render_template("index.html")
 
 
-# ==========================================
-# ROUTES PAGE
-# ==========================================
+# =========================================================
+# REGISTER
+# =========================================================
+
+@app.route("/register", methods=["GET", "POST"])
+def register():
+
+    if request.method == "POST":
+
+        name = request.form["name"]
+        email = request.form["email"]
+        password = request.form["password"]
+
+        try:
+            connection = get_connection()
+            cursor = connection.cursor()
+
+            query = """
+                INSERT INTO users (name, email, password)
+                VALUES (%s, %s, %s)
+            """
+
+            values = (name, email, password)
+
+            cursor.execute(query, values)
+            connection.commit()
+
+            cursor.close()
+            connection.close()
+
+            return redirect(url_for("login"))
+
+        except Exception as error:
+            return f"Registration error: {error}"
+
+    return render_template("register.html")
+
+
+# =========================================================
+# LOGIN
+# =========================================================
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+
+    if request.method == "POST":
+
+        email = request.form["email"]
+        password = request.form["password"]
+
+        try:
+            connection = get_connection()
+            cursor = connection.cursor()
+
+            query = """
+                SELECT *
+                FROM users
+                WHERE email = %s AND password = %s
+            """
+
+            values = (email, password)
+
+            cursor.execute(query, values)
+
+            user = cursor.fetchone()
+
+            cursor.close()
+            connection.close()
+
+            if user:
+                return redirect(url_for("home"))
+
+            else:
+                return "Invalid email or password"
+
+        except Exception as error:
+            return f"Login error: {error}"
+
+    return render_template("login.html")
+
+
+# =========================================================
+# ROUTES
+# =========================================================
 
 @app.route("/routes")
 def routes():
     return render_template("routes.html")
 
 
-# ==========================================
-# BUS STOPS PAGE
-# ==========================================
+# =========================================================
+# BUS STOPS
+# =========================================================
 
 @app.route("/bus_stops")
 def bus_stops():
-    return render_template("bus_stops.html")
+
+    try:
+        connection = get_connection()
+
+        cursor = connection.cursor(dictionary=True)
+
+        cursor.execute("""
+            SELECT *
+            FROM bus_stops
+            ORDER BY id
+        """)
+
+        stops = cursor.fetchall()
+
+        cursor.close()
+        connection.close()
+
+        return render_template(
+            "bus_stops.html",
+            stops=stops
+        )
+
+    except Exception as error:
+        return f"Bus stops database error: {error}"
 
 
-# ==========================================
-# LIVE TRACKING PAGE
-# ==========================================
+# =========================================================
+# BUSES
+# =========================================================
+
+@app.route("/buses")
+def buses():
+
+    try:
+        connection = get_connection()
+
+        cursor = connection.cursor(dictionary=True)
+
+        cursor.execute("""
+            SELECT *
+            FROM buses
+            ORDER BY id
+        """)
+
+        buses = cursor.fetchall()
+
+        cursor.close()
+        connection.close()
+
+        return render_template(
+            "buses.html",
+            buses=buses
+        )
+
+    except Exception as error:
+        return f"Bus database error: {error}"
+
+
+# =========================================================
+# LIVE TRACKING
+# =========================================================
 
 @app.route("/tracking")
 def tracking():
     return render_template("tracking.html")
 
 
-# ==========================================
-# AI PREDICTION PAGE
-# ==========================================
+# =========================================================
+# AI PREDICTION
+# =========================================================
 
 @app.route("/ai_prediction")
 def ai_prediction():
     return render_template("ai_prediction.html")
 
 
-# ==========================================
-# WEATHER PAGE
-# ==========================================
+# =========================================================
+# WEATHER
+# =========================================================
 
 @app.route("/weather")
 def weather():
     return render_template("weather.html")
-
-
-# ==========================================
-# CONTACT PAGE
-# ==========================================
+# =========================================================
+# CONTACT
+# =========================================================
 
 @app.route("/contact")
 def contact():
     return render_template("contact.html")
 
 
-# ==========================================
-# LOGIN PAGE
-# ==========================================
+# =========================================================
+# DATABASE TEST
+# =========================================================
 
-@app.route("/login")
-def login():
-    return render_template("login.html")
+@app.route("/test_db")
+def test_db():
 
+    try:
+        connection = get_connection()
 
-# ==========================================
-# REGISTER PAGE
-# ==========================================
+        cursor = connection.cursor()
 
-@app.route("/register")
-def register():
-    return render_template("register.html")
+        cursor.execute("SELECT DATABASE()")
 
+        result = cursor.fetchone()
 
-# ==========================================
-# DASHBOARD PAGE
-# ==========================================
+        cursor.close()
+        connection.close()
 
-@app.route("/dashboard")
-def dashboard():
-    return render_template("dashboard.html")
+        return f"Connected database: {result[0]}"
+
+    except Exception as error:
+        return f"Database connection error: {error}"
 
 
-# ==========================================
-# BUSES PAGE
-# ==========================================
-
-@app.route("/buses")
-def buses():
-    return render_template("buses.html")
-
-
-# ==========================================
-# BUS DETAILS PAGE
-# ==========================================
-
-@app.route("/bus_details")
-def bus_details():
-    return render_template("bus_details.html")
-
-
-# ==========================================
-# SCHEDULE PAGE
-# ==========================================
-
-@app.route("/schedule")
-def schedule():
-    return render_template("schedule.html")
-
-
-# ==========================================
-# AI ASSISTANT PAGE
-# ==========================================
-
-@app.route("/ai_assistant")
-def ai_assistant():
-    return render_template("ai_assistant.html")
-
-
-# ==========================================
-# NOTIFICATIONS PAGE
-# ==========================================
-
-@app.route("/notifications")
-def notifications():
-    return render_template("notifications.html")
-
-
-# ==========================================
-# QR CODE PAGE
-# ==========================================
-
-@app.route("/qr_code")
-def qr_code():
-    return render_template("qr_code.html")
-
-
-# ==========================================
-# EMERGENCY PAGE
-# ==========================================
-
-@app.route("/emergency")
-def emergency():
-    return render_template("emergency.html")
-
-
-# ==========================================
-# FAVORITES PAGE
-# ==========================================
-
-@app.route("/favorites")
-def favorites():
-    return render_template("favorites.html")
-
-
-# ==========================================
-# FEEDBACK PAGE
-# ==========================================
-
-@app.route("/feedback")
-def feedback():
-    return render_template("feedback.html")
-
-
-# ==========================================
-# PROFILE PAGE
-# ==========================================
-
-@app.route("/profile")
-def profile():
-    return render_template("profile.html")
-
-
-# ==========================================
-# ROUTE DETAILS PAGE
-# ==========================================
-
-@app.route("/route_details")
-def route_details():
-    return render_template("route_details.html")
-
-
-# ==========================================
-# BUS STOP DETAILS PAGE
-# ==========================================
-
-@app.route("/bus_stop")
-def bus_stop():
-    return render_template("bus_stop.html")
-
-
-# ==========================================
-# RUN FLASK APPLICATION
-# ==========================================
+# =========================================================
+# RUN APPLICATION
+# =========================================================
 
 if __name__ == "__main__":
     app.run(debug=True)
-

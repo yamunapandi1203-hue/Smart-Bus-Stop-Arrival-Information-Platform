@@ -2,454 +2,145 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <title>Register - SmartBus</title>
-
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-          rel="stylesheet">
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
-    <!-- Common CSS -->
-    <link rel="stylesheet"
-          href="../static/css/style.css">
+    <title>Register - Smart Bus</title>
 
     <!-- Register CSS -->
     <link rel="stylesheet"
-          href="../static/css/register.css">
-
+          href="{{ url_for('static', filename='css/register.css') }}">
 </head>
 
-<body>
+<body class="register-page">
 
-    <!-- ========================= -->
-    <!-- Navigation Bar Start -->
-    <!-- ========================= -->
+    <!-- Register Container -->
+    <div class="register-container">
 
-    <header>
+        <div class="register-box">
 
-        <nav class="navbar">
+            <h1>Smart Bus</h1>
 
-            <!-- Logo -->
+            <h2>Create Account</h2>
 
-            <div class="logo">
-
-                <i class="fa-solid fa-bus"></i>
-
-                <span>SmartBus</span>
-
-            </div>
-
-
-            <!-- Navigation Links -->
-
-            <ul class="nav-links">
-
-                <li>
-                    <a href="index.html">
-                        Home
-                    </a>
-                </li>
-
-                <li>
-                    <a href="routes.html">
-                        Routes
-                    </a>
-                </li>
-
-                <li>
-                    <a href="bus_stops.html">
-                        Bus Stops
-                    </a>
-                </li>
-
-                <li>
-                    <a href="tracking.html">
-                        Live Tracking
-                    </a>
-                </li>
-
-                <li>
-                    <a href="ai_prediction.html">
-                        AI Prediction
-                    </a>
-                </li>
-
-                <li>
-                    <a href="weather.html">
-                        Weather
-                    </a>
-                </li>
-
-                <li>
-                    <a href="contact.html">
-                        Contact
-                    </a>
-                </li>
-
-            </ul>
-
-
-            <!-- Login / Register -->
-
-            <div class="nav-buttons">
-
-                <a href="login.html"
-                   class="login-btn">
-
-                    Login
-
-                </a>
-
-                <a href="register.html"
-                   class="register-btn active">
-
-                    Register
-
-                </a>
-
-            </div>
-
-        </nav>
-
-    </header>
-
-    <!-- ========================= -->
-    <!-- Navigation Bar End -->
-    <!-- ========================= -->
-
-
-    <!-- ========================= -->
-    <!-- Register Section Start -->
-    <!-- ========================= -->
-
-    <main class="register-page">
-
-        <div class="register-container">
-
-
-            <!-- Left Side -->
-
-            <div class="register-image">
-
-                <div class="register-icon">
-
-                    <i class="fa-solid fa-user-plus"></i>
-
-                </div>
-
-                <h2>
-                    Join SmartBus
-                </h2>
-
-                <p>
-
-                    Create your SmartBus account and enjoy
-                    smarter, faster and personalized travel services.
-
-                </p>
-
-                <div class="register-features">
-
-                    <p>
-                        <i class="fa-solid fa-check"></i>
-                        AI-powered travel assistance
-                    </p>
-
-                    <p>
-                        <i class="fa-solid fa-check"></i>
-                        Live bus arrival information
-                    </p>
-
-                    <p>
-                        <i class="fa-solid fa-check"></i>
-                        Smart travel notifications
-                    </p>
-
-                    <p>
-                        <i class="fa-solid fa-check"></i>
-                        Save your favorite routes
-                    </p>
-
-                </div>
-
-            </div>
-
+            <p class="subtitle">
+                Register to use Smart Bus services
+            </p>
 
             <!-- Register Form -->
-
-            <div class="register-form-container">
-
-                <h1>
-                    Create Account
-                </h1>
-
-                <p class="register-subtitle">
-
-                    Register to start using SmartBus
-
-                </p>
-
-
-                <form id="registerForm"
-                      action="#"
-                      method="POST">
-
-
-                    <!-- Full Name -->
-
-                    <div class="form-group">
-
-                        <label for="fullName">
-
-                            <i class="fa-solid fa-user"></i>
-
-                            Full Name
-
-                        </label>
-
-                        <input
-                            type="text"
-                            id="fullName"
-                            name="fullName"
-                            placeholder="Enter your full name"
-                            required>
-
-                    </div>
-
-
-                    <!-- Email -->
-
-                    <div class="form-group">
-
-                        <label for="email">
-
-                            <i class="fa-solid fa-envelope"></i>
-
-                            Email Address
-
-                        </label>
-
-                        <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            placeholder="Enter your email"
-                            required>
-
-                    </div>
-
-
-                    <!-- Phone Number -->
-
-                    <div class="form-group">
-
-                        <label for="phone">
-
-                            <i class="fa-solid fa-phone"></i>
-
-                            Phone Number
-
-                        </label>
-
-                        <input
-                            type="tel"
-                            id="phone"
-                            name="phone"
-                            placeholder="Enter your phone number"
-                            maxlength="10"
-                            required>
-
-                    </div>
-
-
-                    <!-- Password -->
-
-                    <div class="form-group">
-
-                        <label for="password">
-
-                            <i class="fa-solid fa-lock"></i>
-
-                            Password
-
-                        </label>
-
-                        <div class="password-container">
-
-                            <input
-                                type="password"
-                                id="password"
-                                name="password"
-                                placeholder="Create a password"
-                                required>
-
-                            <button
-                                type="button"
-                                id="togglePassword"
-                                class="password-toggle">
-
-                                <i class="fa-solid fa-eye"></i>
-
-                            </button>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- Confirm Password -->
-
-                    <div class="form-group">
-
-                        <label for="confirmPassword">
-
-                            <i class="fa-solid fa-lock"></i>
-
-                            Confirm Password
-
-                        </label>
-
-                        <div class="password-container">
-
-                            <input
-                                type="password"
-                                id="confirmPassword"
-                                name="confirmPassword"
-                                placeholder="Confirm your password"
-                                required>
-
-                            <button
-                                type="button"
-                                id="toggleConfirmPassword"
-                                class="password-toggle">
-
-                                <i class="fa-solid fa-eye"></i>
-
-                            </button>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- Terms -->
-
-                    <div class="terms-container">
-
-                        <label>
-
-                            <input
-                                type="checkbox"
-                                id="terms"
-                                name="terms"
-                                required>
-
-                            <span>
-
-                                I agree to the
-                                <a href="#">
-                                    Terms & Conditions
-                                </a>
-
-                            </span>
-
-                        </label>
-
-                    </div>
-
-
-                    <!-- Register Button -->
-
-                    <button
-                        type="submit"
-                        class="register-submit">
-
-                        <i class="fa-solid fa-user-plus"></i>
-
-                        Create Account
-
-                    </button>
-
-
-                </form>
-
-
-                <!-- Login Link -->
-
-                <div class="login-link">
-
-                    <p>
-
-                        Already have an account?
-
-                        <a href="login.html">
-
-                            Login
-
-                        </a>
-
-                    </p>
+            <form method="POST" action="/register">
+
+                <!-- Full Name -->
+                <div class="input-group">
+
+                    <label for="name">Full Name</label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Enter your full name"
+                        required>
 
                 </div>
 
 
-                <!-- Back Home -->
+                <!-- Email -->
+                <div class="input-group">
 
-                <div class="back-home">
+                    <label for="email">Email</label>
 
-                    <a href="index.html">
-
-                        <i class="fa-solid fa-arrow-left"></i>
-
-                        Back to Home
-
-                    </a>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Enter your email"
+                        required>
 
                 </div>
 
-            </div>
+
+                <!-- Password -->
+                <div class="input-group">
+
+                    <label for="password">Password</label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Enter your password"
+                        required>
+
+                </div>
+
+
+                <!-- Confirm Password -->
+                <div class="input-group">
+
+                    <label for="confirm_password">
+                        Confirm Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="confirm_password"
+                        name="confirm_password"
+                        placeholder="Confirm your password"
+                        required>
+
+                </div>
+
+
+                <!-- Register Button -->
+                <button type="submit" class="register-btn">
+                    Register
+                </button>
+
+            </form>
+
+
+            <!-- Login Link -->
+            <p class="login-text">
+
+                Already have an account?
+
+                <a href="{{ url_for('login') }}">
+                    Login
+                </a>
+
+            </p>
 
         </div>
 
-    </main>
-
-    <!-- ========================= -->
-    <!-- Register Section End -->
-    <!-- ========================= -->
+    </div>
 
 
-    <!-- ========================= -->
-    <!-- Footer Start -->
-    <!-- ========================= -->
+    <!-- Password Validation -->
+    <script>
 
-    <footer class="register-footer">
+        const form = document.querySelector("form");
 
-        <p>
+        form.addEventListener("submit", function(event) {
 
-            © 2026 Smart Bus Stop Arrival Information Platform.
-            All Rights Reserved.
+            const password =
+                document.getElementById("password").value;
 
-        </p>
-
-    </footer>
-
-    <!-- ========================= -->
-    <!-- Footer End -->
-    <!-- ========================= -->
+            const confirmPassword =
+                document.getElementById("confirm_password").value;
 
 
-    <!-- Register JavaScript -->
+            if (password !== confirmPassword) {
 
-    <script src="../static/js/register.js"></script>
+                event.preventDefault();
+
+                alert("Passwords do not match!");
+
+            }
+
+        });
+
+    </script>
 
 </body>
 

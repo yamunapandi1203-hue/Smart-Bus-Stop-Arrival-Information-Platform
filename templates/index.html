@@ -4,146 +4,189 @@
 <head>
 
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>Smart Bus Stop Arrival Information Platform</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+          rel="stylesheet">
 
     <!-- Font Awesome -->
     <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="../static/css/style.css">
-    <link rel="stylesheet" href="../static/css/home.css">
+    <!-- Common CSS -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <!-- Home CSS -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/home.css') }}">
 
 </head>
 
 <body>
 
-    <!-- ========================= -->
-    <!-- Navigation Bar Start -->
-    <!-- ========================= -->
 
-    <header>
+<!-- ===================================================== -->
+<!-- NAVIGATION BAR -->
+<!-- ===================================================== -->
 
-        <nav class="navbar">
+<header>
 
-            <div class="logo">
-                <i class="fa-solid fa-bus"></i>
-                <span>SmartBus</span>
-            </div>
+    <nav class="navbar">
 
-            <ul class="nav-links">
+        <div class="logo">
+            <i class="fa-solid fa-bus"></i>
+            <span>SmartBus</span>
+        </div>
 
-                <li><a href="index.html">Home</a></li>
 
-                <li><a href="routes.html">Routes</a></li>
+        <ul class="nav-links">
 
-                <li><a href="bus_stops.html">Bus Stops</a></li>
-
-                <li><a href="tracking.html">Live Tracking</a></li>
-
-                <li><a href="ai_prediction.html">AI Prediction</a></li>
-
-                <li><a href="weather.html">Weather</a></li>
-
-                <li><a href="contact.html">Contact</a></li>
-
-            </ul>
-
-            <div class="nav-buttons">
-
-                <a href="login.html" class="login-btn">
-                    Login
+            <li>
+                <a href="{{ url_for('home') }}">
+                    Home
                 </a>
+            </li>
 
-                <a href="register.html" class="register-btn">
-                    Register
+            <li>
+                <a href="{{ url_for('routes') }}">
+                    Routes
                 </a>
+            </li>
 
-            </div>
-
-        </nav>
-
-    </header>
-
-    <!-- ========================= -->
-    <!-- Navigation Bar End -->
-    <!-- ========================= -->
-
-
-
-    <!-- ========================= -->
-    <!-- Hero Section Start -->
-    <!-- ========================= -->
-
-    <section class="hero">
-
-        <div class="hero-content">
-
-            <h1>
-                Smart Bus Stop Arrival Information Platform
-            </h1>
-
-            <p>
-
-                Travel smarter with AI-powered bus arrival prediction,
-                live tracking, weather updates, smart notifications,
-                QR code support and personalized travel assistance.
-
-            </p>
-
-            <div class="hero-buttons">
-
-                <a href="tracking.html" class="primary-btn">
-
-                    <i class="fa-solid fa-location-dot"></i>
-
-                    Track Bus
-
+            <li>
+                <a href="{{ url_for('bus_stops') }}">
+                    Bus Stops
                 </a>
+            </li>
 
-                <a href="ai_prediction.html" class="secondary-btn">
+            <li>
+                <a href="{{ url_for('tracking') }}">
+                    Live Tracking
+                </a>
+            </li>
 
-                    <i class="fa-solid fa-robot"></i>
-
+            <li>
+                <a href="{{ url_for('ai_prediction') }}">
                     AI Prediction
-
                 </a>
+            </li>
 
-            </div>
+            <li>
+                <a href="{{ url_for('weather') }}">
+                    Weather
+                </a>
+            </li>
+
+            <!-- Contact route is not currently shown in your app.py -->
+            <li>
+                <a href="contact.html">
+                    Contact
+                </a>
+            </li>
+
+        </ul>
+
+
+        <div class="nav-buttons">
+
+            <a href="{{ url_for('login') }}"
+               class="login-btn">
+
+                Login
+
+            </a>
+
+            <a href="{{ url_for('register') }}"
+               class="register-btn">
+
+                Register
+
+            </a>
 
         </div>
 
+    </nav>
 
-        <!-- Hero Image -->
+</header>
 
-        <div class="hero-image">
 
-            <img src="../static/images/bus.png" alt="Smart Bus">
+<!-- ===================================================== -->
+<!-- HERO SECTION -->
+<!-- ===================================================== -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <h1>
+            Smart Bus Stop Arrival Information Platform
+        </h1>
+
+
+        <p>
+
+            Travel smarter with AI-powered bus arrival prediction,
+            live tracking, weather updates, smart notifications,
+            QR code support and personalized travel assistance.
+
+        </p>
+
+
+        <div class="hero-buttons">
+
+            <a href="{{ url_for('tracking') }}"
+               class="primary-btn">
+
+                <i class="fa-solid fa-location-dot"></i>
+
+                Track Bus
+
+            </a>
+
+
+            <a href="{{ url_for('ai_prediction') }}"
+               class="secondary-btn">
+
+                <i class="fa-solid fa-robot"></i>
+
+                AI Prediction
+
+            </a>
 
         </div>
 
-    </section>
-
-    <!-- ========================= -->
-    <!-- Hero Section End -->
-    <!-- ========================= -->
+    </div>
 
 
-    <!-- ========================= -->
-<!-- Search Section Start -->
-<!-- ========================= -->
+    <!-- Hero Image -->
+
+    <div class="hero-image">
+
+        <img src="{{ url_for('static', filename='images/bus.png') }}"
+             alt="Smart Bus">
+
+    </div>
+
+</section>
+
+
+<!-- ===================================================== -->
+<!-- FIND YOUR BUS -->
+<!-- ===================================================== -->
 
 <section class="search-section">
 
     <div class="section-title">
 
-        <h2>Find Your Bus</h2>
+        <h2>
+            Find Your Bus
+        </h2>
 
         <p>
             Search buses and bus stops quickly using our smart search system.
@@ -151,7 +194,9 @@
 
     </div>
 
+
     <div class="search-container">
+
 
         <!-- Search Bus -->
 
@@ -159,10 +204,13 @@
 
             <i class="fa-solid fa-bus fa-3x"></i>
 
-            <h3>Search Bus</h3>
+            <h3>
+                Search Bus
+            </h3>
 
-            <input type="text"
-                   placeholder="Enter Bus Number">
+            <input
+                type="text"
+                placeholder="Enter Bus Number">
 
             <button class="search-btn">
 
@@ -172,16 +220,20 @@
 
         </div>
 
+
         <!-- Search Bus Stop -->
 
         <div class="search-card">
 
             <i class="fa-solid fa-location-dot fa-3x"></i>
 
-            <h3>Search Bus Stop</h3>
+            <h3>
+                Search Bus Stop
+            </h3>
 
-            <input type="text"
-                   placeholder="Enter Bus Stop Name">
+            <input
+                type="text"
+                placeholder="Enter Bus Stop Name">
 
             <button class="search-btn">
 
@@ -195,18 +247,18 @@
 
 </section>
 
-<!-- ========================= -->
-<!-- Search Section End -->
 
-<!-- ========================= -->
-<!-- Features Section Start -->
-<!-- ========================= -->
+<!-- ===================================================== -->
+<!-- SMART FEATURES -->
+<!-- ===================================================== -->
 
-<section class="features">
+<section class="features-section">
 
     <div class="section-title">
 
-        <h2>Our Smart Features</h2>
+        <h2>
+            Our Smart Features
+        </h2>
 
         <p>
             Experience intelligent transportation with modern technology.
@@ -214,13 +266,17 @@
 
     </div>
 
+
     <div class="feature-container">
+
 
         <div class="feature-card">
 
             <i class="fa-solid fa-robot fa-3x"></i>
 
-            <h3>AI Personalized Travel Assistant</h3>
+            <h3>
+                AI Personalized Travel Assistant
+            </h3>
 
             <p>
                 Get personalized travel suggestions using Artificial Intelligence.
@@ -228,11 +284,14 @@
 
         </div>
 
+
         <div class="feature-card">
 
             <i class="fa-solid fa-cloud-sun fa-3x"></i>
 
-            <h3>Weather Information</h3>
+            <h3>
+                Weather Information
+            </h3>
 
             <p>
                 Check weather updates before starting your journey.
@@ -240,11 +299,14 @@
 
         </div>
 
+
         <div class="feature-card">
 
             <i class="fa-solid fa-bell fa-3x"></i>
 
-            <h3>Smart Notifications</h3>
+            <h3>
+                Smart Notifications
+            </h3>
 
             <p>
                 Receive instant notifications about buses and delays.
@@ -252,11 +314,14 @@
 
         </div>
 
+
         <div class="feature-card">
 
             <i class="fa-solid fa-qrcode fa-3x"></i>
 
-            <h3>QR Code</h3>
+            <h3>
+                QR Code
+            </h3>
 
             <p>
                 Scan QR codes at bus stops for quick information.
@@ -264,11 +329,14 @@
 
         </div>
 
+
         <div class="feature-card">
 
             <i class="fa-solid fa-phone-volume fa-3x"></i>
 
-            <h3>Emergency Contact</h3>
+            <h3>
+                Emergency Contact
+            </h3>
 
             <p>
                 Access emergency contact numbers during your travel.
@@ -276,11 +344,14 @@
 
         </div>
 
+
         <div class="feature-card">
 
             <i class="fa-solid fa-heart fa-3x"></i>
 
-            <h3>Favorite Routes</h3>
+            <h3>
+                Favorite Routes
+            </h3>
 
             <p>
                 Save your favorite routes for faster access.
@@ -292,12 +363,10 @@
 
 </section>
 
-<!-- ========================= -->
-<!-- Features Section End -->
 
-<!-- ========================= -->
-<!-- AI Travel Assistant Start -->
-<!-- ========================= -->
+<!-- ===================================================== -->
+<!-- AI PREDICTION -->
+<!-- ===================================================== -->
 
 <section class="ai-section">
 
@@ -305,7 +374,10 @@
 
         <div class="ai-content">
 
-            <h2>AI Personalized Travel Assistant</h2>
+            <h2>
+                AI Personalized Travel Assistant
+            </h2>
+
 
             <p>
 
@@ -315,6 +387,7 @@
                 fastest route and ideal departure time.
 
             </p>
+
 
             <ul class="ai-list">
 
@@ -340,7 +413,9 @@
 
             </ul>
 
-            <a href="ai_prediction.html" class="primary-btn">
+
+            <a href="{{ url_for('ai_prediction') }}"
+               class="primary-btn">
 
                 Try AI Assistant
 
@@ -351,7 +426,7 @@
 
         <div class="ai-image">
 
-            <img src="../static/images/hero.jpg"
+            <img src="{{ url_for('static', filename='images/hero.jpg') }}"
                  alt="AI Assistant">
 
         </div>
@@ -360,26 +435,30 @@
 
 </section>
 
-<!-- ========================= -->
-<!-- AI Travel Assistant End -->
 
-<!-- ========================= -->
-<!-- Weather Section Start -->
-<!-- ========================= -->
+<!-- ===================================================== -->
+<!-- WEATHER -->
+<!-- ===================================================== -->
 
 <section class="weather-section">
 
     <div class="weather-container">
 
+
         <div class="weather-image">
 
-            <img src="../static/images/weather.png" alt="Weather">
+            <img src="{{ url_for('static', filename='images/weather.png') }}"
+                 alt="Weather">
 
         </div>
 
+
         <div class="weather-content">
 
-            <h2>Weather Information</h2>
+            <h2>
+                Weather Information
+            </h2>
+
 
             <p>
 
@@ -389,19 +468,38 @@
 
             </p>
 
+
             <div class="weather-card">
 
-                <h3>Today's Weather</h3>
+                <h3>
+                    Today's Weather
+                </h3>
 
-                <p>🌤 Temperature : 30°C</p>
+                <p>
+                    🌤 Temperature : 30°C
+                </p>
 
-                <p>💧 Humidity : 65%</p>
+                <p>
+                    💧 Humidity : 65%
+                </p>
 
-                <p>🌬 Wind Speed : 12 km/h</p>
+                <p>
+                    🌬 Wind Speed : 12 km/h
+                </p>
 
-                <p>☁ Condition : Partly Cloudy</p>
+                <p>
+                    ☁ Condition : Partly Cloudy
+                </p>
 
             </div>
+
+
+            <a href="{{ url_for('weather') }}"
+               class="primary-btn">
+
+                View Weather
+
+            </a>
 
         </div>
 
@@ -409,13 +507,10 @@
 
 </section>
 
-<!-- ========================= -->
-<!-- Weather Section End -->
 
-
-<!-- ========================= -->
-<!-- Smart Notifications Start -->
-<!-- ========================= -->
+<!-- ===================================================== -->
+<!-- SMART NOTIFICATIONS -->
+<!-- ===================================================== -->
 
 <section class="notification-section">
 
@@ -423,7 +518,10 @@
 
         <div class="notification-content">
 
-            <h2>Smart Notifications</h2>
+            <h2>
+                Smart Notifications
+            </h2>
+
 
             <p>
 
@@ -432,6 +530,7 @@
                 alerts directly through our smart notification system.
 
             </p>
+
 
             <ul class="notification-list">
 
@@ -457,13 +556,16 @@
 
             </ul>
 
-            <a href="notifications.html" class="primary-btn">
+
+            <a href="notifications.html"
+               class="primary-btn">
 
                 View Notifications
 
             </a>
 
         </div>
+
 
         <div class="notification-image">
 
@@ -475,26 +577,30 @@
 
 </section>
 
-<!-- ========================= -->
-<!-- Smart Notifications End -->
 
-<!-- ========================= -->
-<!-- QR Code Section Start -->
-<!-- ========================= -->
+<!-- ===================================================== -->
+<!-- QR CODE -->
+<!-- ===================================================== -->
 
 <section class="qr-section">
 
     <div class="qr-container">
 
+
         <div class="qr-image">
 
-            <img src="../static/images/qr.png" alt="QR Code">
+            <img src="{{ url_for('static', filename='images/qr.png') }}"
+                 alt="QR Code">
 
         </div>
 
+
         <div class="qr-content">
 
-            <h2>QR Code</h2>
+            <h2>
+                QR Code
+            </h2>
+
 
             <p>
 
@@ -503,6 +609,7 @@
                 and stop information without downloading any app.
 
             </p>
+
 
             <ul class="qr-list">
 
@@ -528,7 +635,9 @@
 
             </ul>
 
-            <a href="qr_code.html" class="primary-btn">
+
+            <a href="qr_code.html"
+               class="primary-btn">
 
                 Scan QR Code
 
@@ -540,21 +649,22 @@
 
 </section>
 
-<!-- ========================= -->
-<!-- QR Code Section End -->
 
-
-<!-- ========================= -->
-<!-- Emergency Contact Start -->
-<!-- ========================= -->
+<!-- ===================================================== -->
+<!-- EMERGENCY CONTACT -->
+<!-- ===================================================== -->
 
 <section class="emergency-section">
 
     <div class="emergency-container">
 
+
         <div class="emergency-content">
 
-            <h2>Emergency Contact</h2>
+            <h2>
+                Emergency Contact
+            </h2>
+
 
             <p>
 
@@ -563,6 +673,7 @@
                 immediate assistance and support.
 
             </p>
+
 
             <ul class="emergency-list">
 
@@ -588,13 +699,16 @@
 
             </ul>
 
-            <a href="emergency.html" class="primary-btn">
+
+            <a href="emergency.html"
+               class="primary-btn">
 
                 View Emergency Contacts
 
             </a>
 
         </div>
+
 
         <div class="emergency-image">
 
@@ -606,16 +720,15 @@
 
 </section>
 
-<!-- ========================= -->
-<!-- Emergency Contact End -->
 
-<!-- ========================= -->
-<!-- Favorite Routes Start -->
-<!-- ========================= -->
+<!-- ===================================================== -->
+<!-- FAVORITE ROUTES -->
+<!-- ===================================================== -->
 
 <section class="favorite-section">
 
     <div class="favorite-container">
+
 
         <div class="favorite-image">
 
@@ -623,9 +736,13 @@
 
         </div>
 
+
         <div class="favorite-content">
 
-            <h2>Favorite Routes</h2>
+            <h2>
+                Favorite Routes
+            </h2>
+
 
             <p>
 
@@ -634,6 +751,7 @@
                 searching every time.
 
             </p>
+
 
             <ul class="favorite-list">
 
@@ -659,7 +777,9 @@
 
             </ul>
 
-            <a href="favorites.html" class="primary-btn">
+
+            <a href="favorites.html"
+               class="primary-btn">
 
                 View Favorite Routes
 
@@ -671,20 +791,22 @@
 
 </section>
 
-<!-- ========================= -->
-<!-- Favorite Routes End -->
 
-<!-- ========================= -->
-<!-- Feedback Section Start -->
-<!-- ========================= -->
+<!-- ===================================================== -->
+<!-- FEEDBACK -->
+<!-- ===================================================== -->
 
 <section class="feedback-section">
 
     <div class="feedback-container">
 
+
         <div class="feedback-content">
 
-            <h2>Feedback</h2>
+            <h2>
+                Feedback
+            </h2>
+
 
             <p>
 
@@ -694,23 +816,30 @@
 
             </p>
 
+
             <form class="feedback-form">
 
-                <input type="text"
-                       placeholder="Enter Your Name"
-                       required>
+                <input
+                    type="text"
+                    placeholder="Enter Your Name"
+                    required>
 
-                <input type="email"
-                       placeholder="Enter Your Email"
-                       required>
+
+                <input
+                    type="email"
+                    placeholder="Enter Your Email"
+                    required>
+
 
                 <textarea
                     rows="5"
                     placeholder="Write Your Feedback..."
                     required></textarea>
 
-                <button type="submit"
-                        class="primary-btn">
+
+                <button
+                    type="submit"
+                    class="primary-btn">
 
                     Submit Feedback
 
@@ -719,6 +848,7 @@
             </form>
 
         </div>
+
 
         <div class="feedback-image">
 
@@ -730,22 +860,24 @@
 
 </section>
 
-<!-- ========================= -->
-<!-- Feedback Section End -->
 
-<!-- ========================= -->
-<!-- Footer Start -->
-<!-- ========================= -->
+<!-- ===================================================== -->
+<!-- FOOTER -->
+<!-- ===================================================== -->
 
-<footer class="footer">
+<footer>
 
     <div class="footer-container">
+
 
         <!-- Project Information -->
 
         <div class="footer-box">
 
-            <h3>SmartBus</h3>
+            <h3>
+                SmartBus
+            </h3>
+
 
             <p>
 
@@ -757,41 +889,67 @@
 
         </div>
 
+
         <!-- Quick Links -->
 
         <div class="footer-box">
 
-            <h3>Quick Links</h3>
+            <h3>
+                Quick Links
+            </h3>
+
 
             <ul>
 
-                <li><a href="index.html">Home</a></li>
+                <li>
+                    <a href="{{ url_for('home') }}">
+                        Home
+                    </a>
+                </li>
 
-                <li><a href="tracking.html">Live Tracking</a></li>
+                <li>
+                    <a href="{{ url_for('tracking') }}">
+                        Live Tracking
+                    </a>
+                </li>
 
-                <li><a href="routes.html">Routes</a></li>
+                <li>
+                    <a href="{{ url_for('routes') }}">
+                        Routes
+                    </a>
+                </li>
 
-                <li><a href="contact.html">Contact</a></li>
+                <li>
+                    <a href="contact.html">
+                        Contact
+                    </a>
+                </li>
 
             </ul>
 
         </div>
 
+
         <!-- Contact -->
 
         <div class="footer-box">
 
-            <h3>Contact</h3>
+            <h3>
+                Contact
+            </h3>
+
 
             <p>
                 <i class="fa-solid fa-location-dot"></i>
                 Chennai, Tamil Nadu
             </p>
 
+
             <p>
                 <i class="fa-solid fa-phone"></i>
                 +91 98765 43210
             </p>
+
 
             <p>
                 <i class="fa-solid fa-envelope"></i>
@@ -800,25 +958,42 @@
 
         </div>
 
+
         <!-- Social Media -->
 
         <div class="footer-box">
 
-            <h3>Follow Us</h3>
+            <h3>
+                Follow Us
+            </h3>
 
-            <a href="#"><i class="fa-brands fa-facebook"></i></a>
 
-            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#">
+                <i class="fa-brands fa-facebook"></i>
+            </a>
 
-            <a href="#"><i class="fa-brands fa-twitter"></i></a>
 
-            <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="#">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+
+
+            <a href="#">
+                <i class="fa-brands fa-twitter"></i>
+            </a>
+
+
+            <a href="#">
+                <i class="fa-brands fa-linkedin"></i>
+            </a>
 
         </div>
 
     </div>
 
+
     <hr>
+
 
     <div class="footer-bottom">
 
@@ -833,8 +1008,7 @@
 
 </footer>
 
-<!-- ========================= -->
-<!-- Footer End -->
+
 </body>
 
 </html>

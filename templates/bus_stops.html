@@ -2,912 +2,166 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <title>Bus Stops - Smart Bus</title>
 
-    <title>Bus Stops | SmartBus</title>
-
-
-    <!-- Google Font -->
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
-
-
-    <!-- Font Awesome -->
-
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
-
-    <!-- Common CSS -->
-
-    <link
-        rel="stylesheet"
-        href="{{ url_for('static', filename='css/style.css') }}">
-
-
-    <!-- Bus Stops CSS -->
-
-    <link
-        rel="stylesheet"
-        href="{{ url_for('static', filename='css/bus_stops.css') }}">
-
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/bus_stops.css') }}">
 </head>
-
 
 <body>
 
+    <header class="navbar">
 
-    <!-- ================================= -->
-    <!-- Navigation Bar -->
-    <!-- ================================= -->
+        <div class="logo">
+            🚌 Smart Bus
+        </div>
 
-    <header>
-
-        <nav class="navbar">
-
-
-            <!-- Logo -->
-
-            <div class="logo">
-
-                <i class="fa-solid fa-bus"></i>
-
-                <span>SmartBus</span>
-
-            </div>
-
-
-            <!-- Navigation Links -->
-
-            <ul class="nav-links">
-
-                <li>
-                    <a href="{{ url_for('home') }}">
-                        Home
-                    </a>
-                </li>
-
-
-                <li>
-                    <a href="{{ url_for('routes') }}">
-                        Routes
-                    </a>
-                </li>
-
-
-                <li>
-                    <a href="{{ url_for('bus_stops') }}"
-                       class="active">
-
-                        Bus Stops
-
-                    </a>
-                </li>
-
-
-                <li>
-                    <a href="{{ url_for('tracking') }}">
-
-                        Live Tracking
-
-                    </a>
-                </li>
-
-
-                <li>
-                    <a href="{{ url_for('ai_prediction') }}">
-
-                        AI Prediction
-
-                    </a>
-                </li>
-
-
-                <li>
-                    <a href="{{ url_for('weather') }}">
-
-                        Weather
-
-                    </a>
-                </li>
-
-
-                <li>
-                    <a href="{{ url_for('contact') }}">
-
-                        Contact
-
-                    </a>
-                </li>
-
-            </ul>
-
-
-            <!-- Login / Register -->
-
-            <div class="nav-buttons">
-
-                <a href="{{ url_for('login') }}"
-                   class="login-btn">
-
-                    Login
-
-                </a>
-
-
-                <a href="{{ url_for('register') }}"
-                   class="register-btn">
-
-                    Register
-
-                </a>
-
-            </div>
-
+        <nav>
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('routes') }}">Routes</a>
+            <a href="{{ url_for('bus_stops') }}" class="active">
+                Bus Stops
+            </a>
+            <a href="{{ url_for('tracking') }}">
+                Live Tracking
+            </a>
         </nav>
 
     </header>
 
 
-    <!-- ================================= -->
-    <!-- Hero Section -->
-    <!-- ================================= -->
+    <main class="bus-stop-page">
 
-    <section class="stops-hero">
+        <section class="page-heading">
 
-        <div class="hero-content">
-
-            <i class="fa-solid fa-location-dot"></i>
-
-            <h1>
-                Find Your Bus Stop
-            </h1>
+            <h1>Bus Stops</h1>
 
             <p>
-                Search for a bus stop and discover
-                available buses, arrival times and routes.
+                Search and select your bus stop
+                to view available information.
             </p>
 
-        </div>
-
-    </section>
+        </section>
 
 
-    <!-- ================================= -->
-    <!-- Search Section -->
-    <!-- ================================= -->
-
-    <section class="search-section">
-
-        <div class="section-title">
-
-            <h2>
-                Search Bus Stop
-            </h2>
-
-            <p>
-                Enter a bus stop name to find available buses.
-            </p>
-
-        </div>
-
+        <!-- Search -->
 
         <div class="search-box">
 
             <input
                 type="text"
                 id="stopSearch"
-                placeholder="Enter bus stop name...">
-
-
-            <button onclick="searchStops()">
-
-                <i class="fa-solid fa-magnifying-glass"></i>
-
-                Search
-
-            </button>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================================= -->
-    <!-- Popular Bus Stops -->
-    <!-- ================================= -->
-
-    <section class="stops-section">
-
-        <div class="section-title">
-
-            <h2>
-                Popular Bus Stops
-            </h2>
-
-            <p>
-                Select a bus stop to view bus information.
-            </p>
+                placeholder="Search bus stop...">
 
         </div>
 
 
-        <div class="stops-grid">
+        <!-- Bus Stops -->
 
+        <section class="stops-container">
 
-            <!-- Chennai Central -->
+            {% if stops %}
 
-            <div class="stop-card">
+                {% for stop in stops %}
 
-                <div class="stop-icon">
+                <div class="stop-card">
 
-                    <i class="fa-solid fa-location-dot"></i>
+                    <div class="stop-icon">
+                        🚌
+                    </div>
 
-                </div>
+                    <div class="stop-info">
 
+                        <h2>
+                            {{ stop.stop_name }}
+                        </h2>
 
-                <h3>
-                    Chennai Central
-                </h3>
+                        <p>
+                            <strong>City:</strong>
+                            {{ stop.city }}
+                        </p>
 
+                        <p>
+                            <strong>Location:</strong>
+                            {{ stop.location }}
+                        </p>
 
-                <p>
-                    Central Railway Station
-                </p>
+                        <p>
+                            <strong>Route:</strong>
+                            {{ stop.route }}
+                        </p>
 
+                    </div>
 
-                <div class="stop-info">
+                    <a
+                        href="{{ url_for('buses') }}"
+                        class="view-btn">
 
-                    <span>
+                        View Buses
 
-                        <i class="fa-solid fa-bus"></i>
-
-                        12 Buses
-
-                    </span>
-
-
-                    <span>
-
-                        <i class="fa-solid fa-clock"></i>
-
-                        5-15 min
-
-                    </span>
-
-                </div>
-
-
-                <button
-                    class="view-stop-btn"
-                    onclick="showStopInfo('Chennai Central')">
-
-                    View Bus Information
-
-                </button>
-
-            </div>
-
-
-            <!-- Guindy -->
-
-            <div class="stop-card">
-
-                <div class="stop-icon">
-
-                    <i class="fa-solid fa-location-dot"></i>
+                    </a>
 
                 </div>
 
+                {% endfor %}
 
-                <h3>
-                    Guindy
-                </h3>
+            {% else %}
 
+                <div class="no-stops">
 
-                <p>
-                    Guindy Bus Terminus
-                </p>
+                    <h2>No bus stops available</h2>
 
-
-                <div class="stop-info">
-
-                    <span>
-
-                        <i class="fa-solid fa-bus"></i>
-
-                        9 Buses
-
-                    </span>
-
-
-                    <span>
-
-                        <i class="fa-solid fa-clock"></i>
-
-                        8-18 min
-
-                    </span>
+                    <p>
+                        Bus stop information is currently unavailable.
+                    </p>
 
                 </div>
 
+            {% endif %}
 
-                <button
-                    class="view-stop-btn"
-                    onclick="showStopInfo('Guindy')">
+        </section>
 
-                    View Bus Information
+    </main>
 
-                </button>
 
-            </div>
+    <footer>
 
-
-            <!-- Tambaram -->
-
-            <div class="stop-card">
-
-                <div class="stop-icon">
-
-                    <i class="fa-solid fa-location-dot"></i>
-
-                </div>
-
-
-                <h3>
-                    Tambaram
-                </h3>
-
-
-                <p>
-                    Tambaram Bus Stand
-                </p>
-
-
-                <div class="stop-info">
-
-                    <span>
-
-                        <i class="fa-solid fa-bus"></i>
-
-                        15 Buses
-
-                    </span>
-
-
-                    <span>
-
-                        <i class="fa-solid fa-clock"></i>
-
-                        5-12 min
-
-                    </span>
-
-                </div>
-
-
-                <button
-                    class="view-stop-btn"
-                    onclick="showStopInfo('Tambaram')">
-
-                    View Bus Information
-
-                </button>
-
-            </div>
-
-
-            <!-- Adyar -->
-
-            <div class="stop-card">
-
-                <div class="stop-icon">
-
-                    <i class="fa-solid fa-location-dot"></i>
-
-                </div>
-
-
-                <h3>
-                    Adyar
-                </h3>
-
-
-                <p>
-                    Adyar Depot
-                </p>
-
-
-                <div class="stop-info">
-
-                    <span>
-
-                        <i class="fa-solid fa-bus"></i>
-
-                        10 Buses
-
-                    </span>
-
-
-                    <span>
-
-                        <i class="fa-solid fa-clock"></i>
-
-                        7-15 min
-
-                    </span>
-
-                </div>
-
-
-                <button
-                    class="view-stop-btn"
-                    onclick="showStopInfo('Adyar')">
-
-                    View Bus Information
-
-                </button>
-
-            </div>
-
-
-            <!-- Velachery -->
-
-            <div class="stop-card">
-
-                <div class="stop-icon">
-
-                    <i class="fa-solid fa-location-dot"></i>
-
-                </div>
-
-
-                <h3>
-                    Velachery
-                </h3>
-
-
-                <p>
-                    Velachery Bus Stop
-                </p>
-
-
-                <div class="stop-info">
-
-                    <span>
-
-                        <i class="fa-solid fa-bus"></i>
-
-                        8 Buses
-
-                    </span>
-
-
-                    <span>
-
-                        <i class="fa-solid fa-clock"></i>
-
-                        10-20 min
-
-                    </span>
-
-                </div>
-
-
-                <button
-                    class="view-stop-btn"
-                    onclick="showStopInfo('Velachery')">
-
-                    View Bus Information
-
-                </button>
-
-            </div>
-
-
-            <!-- Broadway -->
-
-            <div class="stop-card">
-
-                <div class="stop-icon">
-
-                    <i class="fa-solid fa-location-dot"></i>
-
-                </div>
-
-
-                <h3>
-                    Broadway
-                </h3>
-
-
-                <p>
-                    Broadway Bus Terminal
-                </p>
-
-
-                <div class="stop-info">
-
-                    <span>
-
-                        <i class="fa-solid fa-bus"></i>
-
-                        14 Buses
-
-                    </span>
-
-
-                    <span>
-
-                        <i class="fa-solid fa-clock"></i>
-
-                        5-10 min
-
-                    </span>
-
-                </div>
-
-
-                <button
-                    class="view-stop-btn"
-                    onclick="showStopInfo('Broadway')">
-
-                    View Bus Information
-
-                </button>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================================= -->
-    <!-- Selected Stop -->
-    <!-- ================================= -->
-
-    <section class="selected-section"
-             id="selectedStopSection">
-
-
-        <div class="section-title">
-
-            <h2>
-                Selected Bus Stop
-            </h2>
-
-
-            <p id="selectedStopName">
-
-                Select a bus stop to view information.
-
-            </p>
-
-        </div>
-
-
-        <div class="bus-information-card">
-
-
-            <div class="bus-info-header">
-
-                <div>
-
-                    <span class="info-label">
-                        Bus Stop
-                    </span>
-
-
-                    <h2 id="infoStopName">
-                        Select a Stop
-                    </h2>
-
-                </div>
-
-
-                <span class="live-status">
-
-                    <span class="status-dot"></span>
-
-                    Live Information
-
-                </span>
-
-            </div>
-
-
-            <!-- Bus 101 -->
-
-            <div class="bus-arrival-row">
-
-                <div class="bus-number">
-
-                    <i class="fa-solid fa-bus"></i>
-
-                    <strong>
-                        101
-                    </strong>
-
-                </div>
-
-
-                <div class="bus-route">
-
-                    Chennai Central → Tambaram
-
-                </div>
-
-
-                <div class="arrival-time">
-
-                    <strong>
-                        5 min
-                    </strong>
-
-                    <small>
-                        Arrival
-                    </small>
-
-                </div>
-
-
-                <a href="{{ url_for('tracking') }}"
-                   class="track-btn">
-
-                    Track
-
-                </a>
-
-            </div>
-
-
-            <!-- Bus 21G -->
-
-            <div class="bus-arrival-row">
-
-                <div class="bus-number">
-
-                    <i class="fa-solid fa-bus"></i>
-
-                    <strong>
-                        21G
-                    </strong>
-
-                </div>
-
-
-                <div class="bus-route">
-
-                    Broadway → Guindy
-
-                </div>
-
-
-                <div class="arrival-time">
-
-                    <strong>
-                        8 min
-                    </strong>
-
-                    <small>
-                        Arrival
-                    </small>
-
-                </div>
-
-
-                <a href="{{ url_for('tracking') }}"
-                   class="track-btn">
-
-                    Track
-
-                </a>
-
-            </div>
-
-
-            <!-- Bus 5C -->
-
-            <div class="bus-arrival-row">
-
-                <div class="bus-number">
-
-                    <i class="fa-solid fa-bus"></i>
-
-                    <strong>
-                        5C
-                    </strong>
-
-                </div>
-
-
-                <div class="bus-route">
-
-                    Thiruvanmiyur → Adyar
-
-                </div>
-
-
-                <div class="arrival-time">
-
-                    <strong>
-                        12 min
-                    </strong>
-
-                    <small>
-                        Arrival
-                    </small>
-
-                </div>
-
-
-                <a href="{{ url_for('tracking') }}"
-                   class="track-btn">
-
-                    Track
-
-                </a>
-
-            </div>
-
-
-            <!-- Routes Button -->
-
-            <div class="route-button-container">
-
-                <a href="{{ url_for('routes') }}"
-                   class="view-routes-btn">
-
-                    <i class="fa-solid fa-route"></i>
-
-                    View All Routes
-
-                </a>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================================= -->
-    <!-- Features -->
-    <!-- ================================= -->
-
-    <section class="stop-features">
-
-        <div class="section-title">
-
-            <h2>
-                Smart Bus Stop Features
-            </h2>
-
-            <p>
-                Get important information before your journey.
-            </p>
-
-        </div>
-
-
-        <div class="feature-grid">
-
-
-            <div class="feature-card">
-
-                <i class="fa-solid fa-clock"></i>
-
-                <h3>
-                    Arrival Time
-                </h3>
-
-                <p>
-                    Check estimated bus arrival time
-                    at your selected stop.
-                </p>
-
-            </div>
-
-
-            <div class="feature-card">
-
-                <i class="fa-solid fa-route"></i>
-
-                <h3>
-                    Route Information
-                </h3>
-
-                <p>
-                    View bus routes and destinations
-                    from your selected stop.
-                </p>
-
-            </div>
-
-
-            <div class="feature-card">
-
-                <i class="fa-solid fa-location-crosshairs"></i>
-
-                <h3>
-                    Live Tracking
-                </h3>
-
-                <p>
-                    Track your selected bus and
-                    monitor its journey.
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================================= -->
-    <!-- Footer -->
-    <!-- ================================= -->
-
-    <footer class="footer">
-
-        <div class="footer-content">
-
-            <h3>
-                SmartBus
-            </h3>
-
-            <p>
-                Smart Bus Stop Arrival Information Platform
-            </p>
-
-            <p>
-                © 2026 SmartBus. All Rights Reserved.
-            </p>
-
-        </div>
+        <p>
+            © 2026 Smart Bus Arrival Information Platform
+        </p>
 
     </footer>
 
 
-    <!-- ================================= -->
-    <!-- JavaScript -->
-    <!-- ================================= -->
+    <!-- Search Script -->
 
     <script>
 
-        function searchStops() {
+        const searchInput =
+            document.getElementById("stopSearch");
 
-            const input =
-                document.getElementById("stopSearch");
-
-            const searchValue =
-                input.value.toLowerCase().trim();
-
-            const cards =
-                document.querySelectorAll(".stop-card");
+        const cards =
+            document.querySelectorAll(".stop-card");
 
 
-            cards.forEach(function(card) {
+        searchInput.addEventListener("input", function () {
 
-                const cardText =
+            const searchText =
+                this.value.toLowerCase();
+
+
+            cards.forEach(function (card) {
+
+                const text =
                     card.textContent.toLowerCase();
 
 
-                if (
-                    searchValue === "" ||
-                    cardText.includes(searchValue)
-                ) {
+                if (text.includes(searchText)) {
 
-                    card.style.display = "block";
+                    card.style.display = "flex";
 
                 } else {
 
@@ -917,36 +171,9 @@
 
             });
 
-        }
-
-
-        function showStopInfo(stopName) {
-
-            document.getElementById(
-                "selectedStopName"
-            ).textContent =
-                "Bus information available for "
-                + stopName;
-
-
-            document.getElementById(
-                "infoStopName"
-            ).textContent =
-                stopName;
-
-
-            document.getElementById(
-                "selectedStopSection"
-            ).scrollIntoView({
-
-                behavior: "smooth"
-
-            });
-
-        }
+        });
 
     </script>
-
 
 </body>
 
