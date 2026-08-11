@@ -66,3 +66,22 @@ The application follows this overall flow:
                               │
                               ▼
                           Feedback
+
+
+
+
+                          
+Current Status
+✅ Flask Backend
+✅ MySQL Database Connection
+✅ User Registration
+✅ User Login
+✅ Home Page
+✅ Routes
+✅ Bus Stops
+✅ Weather Page
+✅ Live Tracking Page
+✅ AI Prediction Page
+✅ Contact Page
+✅ Responsive CSS Styling
+✅ GitHub Repository
