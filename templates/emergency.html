@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Emergency Contact - Smart Bus</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f5f7fb;
+            color: #333;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        nav {
+            background: #ffffff;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .logo {
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: 700;
+            color: #1565c0;
+        }
+
+        .logo i {
+            margin-right: 8px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 15px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #1565c0;
+        }
+
+        /* ================= EMERGENCY SECTION ================= */
+
+        .emergency-section {
+            padding: 70px 7%;
+            min-height: calc(100vh - 150px);
+        }
+
+        .emergency-header {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .emergency-header h1 {
+            font-size: 38px;
+            color: #c62828;
+            margin-bottom: 12px;
+        }
+
+        .emergency-header h1 i {
+            margin-right: 10px;
+        }
+
+        .emergency-header p {
+            color: #666;
+            font-size: 16px;
+            max-width: 700px;
+            margin: auto;
+            line-height: 1.7;
+        }
+
+        /* ================= EMERGENCY CARDS ================= */
+
+        .emergency-container {
+            max-width: 1100px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .emergency-card {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            transition: 0.3s;
+        }
+
+        .emergency-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+        }
+
+        .emergency-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .emergency-icon {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            background: #ffebee;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 28px;
+            color: #c62828;
+            flex-shrink: 0;
+        }
+
+        .emergency-info h2 {
+            font-size: 21px;
+            margin-bottom: 5px;
+            color: #222;
+        }
+
+        .emergency-info p {
+            font-size: 14px;
+            color: #777;
+        }
+
+        .phone-number {
+            font-size: 18px;
+            font-weight: 600;
+            color: #c62828;
+            margin-top: 5px;
+        }
+
+        /* ================= CALL BUTTON ================= */
+
+        .call-btn {
+            text-decoration: none;
+            background: #c62828;
+            color: white;
+            padding: 11px 18px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            white-space: nowrap;
+            transition: 0.3s;
+        }
+
+        .call-btn:hover {
+            background: #8e0000;
+        }
+
+        .call-btn i {
+            margin-right: 6px;
+        }
+
+        /* ================= SAFETY MESSAGE ================= */
+
+        .safety-box {
+            max-width: 1100px;
+            margin: 40px auto 0;
+            background: #fff3e0;
+            border-left: 5px solid #ef6c00;
+            padding: 22px 25px;
+            border-radius: 10px;
+        }
+
+        .safety-box h3 {
+            color: #e65100;
+            margin-bottom: 8px;
+        }
+
+        .safety-box p {
+            color: #666;
+            line-height: 1.7;
+            font-size: 14px;
+        }
+
+        /* ================= BACK BUTTON ================= */
+
+        .back-container {
+            text-align: center;
+            margin-top: 35px;
+        }
+
+        .back-btn {
+            display: inline-block;
+            text-decoration: none;
+            background: #1565c0;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: 500;
+        }
+
+        .back-btn:hover {
+            background: #0d47a1;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        footer p {
+            color: #d1d5db;
+            font-size: 14px;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 850px) {
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .emergency-container {
+                grid-template-columns: 1fr;
+            }
+
+            .emergency-card {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .call-btn {
+                text-align: center;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav>
+
+        <a href="{{ url_for('home') }}" class="logo">
+            <i class="fa-solid fa-bus"></i>
+            Smart Bus
+        </a>
+
+        <ul>
+
+            <li>
+                <a href="{{ url_for('home') }}">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('routes') }}">
+                    Routes
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('bus_stops') }}">
+                    Bus Stops
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('tracking') }}">
+                    Live Tracking
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('ai_prediction') }}">
+                    AI Prediction
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('weather') }}">
+                    Weather
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('contact') }}">
+                    Contact
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- ================= EMERGENCY SECTION ================= -->
+
+    <section class="emergency-section">
+
+        <div class="emergency-header">
+
+            <h1>
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                Emergency Contacts
+            </h1>
+
+            <p>
+                Quick access to important emergency services while
+                travelling with the Smart Bus platform.
+            </p>
+
+        </div>
+
+
+        <div class="emergency-container">
+
+            <!-- POLICE -->
+
+            <div class="emergency-card">
+
+                <div class="emergency-info">
+
+                    <div class="emergency-icon">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+
+                    <div>
+                        <h2>Police</h2>
+                        <p>For police assistance and emergencies</p>
+
+                        <div class="phone-number">
+                            100
+                        </div>
+                    </div>
+
+                </div>
+
+                <a href="tel:100" class="call-btn">
+                    <i class="fa-solid fa-phone"></i>
+                    Call
+                </a>
+
+            </div>
+
+
+            <!-- AMBULANCE -->
+
+            <div class="emergency-card">
+
+                <div class="emergency-info">
+
+                    <div class="emergency-icon">
+                        <i class="fa-solid fa-truck-medical"></i>
+                    </div>
+
+                    <div>
+                        <h2>Ambulance</h2>
+                        <p>For medical emergencies</p>
+
+                        <div class="phone-number">
+                            108
+                        </div>
+                    </div>
+
+                </div>
+
+                <a href="tel:108" class="call-btn">
+                    <i class="fa-solid fa-phone"></i>
+                    Call
+                </a>
+
+            </div>
+
+
+            <!-- FIRE SERVICE -->
+
+            <div class="emergency-card">
+
+                <div class="emergency-info">
+
+                    <div class="emergency-icon">
+                        <i class="fa-solid fa-fire-extinguisher"></i>
+                    </div>
+
+                    <div>
+                        <h2>Fire & Rescue</h2>
+                        <p>For fire and rescue emergencies</p>
+
+                        <div class="phone-number">
+                            101
+                        </div>
+                    </div>
+
+                </div>
+
+                <a href="tel:101" class="call-btn">
+                    <i class="fa-solid fa-phone"></i>
+                    Call
+                </a>
+
+            </div>
+
+
+            <!-- GENERAL EMERGENCY -->
+
+            <div class="emergency-card">
+
+                <div class="emergency-info">
+
+                    <div class="emergency-icon">
+                        <i class="fa-solid fa-phone-volume"></i>
+                    </div>
+
+                    <div>
+                        <h2>Emergency Helpline</h2>
+                        <p>Single emergency response number</p>
+
+                        <div class="phone-number">
+                            112
+                        </div>
+                    </div>
+
+                </div>
+
+                <a href="tel:112" class="call-btn">
+                    <i class="fa-solid fa-phone"></i>
+                    Call
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- SAFETY MESSAGE -->
+
+        <div class="safety-box">
+
+            <h3>
+                <i class="fa-solid fa-circle-info"></i>
+                Safety Information
+            </h3>
+
+            <p>
+                In an emergency, stay calm and provide your current
+                location and necessary details to the emergency service.
+                Use the appropriate emergency number for immediate assistance.
+            </p>
+
+        </div>
+
+
+        <!-- BACK BUTTON -->
+
+        <div class="back-container">
+
+            <a href="{{ url_for('home') }}" class="back-btn">
+                <i class="fa-solid fa-arrow-left"></i>
+                Back to Home
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+            © 2026 Smart Bus Stop Arrival Information Platform.
+            All Rights Reserved.
+        </p>
+
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Route Details</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+    <h1>Route Details</h1>
+
+    <div class="route-details">
+
+        <h2>{{ route.route_name }}</h2>
+
+        <p>
+            <strong>Route Number:</strong>
+            {{ route.route_number }}
+        </p>
+
+        <p>
+            <strong>Start Point:</strong>
+            {{ route.start_point }}
+        </p>
+
+        <p>
+            <strong>Destination:</strong>
+            {{ route.destination }}
+        </p>
+
+        <p>
+            <strong>Bus Type:</strong>
+            {{ route.bus_type }}
+        </p>
+
+        <p>
+            <strong>Stops:</strong>
+            {{ route.stops }}
+        </p>
+
+        <p>
+            <strong>Operating Time:</strong>
+            {{ route.operating_time }}
+        </p>
+
+        <p>
+            <strong>Frequency:</strong>
+            {{ route.frequency }}
+        </p>
+
+        <p>
+            <strong>Status:</strong>
+            {{ route.status }}
+        </p>
+
+        <a href="{{ url_for('routes') }}">
+            Back to Routes
+        </a>
+
+    </div>
+
+</body>
+
+</html>

@@ -83,9 +83,9 @@
                 </a>
             </li>
 
-            <!-- Contact route is not currently shown in your app.py -->
+            <!-- CONTACT -->
             <li>
-                <a href="contact.html">
+                <a href="{{ url_for('contact') }}">
                     Contact
                 </a>
             </li>
@@ -557,8 +557,8 @@
             </ul>
 
 
-            <a href="notifications.html"
-               class="primary-btn">
+            <a href="{{ url_for('notifications') }}"
+                class="primary-btn">
 
                 View Notifications
 
@@ -636,13 +636,9 @@
             </ul>
 
 
-            <a href="qr_code.html"
-               class="primary-btn">
-
+            <a href="{{ url_for('qr_code') }}" class="primary-btn">
                 Scan QR Code
-
             </a>
-
         </div>
 
     </div>
@@ -700,13 +696,9 @@
             </ul>
 
 
-            <a href="emergency.html"
-               class="primary-btn">
-
-                View Emergency Contacts
-
+            <a href="{{ url_for('emergency') }}" class="primary-btn">
+                Emergency Contact
             </a>
-
         </div>
 
 
@@ -920,7 +912,7 @@
                 </li>
 
                 <li>
-                    <a href="contact.html">
+                    <a href="{{ url_for('contact') }}">
                         Contact
                     </a>
                 </li>

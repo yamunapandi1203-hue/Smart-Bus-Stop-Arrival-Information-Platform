@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Smart Notifications - SmartBus</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Common CSS -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <style>
+
+        .notification-page {
+            padding: 60px 8%;
+            min-height: 70vh;
+        }
+
+        .notification-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .notification-title h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .notification-title p {
+            font-size: 16px;
+        }
+
+        .notification-container {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .notification-card {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            background: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .notification-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 25px;
+            background: #f0f4ff;
+        }
+
+        .notification-content {
+            flex: 1;
+        }
+
+        .notification-content h3 {
+            margin-bottom: 8px;
+        }
+
+        .notification-content p {
+            margin-bottom: 5px;
+        }
+
+        .notification-time {
+            font-size: 13px;
+            color: #777;
+        }
+
+        .notification-status {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .active-status {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .warning-status {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .danger-status {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            background: #333;
+            color: white;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+
+<!-- ===================================================== -->
+<!-- NAVIGATION -->
+<!-- ===================================================== -->
+
+<header>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            <i class="fa-solid fa-bus"></i>
+            <span>SmartBus</span>
+        </div>
+
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="{{ url_for('home') }}">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('routes') }}">
+                    Routes
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('bus_stops') }}">
+                    Bus Stops
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('tracking') }}">
+                    Live Tracking
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('ai_prediction') }}">
+                    AI Prediction
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('weather') }}">
+                    Weather
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('contact') }}">
+                    Contact
+                </a>
+            </li>
+
+        </ul>
+
+
+        <div class="nav-buttons">
+
+            <a href="{{ url_for('login') }}"
+               class="login-btn">
+
+                Login
+
+            </a>
+
+            <a href="{{ url_for('register') }}"
+               class="register-btn">
+
+                Register
+
+            </a>
+
+        </div>
+
+    </nav>
+
+</header>
+
+
+<!-- ===================================================== -->
+<!-- SMART NOTIFICATIONS -->
+<!-- ===================================================== -->
+
+<section class="notification-page">
+
+    <div class="notification-title">
+
+        <h1>
+            <i class="fa-solid fa-bell"></i>
+            Smart Notifications
+        </h1>
+
+        <p>
+            Stay updated with important bus and travel information.
+        </p>
+
+    </div>
+
+
+    <div class="notification-container">
+
+
+        <!-- BUS ARRIVAL -->
+
+        <div class="notification-card">
+
+            <div class="notification-icon">
+
+                <i class="fa-solid fa-bus"></i>
+
+            </div>
+
+            <div class="notification-content">
+
+                <h3>
+                    Bus Arrival Alert
+                </h3>
+
+                <p>
+                    Bus 101 is arriving at Chennai Central Bus Stop.
+                </p>
+
+                <span class="notification-time">
+                    Just now
+                </span>
+
+            </div>
+
+            <span class="notification-status active-status">
+                Active
+            </span>
+
+        </div>
+
+
+        <!-- DELAY -->
+
+        <div class="notification-card">
+
+            <div class="notification-icon">
+
+                <i class="fa-solid fa-clock"></i>
+
+            </div>
+
+            <div class="notification-content">
+
+                <h3>
+                    Delay Notification
+                </h3>
+
+                <p>
+                    Bus 21G is delayed by approximately 10 minutes.
+                </p>
+
+                <span class="notification-time">
+                    5 minutes ago
+                </span>
+
+            </div>
+
+            <span class="notification-status warning-status">
+                Delay
+            </span>
+
+        </div>
+
+
+        <!-- ROUTE CHANGE -->
+
+        <div class="notification-card">
+
+            <div class="notification-icon">
+
+                <i class="fa-solid fa-route"></i>
+
+            </div>
+
+            <div class="notification-content">
+
+                <h3>
+                    Route Change Update
+                </h3>
+
+                <p>
+                    Route 5C has been temporarily changed due to traffic.
+                </p>
+
+                <span class="notification-time">
+                    15 minutes ago
+                </span>
+
+            </div>
+
+            <span class="notification-status warning-status">
+                Update
+            </span>
+
+        </div>
+
+
+        <!-- EMERGENCY -->
+
+        <div class="notification-card">
+
+            <div class="notification-icon">
+
+                <i class="fa-solid fa-triangle-exclamation"></i>
+
+            </div>
+
+            <div class="notification-content">
+
+                <h3>
+                    Emergency Announcement
+                </h3>
+
+                <p>
+                    Please follow traffic instructions while travelling.
+                </p>
+
+                <span class="notification-time">
+                    30 minutes ago
+                </span>
+
+            </div>
+
+            <span class="notification-status danger-status">
+                Important
+            </span>
+
+        </div>
+
+
+        <a href="{{ url_for('home') }}"
+           class="back-btn">
+
+            <i class="fa-solid fa-arrow-left"></i>
+            Back to Home
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ===================================================== -->
+<!-- FOOTER -->
+<!-- ===================================================== -->
+
+<footer>
+
+    <div class="footer-container">
+
+        <div class="footer-box">
+
+            <h3>
+                SmartBus
+            </h3>
+
+            <p>
+                Smart Bus Stop Arrival Information Platform
+                provides intelligent bus information and
+                travel assistance.
+            </p>
+
+        </div>
+
+
+        <div class="footer-box">
+
+            <h3>
+                Quick Links
+            </h3>
+
+            <ul>
+
+                <li>
+                    <a href="{{ url_for('home') }}">
+                        Home
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ url_for('routes') }}">
+                        Routes
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ url_for('bus_stops') }}">
+                        Bus Stops
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ url_for('contact') }}">
+                        Contact
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <div class="footer-box">
+
+            <h3>
+                Contact
+            </h3>
+
+            <p>
+                <i class="fa-solid fa-location-dot"></i>
+                Chennai, Tamil Nadu
+            </p>
+
+            <p>
+                <i class="fa-solid fa-phone"></i>
+                +91 98765 43210
+            </p>
+
+            <p>
+                <i class="fa-solid fa-envelope"></i>
+                smartbus@gmail.com
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <hr>
+
+
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 Smart Bus Stop Arrival Information Platform.
+            All Rights Reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+</body>
+
+</html>

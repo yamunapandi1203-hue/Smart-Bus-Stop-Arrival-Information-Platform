@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Smart Bus - QR Code</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f5f7fb;
+            color: #333;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        nav {
+            background: #ffffff;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1565c0;
+            text-decoration: none;
+        }
+
+        .logo i {
+            margin-right: 8px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 15px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #1565c0;
+        }
+
+        /* ================= QR SECTION ================= */
+
+        .qr-page {
+            min-height: calc(100vh - 150px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 60px 20px;
+        }
+
+        .qr-container {
+            width: 100%;
+            max-width: 1000px;
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.10);
+        }
+
+        .qr-content {
+            flex: 1;
+        }
+
+        .qr-content h1 {
+            font-size: 38px;
+            color: #1565c0;
+            margin-bottom: 20px;
+        }
+
+        .qr-content h1 i {
+            margin-right: 10px;
+        }
+
+        .qr-content h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #222;
+        }
+
+        .qr-content p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .qr-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .qr-list li {
+            margin-bottom: 12px;
+            color: #444;
+        }
+
+        .qr-list i {
+            color: #1565c0;
+            margin-right: 10px;
+        }
+
+        /* ================= QR IMAGE ================= */
+
+        .qr-box {
+            width: 330px;
+            text-align: center;
+            padding: 30px;
+            border-radius: 18px;
+            background: #f8faff;
+            border: 1px solid #e2e8f0;
+        }
+
+        .qr-box h3 {
+            margin-bottom: 20px;
+            color: #222;
+        }
+
+        .qr-image {
+            width: 230px;
+            height: 230px;
+            object-fit: contain;
+            background: white;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .scan-text {
+            margin-top: 18px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* ================= BUTTON ================= */
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 25px;
+            background: #1565c0;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            background: #0d47a1;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        footer p {
+            font-size: 14px;
+            color: #d1d5db;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 850px) {
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .qr-container {
+                flex-direction: column;
+                text-align: center;
+                padding: 35px 20px;
+            }
+
+            .qr-list {
+                text-align: left;
+                display: inline-block;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav>
+
+        <a href="{{ url_for('home') }}" class="logo">
+            <i class="fa-solid fa-bus"></i>
+            Smart Bus
+        </a>
+
+        <ul>
+
+            <li>
+                <a href="{{ url_for('home') }}">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('routes') }}">
+                    Routes
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('bus_stops') }}">
+                    Bus Stops
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('tracking') }}">
+                    Live Tracking
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('ai_prediction') }}">
+                    AI Prediction
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('weather') }}">
+                    Weather
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('contact') }}">
+                    Contact
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- ================= QR CODE SECTION ================= -->
+
+    <section class="qr-page">
+
+        <div class="qr-container">
+
+            <!-- LEFT CONTENT -->
+
+            <div class="qr-content">
+
+                <h1>
+                    <i class="fa-solid fa-qrcode"></i>
+                    Smart Bus QR Code
+                </h1>
+
+                <h2>
+                    Scan & Access Smart Bus
+                </h2>
+
+                <p>
+                    Scan the QR code using your mobile phone
+                    to quickly access the Smart Bus Arrival
+                    Information Platform.
+                </p>
+
+                <p>
+                    Get quick access to bus routes, bus stops,
+                    live tracking, AI prediction, weather
+                    information and other smart features.
+                </p>
+
+                <ul class="qr-list">
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        View bus arrival information
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Search bus routes and bus stops
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Check live bus tracking
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Access AI prediction
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Check weather information
+                    </li>
+
+                </ul>
+
+                <a href="{{ url_for('home') }}" class="back-btn">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    Back to Home
+                </a>
+
+            </div>
+
+
+            <!-- RIGHT QR CODE -->
+
+            <div class="qr-box">
+
+                <h3>
+                    Scan this QR Code
+                </h3>
+
+                <img
+                    src="{{ url_for('static', filename='images/qr_code.png') }}"
+                    alt="Smart Bus QR Code"
+                    class="qr-image"
+                >
+
+                <p class="scan-text">
+                    Scan with your mobile camera
+                    to access Smart Bus.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+            © 2026 Smart Bus Stop Arrival Information Platform.
+            All Rights Reserved.
+        </p>
+
+    </footer>
+
+</body>
+</html>

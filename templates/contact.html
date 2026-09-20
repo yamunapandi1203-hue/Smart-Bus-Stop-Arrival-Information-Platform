@@ -10,69 +10,113 @@
 
     <title>Contact - SmartBus</title>
 
+    <!-- Google Font -->
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
 
+    <!-- Font Awesome -->
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
+    <!-- Common CSS -->
     <link rel="stylesheet"
           href="{{ url_for('static', filename='css/style.css') }}">
 
+    <!-- Contact CSS -->
     <link rel="stylesheet"
           href="{{ url_for('static', filename='css/contact.css') }}">
 
 </head>
 
+
 <body>
+
+
+<!-- ========================= -->
+<!-- NAVBAR -->
+<!-- ========================= -->
 
 <header>
 
     <nav class="navbar">
 
+        <!-- Logo -->
+
         <div class="logo">
+
             <i class="fa-solid fa-bus"></i>
+
             SmartBus
+
         </div>
+
+
+        <!-- Navigation -->
 
         <ul class="nav-links">
 
             <li>
-                <a href="{{ url_for('home') }}">Home</a>
+                <a href="{{ url_for('home') }}">
+                    Home
+                </a>
             </li>
 
             <li>
-                <a href="{{ url_for('routes') }}">Routes</a>
+                <a href="{{ url_for('routes') }}">
+                    Routes
+                </a>
             </li>
 
             <li>
-                <a href="{{ url_for('bus_stops') }}">Bus Stops</a>
+                <a href="{{ url_for('bus_stops') }}">
+                    Bus Stops
+                </a>
             </li>
 
             <li>
-                <a href="{{ url_for('tracking') }}">Live Tracking</a>
+                <a href="{{ url_for('tracking') }}">
+                    Live Tracking
+                </a>
             </li>
 
             <li>
-                <a href="{{ url_for('ai_prediction') }}">AI Prediction</a>
+                <a href="{{ url_for('ai_prediction') }}">
+                    AI Prediction
+                </a>
             </li>
 
             <li>
-                <a href="{{ url_for('weather') }}">Weather</a>
+                <a href="{{ url_for('weather') }}">
+                    Weather
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('contact') }}"
+                   class="active">
+                    Contact
+                </a>
             </li>
 
         </ul>
+
+
+        <!-- Login / Register -->
 
         <div class="nav-buttons">
 
             <a href="{{ url_for('login') }}"
                class="login-btn">
+
                 Login
+
             </a>
 
             <a href="{{ url_for('register') }}"
                class="register-btn">
+
                 Register
+
             </a>
 
         </div>
@@ -82,15 +126,28 @@
 </header>
 
 
+
+<!-- ========================= -->
+<!-- CONTACT PAGE -->
+<!-- ========================= -->
+
 <main class="contact-page">
+
 
     <div class="contact-box">
 
-        <i class="fa-solid fa-envelope"></i>
+
+        <!-- Envelope Icon -->
+
+        <i class="fa-solid fa-envelope contact-icon"></i>
+
+
+        <!-- Heading -->
 
         <h1>
             Contact SmartBus
         </h1>
+
 
         <p>
             Have questions or suggestions?
@@ -98,52 +155,89 @@
         </p>
 
 
+
+        <!-- ========================= -->
+        <!-- CONTACT INFORMATION -->
+        <!-- ========================= -->
+
         <div class="contact-info">
 
+
             <p>
+
                 <i class="fa-solid fa-location-dot"></i>
+
                 Chennai, Tamil Nadu
+
             </p>
 
+
             <p>
+
                 <i class="fa-solid fa-phone"></i>
+
                 +91 98765 43210
+
             </p>
 
+
             <p>
+
                 <i class="fa-solid fa-envelope"></i>
+
                 smartbus@gmail.com
+
             </p>
+
 
         </div>
 
 
-        <form>
+
+        <!-- ========================= -->
+        <!-- CONTACT FORM -->
+        <!-- ========================= -->
+
+        <form method="POST"
+              action="{{ url_for('contact') }}">
+
 
             <input
                 type="text"
+                name="name"
                 placeholder="Your Name"
                 required>
 
+
             <input
                 type="email"
+                name="email"
                 placeholder="Your Email"
                 required>
 
+
             <textarea
+                name="message"
                 rows="5"
                 placeholder="Your Message"
                 required></textarea>
 
+
             <button type="submit">
+
                 Send Message
+
             </button>
+
 
         </form>
 
+
     </div>
 
+
 </main>
+
 
 </body>
 

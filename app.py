@@ -104,67 +104,96 @@ def routes():
 
 
 # =========================================================
+# ROUTE DETAILS
+# =========================================================
+
+@app.route("/route-details/<route_number>")
+def route_details(route_number):
+
+    connection = get_connection()
+    cursor = connection.cursor(dictionary=True)
+
+    cursor.execute(
+        "SELECT * FROM routes WHERE route_number = %s",
+        (route_number,)
+    )
+
+    route = cursor.fetchone()
+
+    cursor.close()
+    connection.close()
+
+    if route is None:
+        return "Route not found"
+
+    return render_template(
+        "route_details.html",
+        route=route
+    )
+
+
+# =========================================================
 # BUS STOPS
 # =========================================================
 
-@app.route("/bus_stops")
+@app.route("/bus-stops")
 def bus_stops():
 
-    try:
-        connection = get_connection()
+    connection = get_connection()
+    cursor = connection.cursor(dictionary=True)
 
-        cursor = connection.cursor(dictionary=True)
+    cursor.execute("SELECT * FROM bus_stops")
 
-        cursor.execute("""
-            SELECT *
-            FROM bus_stops
-            ORDER BY id
-        """)
+    stops = cursor.fetchall()
 
-        stops = cursor.fetchall()
+    cursor.close()
+    connection.close()
 
-        cursor.close()
-        connection.close()
-
-        return render_template(
-            "bus_stops.html",
-            stops=stops
-        )
-
-    except Exception as error:
-        return f"Bus stops database error: {error}"
+    return render_template(
+        "bus_stops.html",
+        stops=stops
+    )
 
 
 # =========================================================
 # BUSES
 # =========================================================
 
-@app.route("/buses")
-def buses():
+@app.route("/buses/<int:stop_id>")
+def buses(stop_id):
 
-    try:
-        connection = get_connection()
+    connection = get_connection()
+    cursor = connection.cursor(dictionary=True)
 
-        cursor = connection.cursor(dictionary=True)
+    # Get selected bus stop
+    cursor.execute(
+        "SELECT * FROM bus_stops WHERE id = %s",
+        (stop_id,)
+    )
 
-        cursor.execute("""
-            SELECT *
-            FROM buses
-            ORDER BY id
-        """)
+    stop = cursor.fetchone()
 
-        buses = cursor.fetchall()
-
+    if stop is None:
         cursor.close()
         connection.close()
+        return "Bus stop not found"
 
-        return render_template(
-            "buses.html",
-            buses=buses
-        )
+    # Get buses for selected bus stop
+    cursor.execute(
+        "SELECT * FROM busess WHERE stop_id = %s",
+        (stop_id,)
+    )
 
-    except Exception as error:
-        return f"Bus database error: {error}"
+    buses = cursor.fetchall()
+
+    cursor.close()
+    connection.close()
+
+    return render_template(
+        "buses.html",
+        stop=stop,
+        buses=buses
+    )
 
 
 # =========================================================
@@ -192,12 +221,30 @@ def ai_prediction():
 @app.route("/weather")
 def weather():
     return render_template("weather.html")
+
+
 # =========================================================
 # CONTACT
 # =========================================================
 
-@app.route("/contact")
+@app.route("/contact", methods=["GET", "POST"])
 def contact():
+
+    if request.method == "POST":
+
+        name = request.form.get("name")
+        email = request.form.get("email")
+        message = request.form.get("message")
+
+        print("================================")
+        print("CONTACT MESSAGE")
+        print("Name:", name)
+        print("Email:", email)
+        print("Message:", message)
+        print("================================")
+
+        return "Thank you! Your message has been received."
+
     return render_template("contact.html")
 
 
@@ -209,8 +256,8 @@ def contact():
 def test_db():
 
     try:
-        connection = get_connection()
 
+        connection = get_connection()
         cursor = connection.cursor()
 
         cursor.execute("SELECT DATABASE()")
@@ -223,9 +270,36 @@ def test_db():
         return f"Connected database: {result[0]}"
 
     except Exception as error:
+
         return f"Database connection error: {error}"
 
 
+
+
+# =========================================================
+# SMART NOTIFICATIONS
+# =========================================================
+
+@app.route("/notifications")
+def notifications():
+    return render_template("notifications.html")
+
+# =========================================================
+# QR CODE
+# =========================================================
+
+
+@app.route("/qr-code")
+def qr_code():
+    return render_template("qr_code.html")
+# =========================================================
+# EMERGENCE
+# =========================================================
+
+
+@app.route("/emergency")
+def emergency():
+    return render_template("emergency.html")
 # =========================================================
 # RUN APPLICATION
 # =========================================================

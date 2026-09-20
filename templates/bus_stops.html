@@ -2,16 +2,25 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>Bus Stops - Smart Bus</title>
 
     <link rel="stylesheet"
           href="{{ url_for('static', filename='css/bus_stops.css') }}">
+
 </head>
 
 <body>
+
+
+    <!-- ========================= -->
+    <!-- NAVBAR -->
+    <!-- ========================= -->
 
     <header class="navbar">
 
@@ -20,24 +29,43 @@
         </div>
 
         <nav>
-            <a href="{{ url_for('home') }}">Home</a>
-            <a href="{{ url_for('routes') }}">Routes</a>
-            <a href="{{ url_for('bus_stops') }}" class="active">
+
+            <a href="{{ url_for('home') }}">
+                Home
+            </a>
+
+            <a href="{{ url_for('routes') }}">
+                Routes
+            </a>
+
+            <a href="{{ url_for('bus_stops') }}"
+               class="active">
                 Bus Stops
             </a>
+
             <a href="{{ url_for('tracking') }}">
                 Live Tracking
             </a>
+
         </nav>
 
     </header>
 
 
+    <!-- ========================= -->
+    <!-- MAIN CONTENT -->
+    <!-- ========================= -->
+
     <main class="bus-stop-page">
+
+
+        <!-- PAGE HEADING -->
 
         <section class="page-heading">
 
-            <h1>Bus Stops</h1>
+            <h1>
+                Bus Stops
+            </h1>
 
             <p>
                 Search and select your bus stop
@@ -47,7 +75,9 @@
         </section>
 
 
-        <!-- Search -->
+        <!-- ========================= -->
+        <!-- SEARCH -->
+        <!-- ========================= -->
 
         <div class="search-box">
 
@@ -59,7 +89,9 @@
         </div>
 
 
-        <!-- Bus Stops -->
+        <!-- ========================= -->
+        <!-- BUS STOPS -->
+        <!-- ========================= -->
 
         <section class="stops-container">
 
@@ -69,9 +101,15 @@
 
                 <div class="stop-card">
 
+
+                    <!-- BUS ICON -->
+
                     <div class="stop-icon">
                         🚌
                     </div>
+
+
+                    <!-- STOP INFORMATION -->
 
                     <div class="stop-info">
 
@@ -96,23 +134,32 @@
 
                     </div>
 
+
+                    <!-- VIEW BUSES -->
+
                     <a
-                        href="{{ url_for('buses') }}"
+                        href="{{ url_for('buses', stop_id=stop.id) }}"
                         class="view-btn">
 
                         View Buses
 
                     </a>
 
+
                 </div>
 
                 {% endfor %}
 
+
             {% else %}
+
+                <!-- NO BUS STOPS -->
 
                 <div class="no-stops">
 
-                    <h2>No bus stops available</h2>
+                    <h2>
+                        No bus stops available
+                    </h2>
 
                     <p>
                         Bus stop information is currently unavailable.
@@ -127,6 +174,10 @@
     </main>
 
 
+    <!-- ========================= -->
+    <!-- FOOTER -->
+    <!-- ========================= -->
+
     <footer>
 
         <p>
@@ -136,7 +187,9 @@
     </footer>
 
 
-    <!-- Search Script -->
+    <!-- ========================= -->
+    <!-- SEARCH SCRIPT -->
+    <!-- ========================= -->
 
     <script>
 
@@ -174,6 +227,7 @@
         });
 
     </script>
+
 
 </body>
 

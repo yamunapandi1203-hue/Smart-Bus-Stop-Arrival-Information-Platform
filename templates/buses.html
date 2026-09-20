@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Buses - Smart Bus</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/bus_stops.css') }}">
+
+</head>
+
+<body>
+
+
+    <!-- ========================= -->
+    <!-- NAVBAR -->
+    <!-- ========================= -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            🚌 Smart Bus
+        </div>
+
+        <nav>
+
+            <a href="{{ url_for('home') }}">
+                Home
+            </a>
+
+            <a href="{{ url_for('routes') }}">
+                Routes
+            </a>
+
+            <a href="{{ url_for('bus_stops') }}"
+               class="active">
+                Bus Stops
+            </a>
+
+            <a href="{{ url_for('tracking') }}">
+                Live Tracking
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- ========================= -->
+    <!-- MAIN CONTENT -->
+    <!-- ========================= -->
+
+    <main class="bus-stop-page">
+
+
+        <!-- PAGE HEADING -->
+
+        <section class="page-heading">
+
+            <h1>
+                Buses at {{ stop.stop_name }}
+            </h1>
+
+            <p>
+                Available buses at this bus stop
+            </p>
+
+        </section>
+
+
+        <!-- ========================= -->
+        <!-- BUS STOP INFORMATION -->
+        <!-- ========================= -->
+
+        <section class="stops-container">
+
+            <div class="stop-card">
+
+                <div class="stop-icon">
+                    📍
+                </div>
+
+                <div class="stop-info">
+
+                    <h2>
+                        {{ stop.stop_name }}
+                    </h2>
+
+                    <p>
+                        <strong>City:</strong>
+                        {{ stop.city }}
+                    </p>
+
+                    <p>
+                        <strong>Location:</strong>
+                        {{ stop.location }}
+                    </p>
+
+                    <p>
+                        <strong>Route:</strong>
+                        {{ stop.route }}
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- ========================= -->
+            <!-- AVAILABLE BUSES -->
+            <!-- ========================= -->
+
+            {% if buses %}
+
+                {% for bus in buses %}
+
+                <div class="stop-card">
+
+                    <div class="stop-icon">
+                        🚌
+                    </div>
+
+                    <div class="stop-info">
+
+                        <h2>
+                            Bus {{ bus.bus_number }}
+                        </h2>
+
+                        <p>
+                            <strong>Bus Name:</strong>
+                            {{ bus.bus_name }}
+                        </p>
+
+                        <p>
+                            <strong>Route:</strong>
+                            {{ bus.route }}
+                        </p>
+
+                        <p>
+                            <strong>Bus Type:</strong>
+                            {{ bus.bus_type }}
+                        </p>
+
+                        <p>
+                            <strong>Status:</strong>
+                            {{ bus.status }}
+                        </p>
+
+                    </div>
+
+                </div>
+
+                {% endfor %}
+
+            {% else %}
+
+                <!-- NO BUSES -->
+
+                <div class="no-stops">
+
+                    <h2>
+                        No buses available
+                    </h2>
+
+                    <p>
+                        No bus information is currently available
+                        for this bus stop.
+                    </p>
+
+                </div>
+
+            {% endif %}
+
+
+        </section>
+
+
+        <!-- ========================= -->
+        <!-- BACK BUTTON -->
+        <!-- ========================= -->
+
+        <div style="text-align: center; margin: 30px;">
+
+            <a href="{{ url_for('bus_stops') }}"
+               class="view-btn">
+
+                ← Back to Bus Stops
+
+            </a>
+
+        </div>
+
+
+    </main>
+
+
+    <!-- ========================= -->
+    <!-- FOOTER -->
+    <!-- ========================= -->
+
+    <footer>
+
+        <p>
+            © 2026 Smart Bus Arrival Information Platform
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>

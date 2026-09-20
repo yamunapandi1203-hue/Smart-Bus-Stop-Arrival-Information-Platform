@@ -109,3 +109,43 @@ img{
     max-width:100%;
 
 }
+
+/* ============================= */
+/* ROUTE DETAILS PAGE */
+/* ============================= */
+
+.route-details {
+    width: 80%;
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 30px;
+    border-radius: 15px;
+    background: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.route-details h2 {
+    margin-bottom: 25px;
+}
+
+.route-details p {
+    font-size: 18px;
+    margin: 15px 0;
+}
+
+.route-details ul {
+    margin: 10px 0 25px 20px;
+}
+
+.route-details li {
+    margin: 8px 0;
+    font-size: 17px;
+}
+
+.route-details a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 20px;
+    text-decoration: none;
+    border-radius: 8px;
+}
