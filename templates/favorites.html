@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Favorite Routes - Smart Bus</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f5f7fb;
+            color: #333;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        nav {
+            background: #ffffff;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .logo {
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: 700;
+            color: #1565c0;
+        }
+
+        .logo i {
+            margin-right: 8px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 15px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #1565c0;
+        }
+
+        /* ================= PAGE ================= */
+
+        .favorite-section {
+            min-height: calc(100vh - 150px);
+            padding: 70px 7%;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .page-header h1 {
+            font-size: 38px;
+            color: #1565c0;
+            margin-bottom: 12px;
+        }
+
+        .page-header h1 i {
+            margin-right: 10px;
+        }
+
+        .page-header p {
+            color: #666;
+            font-size: 16px;
+            max-width: 700px;
+            margin: auto;
+            line-height: 1.7;
+        }
+
+        /* ================= ROUTE CARDS ================= */
+
+        .favorite-container {
+            max-width: 1100px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .favorite-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 28px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            transition: 0.3s;
+        }
+
+        .favorite-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+        }
+
+        .route-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .route-number {
+            background: #e3f2fd;
+            color: #1565c0;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        .favorite-icon {
+            color: #e53935;
+            font-size: 22px;
+        }
+
+        .favorite-card h2 {
+            font-size: 21px;
+            color: #222;
+            margin-bottom: 18px;
+        }
+
+        .route-info {
+            margin-bottom: 20px;
+        }
+
+        .route-info p {
+            color: #666;
+            margin-bottom: 9px;
+            font-size: 14px;
+        }
+
+        .route-info i {
+            color: #1565c0;
+            width: 22px;
+        }
+
+        /* ================= BUTTON ================= */
+
+        .view-btn {
+            display: inline-block;
+            text-decoration: none;
+            background: #1565c0;
+            color: white;
+            padding: 11px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .view-btn:hover {
+            background: #0d47a1;
+        }
+
+        .view-btn i {
+            margin-right: 6px;
+        }
+
+        /* ================= INFO BOX ================= */
+
+        .info-box {
+            max-width: 1100px;
+            margin: 40px auto 0;
+            background: #e3f2fd;
+            border-left: 5px solid #1565c0;
+            padding: 22px 25px;
+            border-radius: 10px;
+        }
+
+        .info-box h3 {
+            color: #1565c0;
+            margin-bottom: 8px;
+        }
+
+        .info-box p {
+            color: #555;
+            line-height: 1.7;
+            font-size: 14px;
+        }
+
+        /* ================= BACK BUTTON ================= */
+
+        .back-container {
+            text-align: center;
+            margin-top: 35px;
+        }
+
+        .back-btn {
+            display: inline-block;
+            text-decoration: none;
+            background: #1565c0;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: 500;
+        }
+
+        .back-btn:hover {
+            background: #0d47a1;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        footer p {
+            color: #d1d5db;
+            font-size: 14px;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 850px) {
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .favorite-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav>
+
+        <a href="{{ url_for('home') }}" class="logo">
+            <i class="fa-solid fa-bus"></i>
+            Smart Bus
+        </a>
+
+        <ul>
+
+            <li>
+                <a href="{{ url_for('home') }}">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('routes') }}">
+                    Routes
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('bus_stops') }}">
+                    Bus Stops
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('tracking') }}">
+                    Live Tracking
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('ai_prediction') }}">
+                    AI Prediction
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('weather') }}">
+                    Weather
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('contact') }}">
+                    Contact
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- ================= FAVORITE ROUTES ================= -->
+
+    <section class="favorite-section">
+
+        <div class="page-header">
+
+            <h1>
+                <i class="fa-solid fa-heart"></i>
+                Favorite Routes
+            </h1>
+
+            <p>
+                Quickly access the bus routes you use most frequently.
+                Save your preferred routes for easier travel planning.
+            </p>
+
+        </div>
+
+
+        <div class="favorite-container">
+
+            <!-- ROUTE 101 -->
+
+            <div class="favorite-card">
+
+                <div class="route-top">
+
+                    <span class="route-number">
+                        Route 101
+                    </span>
+
+                    <i class="fa-solid fa-heart favorite-icon"></i>
+
+                </div>
+
+                <h2>
+                    Chennai Central → Tambaram
+                </h2>
+
+                <div class="route-info">
+
+                    <p>
+                        <i class="fa-solid fa-location-dot"></i>
+                        <strong>Start:</strong>
+                        Chennai Central
+                    </p>
+
+                    <p>
+                        <i class="fa-solid fa-location-dot"></i>
+                        <strong>Destination:</strong>
+                        Tambaram
+                    </p>
+
+                    <p>
+                        <i class="fa-solid fa-clock"></i>
+                        <strong>Operating Time:</strong>
+                        05:30 AM - 10:30 PM
+                    </p>
+
+                    <p>
+                        <i class="fa-solid fa-bus"></i>
+                        <strong>Frequency:</strong>
+                        Every 15 minutes
+                    </p>
+
+                </div>
+
+                <a href="{{ url_for('route_details', route_number='101') }}"
+                   class="view-btn">
+
+                    <i class="fa-solid fa-eye"></i>
+                    View Route
+
+                </a>
+
+            </div>
+
+
+            <!-- ROUTE 21G -->
+
+            <div class="favorite-card">
+
+                <div class="route-top">
+
+                    <span class="route-number">
+                        Route 21G
+                    </span>
+
+                    <i class="fa-solid fa-heart favorite-icon"></i>
+
+                </div>
+
+                <h2>
+                    Broadway → Guindy
+                </h2>
+
+                <div class="route-info">
+
+                    <p>
+                        <i class="fa-solid fa-location-dot"></i>
+                        <strong>Start:</strong>
+                        Broadway
+                    </p>
+
+                    <p>
+                        <i class="fa-solid fa-location-dot"></i>
+                        <strong>Destination:</strong>
+                        Guindy
+                    </p>
+
+                    <p>
+                        <i class="fa-solid fa-clock"></i>
+                        <strong>Operating Time:</strong>
+                        06:00 AM - 10:00 PM
+                    </p>
+
+                    <p>
+                        <i class="fa-solid fa-bus"></i>
+                        <strong>Frequency:</strong>
+                        Every 20 minutes
+                    </p>
+
+                </div>
+
+                <a href="{{ url_for('route_details', route_number='21G') }}"
+                   class="view-btn">
+
+                    <i class="fa-solid fa-eye"></i>
+                    View Route
+
+                </a>
+
+            </div>
+
+
+            <!-- ROUTE 5C -->
+
+            <div class="favorite-card">
+
+                <div class="route-top">
+
+                    <span class="route-number">
+                        Route 5C
+                    </span>
+
+                    <i class="fa-solid fa-heart favorite-icon"></i>
+
+                </div>
+
+                <h2>
+                    Thiruvanmiyur → Adyar
+                </h2>
+
+                <div class="route-info">
+
+                    <p>
+                        <i class="fa-solid fa-location-dot"></i>
+                        <strong>Start:</strong>
+                        Thiruvanmiyur
+                    </p>
+
+                    <p>
+                        <i class="fa-solid fa-location-dot"></i>
+                        <strong>Destination:</strong>
+                        Adyar
+                    </p>
+
+                    <p>
+                        <i class="fa-solid fa-clock"></i>
+                        <strong>Operating Time:</strong>
+                        05:45 AM - 09:45 PM
+                    </p>
+
+                    <p>
+                        <i class="fa-solid fa-bus"></i>
+                        <strong>Frequency:</strong>
+                        Every 15 minutes
+                    </p>
+
+                </div>
+
+                <a href="{{ url_for('route_details', route_number='5C') }}"
+                   class="view-btn">
+
+                    <i class="fa-solid fa-eye"></i>
+                    View Route
+
+                </a>
+
+            </div>
+
+
+            <!-- ROUTE 570 -->
+
+            <div class="favorite-card">
+
+                <div class="route-top">
+
+                    <span class="route-number">
+                        Route 570
+                    </span>
+
+                    <i class="fa-solid fa-heart favorite-icon"></i>
+
+                </div>
+
+                <h2>
+                    Chennai Central → Kelambakkam
+                </h2>
+
+                <div class="route-info">
+
+                    <p>
+                        <i class="fa-solid fa-location-dot"></i>
+                        <strong>Start:</strong>
+                        Chennai Central
+                    </p>
+
+                    <p>
+                        <i class="fa-solid fa-location-dot"></i>
+                        <strong>Destination:</strong>
+                        Kelambakkam
+                    </p>
+
+                    <p>
+                        <i class="fa-solid fa-clock"></i>
+                        <strong>Operating Time:</strong>
+                        05:00 AM - 10:00 PM
+                    </p>
+
+                    <p>
+                        <i class="fa-solid fa-bus"></i>
+                        <strong>Frequency:</strong>
+                        Every 30 minutes
+                    </p>
+
+                </div>
+
+                <a href="{{ url_for('route_details', route_number='570') }}"
+                   class="view-btn">
+
+                    <i class="fa-solid fa-eye"></i>
+                    View Route
+
+                </a>
+
+            </div>
+
+
+            <!-- ROUTE 70 -->
+
+            <div class="favorite-card">
+
+                <div class="route-top">
+
+                    <span class="route-number">
+                        Route 70
+                    </span>
+
+                    <i class="fa-solid fa-heart favorite-icon"></i>
+
+                </div>
+
+                <h2>
+                    Avadi → Broadway
+                </h2>
+
+                <div class="route-info">
+
+                    <p>
+                        <i class="fa-solid fa-location-dot"></i>
+                        <strong>Start:</strong>
+                        Avadi
+                    </p>
+
+                    <p>
+                        <i class="fa-solid fa-location-dot"></i>
+                        <strong>Destination:</strong>
+                        Broadway
+                    </p>
+
+                    <p>
+                        <i class="fa-solid fa-clock"></i>
+                        <strong>Operating Time:</strong>
+                        05:15 AM - 09:30 PM
+                    </p>
+
+                    <p>
+                        <i class="fa-solid fa-bus"></i>
+                        <strong>Frequency:</strong>
+                        Every 20 minutes
+                    </p>
+
+                </div>
+
+                <a href="{{ url_for('route_details', route_number='70') }}"
+                   class="view-btn">
+
+                    <i class="fa-solid fa-eye"></i>
+                    View Route
+
+                </a>
+
+            </div>
+
+
+            <!-- ROUTE 18D -->
+
+            <div class="favorite-card">
+
+                <div class="route-top">
+
+                    <span class="route-number">
+                        Route 18D
+                    </span>
+
+                    <i class="fa-solid fa-heart favorite-icon"></i>
+
+                </div>
+
+                <h2>
+                    Velachery → Guindy
+                </h2>
+
+                <div class="route-info">
+
+                    <p>
+                        <i class="fa-solid fa-location-dot"></i>
+                        <strong>Start:</strong>
+                        Velachery
+                    </p>
+
+                    <p>
+                        <i class="fa-solid fa-location-dot"></i>
+                        <strong>Destination:</strong>
+                        Guindy
+                    </p>
+
+                    <p>
+                        <i class="fa-solid fa-clock"></i>
+                        <strong>Operating Time:</strong>
+                        06:00 AM - 10:00 PM
+                    </p>
+
+                    <p>
+                        <i class="fa-solid fa-bus"></i>
+                        <strong>Frequency:</strong>
+                        Every 20 minutes
+                    </p>
+
+                </div>
+
+                <a href="{{ url_for('route_details', route_number='18D') }}"
+                   class="view-btn">
+
+                    <i class="fa-solid fa-eye"></i>
+                    View Route
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- INFO -->
+
+        <div class="info-box">
+
+            <h3>
+                <i class="fa-solid fa-heart"></i>
+                Quick Access
+            </h3>
+
+            <p>
+                Favorite routes help users quickly access frequently
+                used bus routes without searching for them again.
+            </p>
+
+        </div>
+
+
+        <!-- BACK BUTTON -->
+
+        <div class="back-container">
+
+            <a href="{{ url_for('home') }}" class="back-btn">
+
+                <i class="fa-solid fa-arrow-left"></i>
+                Back to Home
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+            © 2026 Smart Bus Stop Arrival Information Platform.
+            All Rights Reserved.
+        </p>
+
+    </footer>
+
+</body>
+</html>

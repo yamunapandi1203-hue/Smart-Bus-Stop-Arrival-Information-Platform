@@ -300,6 +300,11 @@ def qr_code():
 @app.route("/emergency")
 def emergency():
     return render_template("emergency.html")
+
+
+@app.route("/favorites")
+def favorites():
+    return render_template("favorites.html")
 # =========================================================
 # RUN APPLICATION
 # =========================================================
