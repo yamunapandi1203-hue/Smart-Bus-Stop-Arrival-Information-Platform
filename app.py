@@ -305,6 +305,57 @@ def emergency():
 @app.route("/favorites")
 def favorites():
     return render_template("favorites.html")
+
+
+
+
+@app.route("/feedback", methods=["GET", "POST"])
+def feedback():
+
+    if request.method == "POST":
+
+        name = request.form.get("name")
+        email = request.form.get("email")
+        category = request.form.get("category")
+        rating = request.form.get("rating")
+        feedback_text = request.form.get("feedback")
+
+        try:
+
+            connection = get_connection()
+            cursor = connection.cursor()
+
+            query = """
+                INSERT INTO feedback
+                (name, email, category, rating, feedback)
+                VALUES (%s, %s, %s, %s, %s)
+            """
+
+            values = (
+                name,
+                email,
+                category,
+                rating,
+                feedback_text
+            )
+
+            cursor.execute(query, values)
+
+            connection.commit()
+
+            cursor.close()
+            connection.close()
+
+            return render_template(
+                "feedback.html",
+                message="Thank you! Your feedback has been submitted successfully."
+            )
+
+        except Exception as error:
+
+            return f"Feedback error: {error}"
+
+    return render_template("feedback.html")
 # =========================================================
 # RUN APPLICATION
 # =========================================================
