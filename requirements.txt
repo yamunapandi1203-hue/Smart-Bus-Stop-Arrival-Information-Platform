@@ -4,3 +4,11 @@ qrcode[pil]
 requests
 python-dotenv
 git 
+
+Packages included
+Package	Purpose
+Flask	Backend web application
+mysql-connector-python	Connect Python to MySQL
+qrcode[pil]	Generate QR codes
+requests	Fetch information from external APIs
+python-dotenv	Load environment variables
