@@ -100,3 +100,7 @@ CREATE DATABASE smartbus;
 ```
 
 Enhance the Favorite Routes feature in the Smart Bus Stop Arrival Information Platform by allowing users to add, view, and remove their favorite bus routes easily. Save favorite routes in the MySQL database so that each user can access their saved routes after logging in. Display route details, including bus number, starting point, destination, and estimated arrival time. Add a remove button to delete unwanted routes and provide quick access to frequently used routes. This improvement makes bus travel more convenient, saves time, and provides a personalized experience for passengers.
+
+Improve Feedback Management
+
+Enhance the Feedback feature in the Smart Bus Stop Arrival Information Platform by allowing users to submit ratings, suggestions, and complaints about bus services. Users can provide feedback about bus arrival times, route information, service quality, and overall user experience. Store feedback in the MySQL database so that it can be reviewed later. Add a star-rating system, a feedback category dropdown, and a confirmation message after successful submission. Provide an admin option to view and manage submitted feedback. This improvement helps identify service issues, understand passenger needs, and improve the overall quality of the bus transportation system.
