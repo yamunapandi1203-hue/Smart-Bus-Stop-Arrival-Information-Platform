@@ -12,3 +12,12 @@ mysql-connector-python	Connect Python to MySQL
 qrcode[pil]	Generate QR codes
 requests	Fetch information from external APIs
 python-dotenv	Load environment variables
+
+Flask
+mysql-connector-python
+qrcode[pil]
+requests
+python-dotenv
+rapidfuzz
+Flask-Mail
+Flask-Limiter
