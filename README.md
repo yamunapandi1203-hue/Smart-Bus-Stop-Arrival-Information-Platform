@@ -98,3 +98,5 @@ Example database creation statement:
 ```sql
 CREATE DATABASE smartbus;
 ```
+
+Enhance the Favorite Routes feature in the Smart Bus Stop Arrival Information Platform by allowing users to add, view, and remove their favorite bus routes easily. Save favorite routes in the MySQL database so that each user can access their saved routes after logging in. Display route details, including bus number, starting point, destination, and estimated arrival time. Add a remove button to delete unwanted routes and provide quick access to frequently used routes. This improvement makes bus travel more convenient, saves time, and provides a personalized experience for passengers.
