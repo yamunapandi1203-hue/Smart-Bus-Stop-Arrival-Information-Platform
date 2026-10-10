@@ -85,3 +85,16 @@ Current Status
 ✅ Contact Page
 ✅ Responsive CSS Styling
 ✅ GitHub Repository
+
+## Database Setup
+1. Start MySQL Server and open MySQL Workbench or another MySQL client.
+2. Create the database used by the application (for example, `smartbus`).
+3. Create the tables required by your project, such as `users`, `bus_stops`, buses, routes, schedules, favorites, or feedback, according to your actual code.
+4. Configure the database connection in your project's configuration file.
+5. Use your own local database credentials. Do not commit passwords, API keys, or other secrets to GitHub.
+
+Example database creation statement:
+
+```sql
+CREATE DATABASE smartbus;
+```
